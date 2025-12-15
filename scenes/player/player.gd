@@ -3,10 +3,10 @@ extends CharacterBody3D
 class_name PlayerBody
 
 # const SPEED = 5.0
-@export var speed: float =8.0
+@export var speed: float = 8.0
 const JUMP_VELOCITY = 4.5
 
-@onready var camera: PlayerCamera = get_node("PlayerCamera")
+# @onready var camera: PlayerCamera = get_node("PlayerCamera")
 
 func _ready() -> void:
 	# camera.mouse_mode()
