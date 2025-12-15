@@ -11,7 +11,10 @@ var look_down_deg: int = -70
 
 @onready var player: PlayerBody = get_parent()
 
-func mouse_mode() -> void:
+func _ready() -> void:
+	set_mouse_mode()
+
+func set_mouse_mode() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _unhandled_input(event: InputEvent) -> void:

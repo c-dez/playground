@@ -9,7 +9,8 @@ const JUMP_VELOCITY = 4.5
 @onready var camera: PlayerCamera = get_node("PlayerCamera")
 
 func _ready() -> void:
-	camera.mouse_mode()
+	# camera.mouse_mode()
+	pass
 	
 
 func _physics_process(delta: float) -> void:
