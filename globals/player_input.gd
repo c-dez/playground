@@ -10,7 +10,6 @@ func _ready():
 func jump_input_buffered(buffer_time: float = 0.2) -> bool:
 	if Input.is_action_just_pressed('space'):
 		jump_buffer_timer.start(buffer_time)
-		pass
 	
 	return jump_buffer_timer.time_left
 
@@ -20,3 +19,8 @@ func set_buffer_timer() -> void:
 	add_child(jump_buffer_timer)
 	jump_buffer_timer.autostart = false
 	jump_buffer_timer.one_shot = true
+
+
+func direction() -> Vector2:
+	var dir := Input.get_vector("left", "right", "forward", "backward")
+	return dir
