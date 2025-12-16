@@ -3,12 +3,17 @@ extends Node
 
 var _jump_buffer_timer: Timer
 
+const BUTTONS: Dictionary = {
+	"space": "space",
+}
+
+
 func _ready():
 	_set_buffer_timer()
 	
 	
 func jump_input_buffered(buffer_time: float = 0.2) -> bool:
-	if Input.is_action_just_pressed('space'):
+	if Input.is_action_just_pressed(BUTTONS['space']):
 		_jump_buffer_timer.start(buffer_time)
 	
 	return _jump_buffer_timer.time_left
