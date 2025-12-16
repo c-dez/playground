@@ -1,26 +1,26 @@
 extends Node
 ## Global encargado de tomar los inputs raw de el player y darles comportamientos
 
-var jump_buffer_timer: Timer
+var _jump_buffer_timer: Timer
 
 func _ready():
-	set_buffer_timer()
+	_set_buffer_timer()
 	
 	
 func jump_input_buffered(buffer_time: float = 0.2) -> bool:
 	if Input.is_action_just_pressed('space'):
-		jump_buffer_timer.start(buffer_time)
+		_jump_buffer_timer.start(buffer_time)
 	
-	return jump_buffer_timer.time_left
-
-
-func set_buffer_timer() -> void:
-	jump_buffer_timer = Timer.new()
-	add_child(jump_buffer_timer)
-	jump_buffer_timer.autostart = false
-	jump_buffer_timer.one_shot = true
+	return _jump_buffer_timer.time_left
 
 
 func direction() -> Vector2:
 	var dir := Input.get_vector("left", "right", "forward", "backward")
 	return dir
+
+
+func _set_buffer_timer() -> void:
+	_jump_buffer_timer = Timer.new()
+	add_child(_jump_buffer_timer)
+	_jump_buffer_timer.autostart = false
+	_jump_buffer_timer.one_shot = true
