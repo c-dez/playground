@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4yas41fxgspe"]
+[gd_scene load_steps=8 format=3 uid="uid://c4yas41fxgspe"]
 
 [ext_resource type="Script" uid="uid://7tqgmjjd126m" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://wg55cpxvjljq" path="res://scenes/player/camera.gd" id="2_dovo2"]
+[ext_resource type="Script" uid="uid://bfdcs8j8pu05q" path="res://scenes/player/control.gd" id="3_gmlin"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x7p2l"]
 
@@ -25,6 +26,17 @@ mesh = SubResource("CapsuleMesh_x7p2l")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
 transform = Transform3D(0.7824915, 0, 0, 0, 0.51550984, 0, 0, 0, 0.41543758, 0, 0.41904247, -0.50923514)
 mesh = SubResource("BoxMesh_gmlin")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="CrossHair" type="Control" parent="HUD"]
+layout_mode = 3
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+script = ExtResource("3_gmlin")
+metadata/_edit_lock_ = true
 
 [node name="PlayerCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49333978, 0)
