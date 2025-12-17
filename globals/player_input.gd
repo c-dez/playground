@@ -5,6 +5,8 @@ var _jump_buffer_timer: Timer
 
 const BUTTONS: Dictionary = {
 	"space": "space",
+	"left_mb": "left_mb",
+	"right_mb": "right_mb",
 }
 
 
@@ -29,3 +31,7 @@ func _set_buffer_timer() -> void:
 	add_child(_jump_buffer_timer)
 	_jump_buffer_timer.autostart = false
 	_jump_buffer_timer.one_shot = true
+
+
+func left_mb() -> bool:
+	return Input.is_action_just_pressed(BUTTONS["left_mb"])

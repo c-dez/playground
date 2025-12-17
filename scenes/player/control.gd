@@ -1,4 +1,5 @@
 extends Control
+# croshair
 
 func _draw():
     var crossHair_size := 10
