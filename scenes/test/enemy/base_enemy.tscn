@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://ci66lxruug28i" path="res://scenes/test/enemy/base_enemy.gd" id="1_qqvrw"]
 [ext_resource type="Script" uid="uid://b141mvbnbln2f" path="res://scenes/test/enemy/stats.gd" id="1_xcvv6"]
 [ext_resource type="Script" uid="uid://bejvbec8cnnsf" path="res://scenes/test/enemy/state_machine.gd" id="3_6q32q"]
-[ext_resource type="Script" uid="uid://n5pml0uokbac" path="res://scenes/test/enemy/wandering.gd" id="4_fm2we"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8oodc"]
 
@@ -12,6 +11,9 @@ albedo_color = Color(1, 0.39215687, 1, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_iyu4q"]
 material = SubResource("StandardMaterial3D_34hri")
+
+[sub_resource type="BoxMesh" id="BoxMesh_vca5d"]
+size = Vector3(0.625, 0.615, 0.945)
 
 [node name="BaseEnemy" type="CharacterBody3D" groups=["enemy"]]
 script = ExtResource("1_qqvrw")
@@ -22,11 +24,14 @@ shape = SubResource("CapsuleShape3D_8oodc")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
 mesh = SubResource("CapsuleMesh_iyu4q")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.42)
+mesh = SubResource("BoxMesh_vca5d")
+
 [node name="Stats" type="Node" parent="."]
 script = ExtResource("1_xcvv6")
 
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_6q32q")
-
-[node name="Wandering" type="Node" parent="StateMachine"]
-script = ExtResource("4_fm2we")

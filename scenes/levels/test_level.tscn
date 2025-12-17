@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://unw31vd7gc8f"]
+[gd_scene load_steps=8 format=3 uid="uid://unw31vd7gc8f"]
 
 [ext_resource type="PackedScene" uid="uid://c4yas41fxgspe" path="res://scenes/player/player.tscn" id="1_jbqir"]
 [ext_resource type="PackedScene" uid="uid://chu8vp1yer2k5" path="res://scenes/test/enemy/base_enemy.tscn" id="2_yautc"]
@@ -16,26 +16,38 @@ sky = SubResource("Sky_yautc")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_yautc"]
+vertices = PackedVector3Array(-2.75, 1, -10.5, -0.75, 1, -10.5, -0.75, 1, -49.5, -3, 1, -9.25, -49.5, 1, -49.5, -49.5, 1, -9.25, 0.75, 1, -10.5, 0.75, 1, -49.5, 2.75, 1, -10.5, 3, 1, -9.25, 49.5, 1, -9.25, 49.5, 1, -49.5, -2.75, 1, -8.25, -49.5, 1, 49.5, -1.5, 1, 49.5, -1.25, 1, -8.25, 2.75, 1, -8.25, 1.5, 1, 49.5, 49.5, 1, 49.5, 1.25, 1, -8.25)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(0, 3, 2), PackedInt32Array(2, 3, 5), PackedInt32Array(2, 5, 4), PackedInt32Array(2, 7, 1), PackedInt32Array(1, 7, 6), PackedInt32Array(8, 6, 7), PackedInt32Array(8, 7, 9), PackedInt32Array(9, 7, 10), PackedInt32Array(10, 7, 11), PackedInt32Array(3, 12, 5), PackedInt32Array(5, 12, 13), PackedInt32Array(13, 12, 14), PackedInt32Array(12, 15, 14), PackedInt32Array(9, 10, 16), PackedInt32Array(16, 10, 18), PackedInt32Array(16, 18, 17), PackedInt32Array(17, 19, 16), PackedInt32Array(15, 19, 14), PackedInt32Array(14, 19, 17)]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3hp5k"]
 albedo_color = Color(0.38549235, 0.38549256, 0.38549247, 1)
 
 [node name="TestLevel" type="Node3D"]
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fr1um")
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_yautc")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 use_collision = true
 
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
 size = Vector3(100, 1, 100)
 material = SubResource("StandardMaterial3D_3hp5k")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
 transform = Transform3D(4.6854534, 0, 0, 0, 3.7676175, 0, 0, 0, 1, 0, 2.3838089, -9.385015)
 
 [node name="Player" parent="." instance=ExtResource("1_jbqir")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9999999, 0)
 
 [node name="BaseEnemy" parent="." instance=ExtResource("2_yautc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1.5, -6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9999999, -5.6036286)

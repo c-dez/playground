@@ -27,8 +27,9 @@ func shoot() -> void:
 			target_enemy = ray_cast.get_collider()
 	
 		# danar target si esta en grupo 'enemy'
-		if target_enemy.is_in_group('enemy'):
-			print(target_enemy.stats.health)
+		if target_enemy != null:
+			if target_enemy.is_in_group('enemy'):
+				print(target_enemy.stats.health)
 
 
 ## usa el tranforn de camera  como el propio
