@@ -28,7 +28,7 @@ func shoot() -> void:
 	
 		# danar target si esta en grupo 'enemy'
 		if target_enemy.is_in_group('enemy'):
-			print(target_enemy.get_node('Stats').health)
+			print(target_enemy.stats.health)
 
 
 ## usa el tranforn de camera  como el propio

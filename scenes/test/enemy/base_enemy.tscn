@@ -1,6 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://chu8vp1yer2k5"]
+[gd_scene load_steps=8 format=3 uid="uid://chu8vp1yer2k5"]
 
+[ext_resource type="Script" uid="uid://ci66lxruug28i" path="res://scenes/test/enemy/base_enemy.gd" id="1_qqvrw"]
 [ext_resource type="Script" uid="uid://b141mvbnbln2f" path="res://scenes/test/enemy/stats.gd" id="1_xcvv6"]
+[ext_resource type="Script" uid="uid://bejvbec8cnnsf" path="res://scenes/test/enemy/state_machine.gd" id="3_6q32q"]
+[ext_resource type="Script" uid="uid://n5pml0uokbac" path="res://scenes/test/enemy/wandering.gd" id="4_fm2we"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8oodc"]
 
@@ -11,6 +14,7 @@ albedo_color = Color(1, 0.39215687, 1, 1)
 material = SubResource("StandardMaterial3D_34hri")
 
 [node name="BaseEnemy" type="CharacterBody3D" groups=["enemy"]]
+script = ExtResource("1_qqvrw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_8oodc")
@@ -20,3 +24,9 @@ mesh = SubResource("CapsuleMesh_iyu4q")
 
 [node name="Stats" type="Node" parent="."]
 script = ExtResource("1_xcvv6")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("3_6q32q")
+
+[node name="Wandering" type="Node" parent="StateMachine"]
+script = ExtResource("4_fm2we")
