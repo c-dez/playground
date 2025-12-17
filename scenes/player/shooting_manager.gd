@@ -23,9 +23,11 @@ func shoot() -> void:
 			target_collision_point = Vector3.ZERO
 
 		if ray_cast.get_collider() is CharacterBody3D:
+		# if ray_cast.get_collider().get_property_list()
 			target_enemy = ray_cast.get_collider()
 	
-		if target_enemy is CharacterBody3D:
+		# danar target si esta en grupo 'enemy'
+		if target_enemy.is_in_group('enemy'):
 			print(target_enemy.get_node('Stats').health)
 
 
