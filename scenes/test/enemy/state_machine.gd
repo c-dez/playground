@@ -1,9 +1,9 @@
 extends Node
 class_name StateMachine
 
-@export var player:PlayerBody
-@onready var parent:BaseEnemy = get_parent()
-@onready var nav:NavigationAgent3D = parent.get_node("NavigationAgent3D")
+@export var player: PlayerBody
+@onready var parent: BaseEnemy = get_parent()
+@onready var nav: NavigationAgent3D = parent.get_node("NavigationAgent3D")
 var current_state: int = 0
 
 var debug_timer = 0.0
@@ -20,15 +20,13 @@ func _ready() -> void:
 	enter(STATES.WANDERING)
 
 
-
 func _physics_process(_delta: float) -> void:
 	state_machine(_delta)
+
 	if Input.is_action_just_pressed("right_mb"):
 		enter(STATES.CHASE)
 
 	
-
-
 ## Entrar a enum STATES {WANDERING,CHASE,}
 func enter(state: int = STATES.WANDERING) -> void:
 	current_state = state
@@ -40,13 +38,15 @@ func state_machine(_delta) -> void:
 	match current_state:
 		STATES.WANDERING:
 			pass
+
 		STATES.CHASE:
 			nav.set_target_position(player.global_position)
 			var destination = nav.get_next_path_position()
 			var direction = destination - parent.global_position
 			direction = direction.normalized()
-			parent.velocity = direction * parent.speed
-			parent.look_at(Vector3(player.global_position.x, parent.global_position.y, player.global_position.z))
+			parent.velocity = direction * parent.stats.speed
+			var player_position = Vector3(player.global_position.x, parent.global_position.y, player.global_position.z)
+			parent.look_at(player_position)
 			parent.move_and_slide()
 
 			debug_timer += _delta
@@ -54,9 +54,6 @@ func state_machine(_delta) -> void:
 				print(parent.velocity)
 				debug_timer = 0.0
 			
-
-			pass
-			
 		_:
-			pass
+			print('no state')
 		#invocar metodo desde el nodo de el state adecuado
