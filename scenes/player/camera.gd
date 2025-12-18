@@ -2,8 +2,8 @@ extends Camera3D
 ## Controla la camara de el jugador
 class_name PlayerCamera
 
-@export var mouse_sens_horizontal: float = 0.1
-@export var mouse_sens_vertical: float = 0.07
+@export var mouse_sens_horizontal: float = 0.1/3 # @ 1080p
+@export var mouse_sens_vertical: float = 0.07/3
 
 var look_up_deg: int = 50
 var look_down_deg: int = -70
@@ -12,10 +12,8 @@ var look_down_deg: int = -70
 @onready var player: PlayerBody = get_parent()
 
 func _ready() -> void:
-	set_mouse_mode()
+	_set_mouse_mode()
 
-func set_mouse_mode() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -27,3 +25,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			rotate_x(deg_to_rad(-event.relative.y * mouse_sens_vertical))
 			rotation.x = clamp(rotation.x, min_rad, max_rad)
 			rotation.z = clamp(rotation.z, 0, 0)
+
+func _set_mouse_mode() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED

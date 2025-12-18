@@ -14,7 +14,6 @@ enum STATES {
 }
 
 
-# current_state init
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group('player')
 	enter(STATES.WANDERING)
@@ -22,7 +21,7 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	state_machine(_delta)
-
+	# debug
 	if Input.is_action_just_pressed("right_mb"):
 		enter(STATES.CHASE)
 
