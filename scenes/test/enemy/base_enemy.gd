@@ -8,4 +8,5 @@ class_name BaseEnemy
 
 func _ready() -> void:
 	# res.health = 69
-	print(res.health)
+	# print(res.health)
+	pass

@@ -5,5 +5,7 @@
 [resource]
 script = ExtResource("1_wld0n")
 health = 100
+damage = 50
 move_speed = 8.0
 jump_force = 5.0
+type = 1
