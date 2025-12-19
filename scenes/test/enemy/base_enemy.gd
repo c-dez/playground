@@ -6,6 +6,7 @@ class_name BaseEnemy
 
 @export var stats: CharacterStats
 
+@export var detection_range:int = 10
 
 func _ready() -> void:
 	

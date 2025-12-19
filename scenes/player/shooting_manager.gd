@@ -62,7 +62,6 @@ func shoot() -> void:
 				if ray_cast.get_collider() is CharacterBody3D:
 					# hacer dano a target
 					target_enemy = ray_cast.get_collider()
-					# do_damage(target_enemy)
 					target_enemy.stats.take_damage(player.stats.damage)
 					#signal
 					hit_confirm.emit()
