@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=2 format=3 uid="uid://d3ens34bd4i48"]
+
+[ext_resource type="Script" uid="uid://b86pfxkk0k6e8" path="res://resources/character_stats.gd" id="1_nusmv"]
+
+[resource]
+script = ExtResource("1_nusmv")
+health = 11
+move_speed = 5.0

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://chu8vp1yer2k5"]
 
 [ext_resource type="Script" uid="uid://ci66lxruug28i" path="res://scenes/test/enemy/base_enemy.gd" id="1_qqvrw"]
-[ext_resource type="Script" uid="uid://b141mvbnbln2f" path="res://scenes/test/enemy/stats.gd" id="1_xcvv6"]
+[ext_resource type="Resource" uid="uid://d3ens34bd4i48" path="res://resources/character_stats.tres" id="2_6q32q"]
 [ext_resource type="Script" uid="uid://bejvbec8cnnsf" path="res://scenes/test/enemy/state_machine.gd" id="3_6q32q"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8oodc"]
@@ -17,6 +17,7 @@ size = Vector3(0.625, 0.615, 0.945)
 
 [node name="BaseEnemy" type="CharacterBody3D" groups=["enemy"]]
 script = ExtResource("1_qqvrw")
+res = ExtResource("2_6q32q")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_8oodc")
@@ -27,9 +28,6 @@ mesh = SubResource("CapsuleMesh_iyu4q")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D/MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.42)
 mesh = SubResource("BoxMesh_vca5d")
-
-[node name="Stats" type="Node" parent="."]
-script = ExtResource("1_xcvv6")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 

@@ -42,7 +42,7 @@ func state_machine(_delta) -> void:
 			var destination = nav.get_next_path_position()
 			var direction = destination - parent.global_position
 			direction = direction.normalized()
-			parent.velocity = direction * parent.stats.speed
+			parent.velocity = direction * parent.res.move_speed
 			var player_position = Vector3(player.global_position.x, parent.global_position.y, player.global_position.z)
 			parent.look_at(player_position)
 			parent.move_and_slide()

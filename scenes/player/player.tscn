@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://c4yas41fxgspe"]
+[gd_scene load_steps=10 format=3 uid="uid://c4yas41fxgspe"]
 
 [ext_resource type="Script" uid="uid://7tqgmjjd126m" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://wg55cpxvjljq" path="res://scenes/player/camera.gd" id="2_dovo2"]
+[ext_resource type="Resource" uid="uid://dqxje8dl7krao" path="res://resources/player_stats.tres" id="2_p47bc"]
 [ext_resource type="Script" uid="uid://bfdcs8j8pu05q" path="res://scenes/player/control.gd" id="3_gmlin"]
 [ext_resource type="Script" uid="uid://yowwp0hkig27" path="res://scenes/player/shooting_manager.gd" id="5_p47bc"]
 
@@ -17,6 +18,7 @@ material = SubResource("StandardMaterial3D_dovo2")
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_8afob")
+stats = ExtResource("2_p47bc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_x7p2l")
@@ -32,10 +34,13 @@ mesh = SubResource("BoxMesh_gmlin")
 
 [node name="CrossHair" type="Control" parent="HUD"]
 layout_mode = 3
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("3_gmlin")
 metadata/_edit_lock_ = true
 
