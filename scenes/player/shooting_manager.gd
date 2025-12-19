@@ -35,6 +35,7 @@ func _ready() -> void:
 	_set_up_reload_timer()
 	label = Label.new()
 	add_child(label)
+	ray_cast.target_position.z = - player.stats.attack_range
 
 
 func _process(_delta: float) -> void:
