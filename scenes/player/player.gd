@@ -1,6 +1,8 @@
 extends CharacterBody3D
-## Controla el movimiento de Player                                                                    
 class_name PlayerBody
+
+
+## Controla el movimiento de Player   
 
 
 @export var stats: CharacterStats

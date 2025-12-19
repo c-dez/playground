@@ -1,14 +1,14 @@
 extends CharacterBody3D
 class_name BaseEnemy
 
+## Clase base para enemigos
+
 
 @export var stats: CharacterStats
 
-# @export var test = res.health
 
 func _ready() -> void:
-	# res.health = 69
-	# print(res.health)
+	
 	pass
 
 func _process(_delta: float) -> void:

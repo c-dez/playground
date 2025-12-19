@@ -1,6 +1,9 @@
 extends Resource
 class_name CharacterStats
 
+## Stats para enemigos y player como health, damage, move_speed 
+##  y metodos para modificarlos como take_damage()
+
 @export var health: int = 1
 @export var damage: int = 1
 
