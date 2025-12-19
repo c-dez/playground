@@ -17,7 +17,7 @@ size = Vector3(0.625, 0.615, 0.945)
 
 [node name="BaseEnemy" type="CharacterBody3D" groups=["enemy"]]
 script = ExtResource("1_qqvrw")
-res = ExtResource("2_6q32q")
+stats = ExtResource("2_6q32q")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_8oodc")

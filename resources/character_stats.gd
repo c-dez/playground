@@ -13,3 +13,11 @@ enum Type {
     ENEMY, 
     PLAYER
 }
+
+
+func take_damage(_damage_ammount:int)->void:
+    health -= _damage_ammount
+ 
+
+func take_heal(_heal_ammount:int)->void:
+    health += _heal_ammount

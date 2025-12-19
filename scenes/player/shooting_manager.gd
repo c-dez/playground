@@ -6,6 +6,7 @@ var target_collision_point: Vector3
 
 @export var camera: Camera3D
 @onready var ray_cast: RayCast3D = get_node("ShootingRayCast")
+@onready var player: PlayerBody = get_parent()
 
 
 ##
@@ -55,10 +56,13 @@ func shoot() -> void:
 				if ray_cast.get_collider() is CharacterBody3D:
 					# hacer dano a target
 					target_enemy = ray_cast.get_collider()
-					# print(target_enemy.stats.health)
+					# do_damage(target_enemy)
+					target_enemy.stats.take_damage(player.stats.damage)
 
 			else:
 				target_collision_point = Vector3.ZERO
+
+
 
 
 func reload_gun() -> void:

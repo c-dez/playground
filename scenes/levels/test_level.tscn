@@ -50,4 +50,4 @@ transform = Transform3D(4.6854534, 0, 0, 0, 3.7676175, 0, 0, 0, 1, 0, 2.3838089,
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9999999, 0)
 
 [node name="BaseEnemy" parent="." instance=ExtResource("2_yautc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.743415, 1, -5.509117)
