@@ -28,6 +28,8 @@ var reload_timer: Timer = Timer.new()
 
 var label: Label
 
+signal hit_confirm()
+
 
 func _ready() -> void:
 	_set_up_reload_timer()
@@ -62,6 +64,8 @@ func shoot() -> void:
 					target_enemy = ray_cast.get_collider()
 					# do_damage(target_enemy)
 					target_enemy.stats.take_damage(player.stats.damage)
+					#signal
+					hit_confirm.emit()
 
 			else:
 				target_collision_point = Vector3.ZERO
