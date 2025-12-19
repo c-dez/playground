@@ -1,11 +1,10 @@
 extends Node
 class_name StateMachine
 
+## States wandering, chase_player
 @export var player: PlayerBody
 @onready var parent: BaseEnemy = get_parent()
 @onready var nav: NavigationAgent3D = parent.get_node("NavigationAgent3D")
-
-# var debug_timer = 0.0
 
 var current_state: int = 0
 enum STATES {
@@ -16,7 +15,7 @@ enum STATES {
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group('player')
-	enter(STATES.WANDERING)
+	enter(0 as STATES)
 
 
 func _physics_process(_delta: float) -> void:
@@ -27,30 +26,25 @@ func _physics_process(_delta: float) -> void:
 
 	
 ## Entrar a enum STATES {WANDERING,CHASE,}
-func enter(state: int = STATES.WANDERING) -> void:
+func enter(state: int = 0 as STATES) -> void:
 	current_state = state
 
 
 #checar current_state
 func state_machine(_delta) -> void:
 	match current_state:
-		STATES.WANDERING:
+		0 as STATES:
 			pass
 
-		STATES.CHASE:
+		1 as STATES:
 			nav.set_target_position(player.global_position)
 			var destination = nav.get_next_path_position()
 			var direction = destination - parent.global_position
 			direction = direction.normalized()
-			parent.velocity = direction * parent.res.move_speed
+			parent.velocity = direction * parent.stats.move_speed
 			var player_position = Vector3(player.global_position.x, parent.global_position.y, player.global_position.z)
 			parent.look_at(player_position)
 			parent.move_and_slide()
 
-			# debug_timer += _delta
-			# if debug_timer >= 1.0:
-			# 	print(parent.velocity)
-			# 	debug_timer = 0.0
-			
 		_:
 			print('no state')
