@@ -3,6 +3,7 @@ class_name BaseEnemy
 
 ## Clase base para enemigos
 
+@onready var nav: NavigationAgent3D = get_node("NavigationAgent3D")
 
 @export var stats: CharacterStats
 
@@ -12,11 +13,15 @@ func _ready() -> void:
 	
 	pass
 
-func _process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:
+	if !is_on_floor():
+		velocity += get_gravity()
+
+	move_and_slide()
 	dies()
 	
 	
-	
+
 func dies()->void:
 	if stats.health <= 0:
 		call_deferred('queue_free')

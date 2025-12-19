@@ -1,10 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://chu8vp1yer2k5"]
+[gd_scene load_steps=10 format=3 uid="uid://chu8vp1yer2k5"]
 
 [ext_resource type="Script" uid="uid://ci66lxruug28i" path="res://scenes/test/enemy/base_enemy.gd" id="1_qqvrw"]
 [ext_resource type="Resource" uid="uid://d3ens34bd4i48" path="res://resources/character_stats.tres" id="2_6q32q"]
-[ext_resource type="Script" uid="uid://bejvbec8cnnsf" path="res://scenes/test/enemy/state_machine.gd" id="3_6q32q"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8oodc"]
+[ext_resource type="Script" uid="uid://di5lddl6f0246" path="res://state_machine/state_machine.gd" id="3_6q32q"]
+[ext_resource type="Script" uid="uid://c0cget0jkfyi2" path="res://state_machine/enemy_wander.gd" id="4_fm2we"]
+[ext_resource type="Script" uid="uid://b2qllntjajk33" path="res://state_machine/enemy_chase.gd" id="5_fm2we"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_34hri"]
 albedo_color = Color(1, 0.39215687, 1, 1)
@@ -15,21 +15,41 @@ material = SubResource("StandardMaterial3D_34hri")
 [sub_resource type="BoxMesh" id="BoxMesh_vca5d"]
 size = Vector3(0.625, 0.615, 0.945)
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8oodc"]
+
 [node name="BaseEnemy" type="CharacterBody3D" groups=["enemy"]]
 script = ExtResource("1_qqvrw")
 stats = ExtResource("2_6q32q")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_8oodc")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_iyu4q")
+skeleton = NodePath("../CollisionShape3D")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D/MeshInstance3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.42)
 mesh = SubResource("BoxMesh_vca5d")
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_8oodc")
 
-[node name="StateMachine" type="Node" parent="."]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+debug_enabled = true
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_6q32q")
+initial_state = NodePath("EnemyWander")
+metadata/_custom_type_script = "uid://di5lddl6f0246"
+
+[node name="EnemyWander" type="Node" parent="StateMachine"]
+script = ExtResource("4_fm2we")
+metadata/_custom_type_script = "uid://c0cget0jkfyi2"
+
+[node name="EnemyChase" type="Node" parent="StateMachine"]
+script = ExtResource("5_fm2we")
+metadata/_custom_type_script = "uid://b2qllntjajk33"
+
+[node name="Label" type="Label" parent="StateMachine"]
+offset_left = 1.0
+offset_top = 543.0
+offset_right = 129.0
+offset_bottom = 648.0
