@@ -2,16 +2,18 @@ extends Node
 ## Global encargado de tomar los inputs raw de el player y darles comportamientos
 
 var _jump_buffer_timer: Timer
+var _shift_buffer_timer: Timer
 
 const BUTTONS: Dictionary = {
 	"space": "space",
 	"left_mb": "left_mb",
 	"right_mb": "right_mb",
+	"shift": "shift",
 }
 
 
 func _ready():
-	_set_buffer_timer()
+	_set_jump_buffer_timer()
 	
 	
 func jump_input_buffered(buffer_time: float = 0.2) -> bool:
@@ -26,12 +28,18 @@ func direction() -> Vector2:
 	return dir
 
 
-func _set_buffer_timer() -> void:
+func left_mb() -> bool:
+	return Input.is_action_just_pressed(BUTTONS["left_mb"])
+
+
+func _set_jump_buffer_timer() -> void:
 	_jump_buffer_timer = Timer.new()
 	add_child(_jump_buffer_timer)
 	_jump_buffer_timer.autostart = false
 	_jump_buffer_timer.one_shot = true
 
 
-func left_mb() -> bool:
-	return Input.is_action_just_pressed(BUTTONS["left_mb"])
+func shift_buffer():
+	_shift_buffer_timer = Timer.new()
+	add_child(_shift_buffer_timer)
+	####

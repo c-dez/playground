@@ -2,6 +2,9 @@ extends State
 class_name EnemyChase
 
 
+@onready var enemy: BaseEnemy = get_parent().get_parent()
+@onready var player: CharacterBody3D = get_tree().get_first_node_in_group('player')
+
 func process(_delta: float) -> void:
 	enemy.nav.set_target_position(player.global_position)
 
@@ -21,7 +24,6 @@ func physics_process(_delta: float) -> void:
 	_look_at_player()
 
 	
-
 func _look_at_player() -> void:
 	var mesh = enemy.get_node('MeshInstance3D')
 	var target = player.global_position - mesh.global_position

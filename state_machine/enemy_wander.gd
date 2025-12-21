@@ -5,6 +5,9 @@ var wander_direction: Vector3 = Vector3.ZERO
 var wander_time: float = 0.0
 var look_at := Vector3.ZERO
 
+@onready var enemy: BaseEnemy = get_parent().get_parent()
+@onready var player: CharacterBody3D = get_tree().get_first_node_in_group('player')
+
 func randomize_variables() -> void:
 	wander_time = randf_range(1.5, 4)
 	if randi_range(0, 3) != 3:
