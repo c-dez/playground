@@ -54,3 +54,12 @@ camera = NodePath("../PlayerCamera")
 
 [node name="ShootingRayCast" type="RayCast3D" parent="ShootingManager"]
 target_position = Vector3(0, 0, -20)
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="ShootingManager"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
