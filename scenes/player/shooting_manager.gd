@@ -27,6 +27,8 @@ var reload_timer: Timer = Timer.new()
 ##
 
 var label: Label
+#signals
+signal start_reloading(reloading_time: float)
 
 signal hit_confirm()
 
@@ -71,14 +73,14 @@ func shoot() -> void:
 				target_collision_point = Vector3.ZERO
 
 
-
-
 func reload_gun() -> void:
 	if bullets == max_bullets:
 		return
 	else:
-		reload_timer.start((max_bullets - bullets) * reload_time)
-
+		var reload_max_time = (max_bullets - bullets) * reload_time
+		reload_timer.start(reload_max_time)
+		start_reloading.emit(reload_max_time)
+		
 		if reload_timer.time_left:
 			revolver_current_state = revolver_states.reloading
 

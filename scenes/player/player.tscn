@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://c4yas41fxgspe"]
+[gd_scene load_steps=11 format=3 uid="uid://c4yas41fxgspe"]
 
 [ext_resource type="Script" uid="uid://7tqgmjjd126m" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://wg55cpxvjljq" path="res://scenes/player/camera.gd" id="2_dovo2"]
 [ext_resource type="Resource" uid="uid://dqxje8dl7krao" path="res://resources/player_stats.tres" id="2_p47bc"]
 [ext_resource type="Script" uid="uid://bfdcs8j8pu05q" path="res://scenes/player/control.gd" id="3_gmlin"]
 [ext_resource type="Script" uid="uid://yowwp0hkig27" path="res://scenes/player/shooting_manager.gd" id="5_p47bc"]
+[ext_resource type="Script" uid="uid://dlm7mtj3725on" path="res://scenes/player/reload_bar.gd" id="6_75vfm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x7p2l"]
 
@@ -44,6 +45,22 @@ grow_vertical = 2
 script = ExtResource("3_gmlin")
 metadata/_edit_lock_ = true
 
+[node name="ProgressBar" type="ProgressBar" parent="HUD" node_paths=PackedStringArray("shooting_manager")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.5
+offset_top = 35.5
+offset_right = 128.5
+offset_bottom = 62.5
+grow_horizontal = 2
+grow_vertical = 2
+show_percentage = false
+script = ExtResource("6_75vfm")
+shooting_manager = NodePath("../../ShootingManager")
+
 [node name="PlayerCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49333978, 0)
 script = ExtResource("2_dovo2")
@@ -54,12 +71,3 @@ camera = NodePath("../PlayerCamera")
 
 [node name="ShootingRayCast" type="RayCast3D" parent="ShootingManager"]
 target_position = Vector3(0, 0, -20)
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="ShootingManager"]
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
