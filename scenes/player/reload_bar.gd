@@ -1,14 +1,14 @@
 extends ProgressBar
 
 
-# @export var shooting_manager: ShootingManager
-@onready var shooting_manager: ShootingManager = get_parent().get_parent().get_node('ShootingManager')
 var reload_time: float = 0.0
 var elapsed_time: float = 0.0
-var running: bool = false
-signal active_reload_signal()
+var is_running: bool = false
 
+@onready var shooting_manager: ShootingManager = get_parent().get_parent().get_node('ShootingManager')
 @onready var active_reload_range = get_parent().get_parent().active_reload_range
+
+signal active_reload_signal()
 
 
 func _ready() -> void:
@@ -17,13 +17,13 @@ func _ready() -> void:
 	
 
 func _physics_process(delta: float) -> void:
-	visible = running
-	if running:
+	visible = is_running
+	if is_running:
 		start(delta)
 
 		
 func on_start_reloading(reloading_time: float) -> void:
-	running = true
+	is_running = true
 	reload_time = reloading_time
 	elapsed_time = 0.0
 	
@@ -40,11 +40,11 @@ func start(delta: float) -> void:
 
 
 func finish() -> void:
-	running = false
+	is_running = false
 
 	
 ## si player presiona reload dentro de el margen el reload termina antes
 func active_reload() -> void:
-	if Input.is_action_just_pressed('r_key') and value > active_reload_range.x and value < active_reload_range.y:
+	if (Input.is_action_just_pressed('r_key') or PlayerInput.left_mb()) and value > active_reload_range.x and value < active_reload_range.y:
 		active_reload_signal.emit()
 		finish()

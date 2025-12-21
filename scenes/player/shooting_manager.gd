@@ -8,10 +8,8 @@ class_name ShootingManager
 var target_enemy: CharacterBody3D
 var target_collision_point: Vector3
 
+var label: Label
 @export var camera: Camera3D
-@onready var ray_cast: RayCast3D = get_node("ShootingRayCast")
-@onready var player: PlayerBody = get_parent()
-
 
 ##
 # revolver
@@ -25,14 +23,12 @@ enum revolver_states {
 var reload_time: float = 0.5
 var reload_timer: Timer = Timer.new()
 ##
-
-var label: Label
-#signals
-signal start_reloading(reloading_time: float)
-
-
+@onready var player: PlayerBody = get_parent()
+@onready var ray_cast: RayCast3D = get_node("ShootingRayCast")
 @onready var progress_bar: ProgressBar = player.get_node('HUD').get_node('ProgressBar')
 
+#signals
+signal start_reloading(reloading_time: float)
 signal hit_confirm()
 
 
@@ -81,12 +77,13 @@ func shoot() -> void:
 func reload_gun() -> void:
 	if bullets == max_bullets:
 		return
+
 	else:
 		var reload_max_time = (max_bullets - bullets) * reload_time
 		reload_timer.start(reload_max_time)
 		start_reloading.emit(reload_max_time)
 
-		if reload_timer.time_left:
+		if not reload_timer.is_stopped():
 			revolver_current_state = revolver_states.reloading
 		
 
@@ -110,4 +107,3 @@ func _set_up_reload_timer() -> void:
 func on_active_reload() -> void:
 	reload_timer.stop()
 	reload_timer.timeout.emit()
-	pass
