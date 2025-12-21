@@ -30,6 +30,9 @@ var label: Label
 #signals
 signal start_reloading(reloading_time: float)
 
+
+@onready var progress_bar: ProgressBar = player.get_node('HUD').get_node('ProgressBar')
+
 signal hit_confirm()
 
 
@@ -39,11 +42,13 @@ func _ready() -> void:
 	add_child(label)
 	ray_cast.target_position.z = - player.stats.attack_range
 
+	progress_bar.connect('active_reload_signal', on_active_reload)
+
 
 func _process(_delta: float) -> void:
 	_set_tranform()
 	shoot()
-	if Input.is_action_just_pressed('r_key'):
+	if Input.is_action_just_pressed('r_key') and revolver_current_state == revolver_states.fire:
 		reload_gun()
 	
 	#debug
@@ -80,10 +85,10 @@ func reload_gun() -> void:
 		var reload_max_time = (max_bullets - bullets) * reload_time
 		reload_timer.start(reload_max_time)
 		start_reloading.emit(reload_max_time)
-		
+
 		if reload_timer.time_left:
 			revolver_current_state = revolver_states.reloading
-
+		
 
 ## usa el tranforn de camera  como el propio
 func _set_tranform() -> void:
@@ -100,3 +105,9 @@ func _set_up_reload_timer() -> void:
 			revolver_current_state = revolver_states.fire
 			bullets = max_bullets
 	)
+
+
+func on_active_reload() -> void:
+	reload_timer.stop()
+	reload_timer.timeout.emit()
+	pass

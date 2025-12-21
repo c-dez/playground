@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c4yas41fxgspe"]
+[gd_scene load_steps=12 format=3 uid="uid://c4yas41fxgspe"]
 
 [ext_resource type="Script" uid="uid://7tqgmjjd126m" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://wg55cpxvjljq" path="res://scenes/player/camera.gd" id="2_dovo2"]
@@ -17,6 +17,9 @@ albedo_color = Color(1, 0.18039216, 1, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_gmlin"]
 material = SubResource("StandardMaterial3D_dovo2")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_75vfm"]
+bg_color = Color(0.93877894, 0.35656756, 0.627428, 1)
+
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_8afob")
 stats = ExtResource("2_p47bc")
@@ -30,6 +33,17 @@ mesh = SubResource("CapsuleMesh_x7p2l")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
 transform = Transform3D(0.7824915, 0, 0, 0, 0.51550984, 0, 0, 0, 0.41543758, 0, 0.41904247, -0.50923514)
 mesh = SubResource("BoxMesh_gmlin")
+
+[node name="PlayerCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49333978, 0)
+script = ExtResource("2_dovo2")
+
+[node name="ShootingManager" type="Node3D" parent="." node_paths=PackedStringArray("camera")]
+script = ExtResource("5_p47bc")
+camera = NodePath("../PlayerCamera")
+
+[node name="ShootingRayCast" type="RayCast3D" parent="ShootingManager"]
+target_position = Vector3(0, 0, -20)
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -45,7 +59,7 @@ grow_vertical = 2
 script = ExtResource("3_gmlin")
 metadata/_edit_lock_ = true
 
-[node name="ProgressBar" type="ProgressBar" parent="HUD" node_paths=PackedStringArray("shooting_manager")]
+[node name="ProgressBar" type="ProgressBar" parent="HUD"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -57,17 +71,8 @@ offset_right = 128.5
 offset_bottom = 62.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_75vfm")
+step = 1.0
+value = 18.0
 show_percentage = false
 script = ExtResource("6_75vfm")
-shooting_manager = NodePath("../../ShootingManager")
-
-[node name="PlayerCamera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49333978, 0)
-script = ExtResource("2_dovo2")
-
-[node name="ShootingManager" type="Node3D" parent="." node_paths=PackedStringArray("camera")]
-script = ExtResource("5_p47bc")
-camera = NodePath("../PlayerCamera")
-
-[node name="ShootingRayCast" type="RayCast3D" parent="ShootingManager"]
-target_position = Vector3(0, 0, -20)

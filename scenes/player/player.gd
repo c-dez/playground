@@ -6,6 +6,8 @@ class_name PlayerBody
 
 
 @export var stats: CharacterStats
+## uso un Vector2 para representar rango entre dos valores usado para active_reload system
+@export var active_reload_range := Vector2(40, 60)
 
 
 func _ready() -> void:
@@ -15,7 +17,6 @@ func _ready() -> void:
 	
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
