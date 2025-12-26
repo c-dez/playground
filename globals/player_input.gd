@@ -43,3 +43,6 @@ func shift_buffer():
 	_shift_buffer_timer = Timer.new()
 	add_child(_shift_buffer_timer)
 	####
+
+func right_mb() -> bool:
+	return Input.is_action_just_pressed('right_mb')

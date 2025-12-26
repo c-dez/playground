@@ -11,6 +11,7 @@ class_name CharacterStats
 
 @export var move_speed: float = 1
 @export var walk_speed : float = 1
+@export var dash_speed: float = 1
 @export var jump_force: float = 1
 
 @export var type: Type = 0 as Type
