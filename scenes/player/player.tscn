@@ -23,6 +23,8 @@ material = SubResource("StandardMaterial3D_dovo2")
 bg_color = Color(0.93877894, 0.35656756, 0.627428, 1)
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
+floor_max_angle = 1.5707964
+floor_snap_length = 0.5
 script = ExtResource("1_8afob")
 stats = ExtResource("2_p47bc")
 
@@ -39,6 +41,8 @@ mesh = SubResource("BoxMesh_gmlin")
 [node name="PlayerCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49333978, 0)
 script = ExtResource("2_dovo2")
+mouse_sens_horizontal = 0.05
+mouse_sens_vertical = 0.043
 
 [node name="ShootingManager" type="Node3D" parent="." node_paths=PackedStringArray("camera")]
 script = ExtResource("5_p47bc")
