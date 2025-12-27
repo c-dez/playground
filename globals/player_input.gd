@@ -23,7 +23,7 @@ func jump_input_buffered(buffer_time: float = 0.2) -> bool:
 	return _jump_buffer_timer.time_left
 
 
-func direction() -> Vector2:
+func get_direction() -> Vector2:
 	var dir := Input.get_vector("left", "right", "forward", "backward")
 	return dir
 
@@ -45,4 +45,4 @@ func shift_buffer():
 	####
 
 func right_mb() -> bool:
-	return Input.is_action_just_pressed('right_mb')
+	return Input.is_action_just_pressed(BUTTONS['right_mb'])
