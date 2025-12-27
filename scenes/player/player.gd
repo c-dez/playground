@@ -10,7 +10,7 @@ class_name PlayerBody
 @export var active_reload_range := Vector2(40, 60)
 
 var dash_time: float = 0.5
-var dash_mult = 2.0
+var dash_mult = 1.0
 const DASH_MULT_DEFAULT: float = 1.0
 var current_move_state: move_states = 1 as move_states
 enum move_states {
@@ -32,10 +32,11 @@ func _physics_process(delta: float) -> void:
 	move()
 	jump()
 	move_and_slide()
-	
-	
+	coyote_time(delta)
+
+
 func jump() -> void:
-	if PlayerInput.jump_input_buffered() and is_on_floor():
+	if PlayerInput.jump_input_buffered() and (is_on_floor() or can_jump):
 		velocity.y = stats.jump_force
 
 
@@ -71,4 +72,17 @@ func apply_gravity(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
+
 # coyote time
+const coyote: float = 0.2
+var _coyote: float = 0.0
+var can_jump: bool = false
+func coyote_time(delta) -> void:
+	if is_on_floor():
+		_coyote = coyote
+		pass
+	elif not is_on_floor():
+		_coyote -= delta
+		pass
+	
+	can_jump = _coyote > 0 as bool
