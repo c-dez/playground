@@ -27,8 +27,7 @@ func _ready() -> void:
 	
 
 func _physics_process(delta: float) -> void:
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+	apply_gravity(delta)
 	dash(delta)
 	move()
 	jump()
@@ -52,6 +51,7 @@ func move() -> void:
 		
 
 func dash(delta: float) -> void:
+	# no me gusta esta implementacion pero por ahora funciona correctamente
 	if current_move_state == move_states.run:
 		if PlayerInput.right_mb():
 			current_move_state = move_states.dash
@@ -60,7 +60,6 @@ func dash(delta: float) -> void:
 		dash_time -= delta
 	
 		if dash_time >= 0.0:
-			print('dashing')
 			dash_mult = 2
 		else:
 			current_move_state = move_states.run
@@ -68,4 +67,6 @@ func dash(delta: float) -> void:
 			dash_mult = DASH_MULT_DEFAULT
 
 
-	pass
+func apply_gravity(delta: float) -> void:
+	if not is_on_floor():
+		velocity += get_gravity() * delta
