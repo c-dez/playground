@@ -18,22 +18,27 @@ enum move_states {
 	run,
 	dash
 }
+# wall run
+var can_wall_run: bool = false
+var wall_normal: Vector3
 
 
 func _ready() -> void:
 	# debug
 	# uso un mesh para el jugador para poder visualizarlo en godot, en juego no se debe  de mostrar este mesh
 	get_node("MeshInstance3D").visible = false
+	pass
 	
 
 func _physics_process(delta: float) -> void:
 	apply_gravity(delta)
+	wall_run()
 	dash(delta)
 	move()
 	jump()
-	move_and_slide()
 	coyote_time(delta)
-
+	move_and_slide()
+	
 
 func jump() -> void:
 	if PlayerInput.jump_input_buffered() and (is_on_floor() or can_jump):
@@ -70,9 +75,27 @@ func dash(delta: float) -> void:
 
 func apply_gravity(delta: float) -> void:
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		if can_wall_run == false:
+			velocity += get_gravity() * delta
 
 
+# wall run
+func wall_run() -> void:
+	if is_on_wall_only():
+		await get_tree().create_timer(0.2).timeout
+		can_wall_run = true
+		wall_normal = get_wall_normal()
+
+	else:
+		can_wall_run = false
+	if can_wall_run:
+		print(can_wall_run)
+		velocity = Vector3(-wall_normal.x, 0, -wall_normal.z) * stats.move_speed
+
+
+	pass
+
+	
 # coyote time
 const coyote: float = 0.2
 var _coyote: float = 0.0
@@ -80,9 +103,7 @@ var can_jump: bool = false
 func coyote_time(delta) -> void:
 	if is_on_floor():
 		_coyote = coyote
-		pass
 	elif not is_on_floor():
 		_coyote -= delta
-		pass
 	
 	can_jump = _coyote > 0 as bool

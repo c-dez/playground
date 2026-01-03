@@ -23,7 +23,6 @@ material = SubResource("StandardMaterial3D_dovo2")
 bg_color = Color(0.93877894, 0.35656756, 0.627428, 1)
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
-floor_max_angle = 1.5707964
 floor_snap_length = 0.5
 script = ExtResource("1_8afob")
 stats = ExtResource("2_p47bc")
