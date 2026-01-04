@@ -31,10 +31,6 @@ stats = ExtResource("2_p47bc")
 [node name="WallRunComponent" type="Node3D" parent="."]
 script = ExtResource("3_5gtgg")
 
-[node name="WallTimer" type="Timer" parent="WallRunComponent"]
-wait_time = 0.5
-one_shot = true
-
 [node name="RayCast3DRight" type="RayCast3D" parent="WallRunComponent"]
 target_position = Vector3(1, 0, 0)
 

@@ -87,19 +87,20 @@ func wall_run() -> void:
 		if not is_on_floor():
 			velocity.y = 0
 
+
 func wall_jump() -> void:
 	if wall_run_component.can_wall_run == true:
 		if Input.is_action_just_pressed(PlayerInput.BUTTONS['space']):
 			wall_run_component.can_wall_run = false
-			wall_run_component.wall_timer.start()
+			var tween = get_tree().create_tween()
 			
-	if wall_run_component.wall_timer.time_left > 0:
-		PlayerInput.can_move = false
-		velocity.x = wall_run_component.wall_normal.x * (1.5 * stats.move_speed)
-		velocity.z = wall_run_component.wall_normal.z * (1.5 * stats.move_speed)
-		velocity.y = stats.jump_force * 1.2
-	else:
-		PlayerInput.can_move = true
+	
+			var final_value := Vector3(
+				wall_run_component.wall_normal.x * 1.5,
+				stats.jump_force,
+				wall_run_component.wall_normal.z * 1.5
+				)
+			tween.tween_property(self, "velocity", final_value, wall_run_component.wall_jump_tween_time)
 
 
 # coyote time
