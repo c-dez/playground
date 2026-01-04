@@ -4,6 +4,8 @@ extends Node
 var _jump_buffer_timer: Timer
 var _shift_buffer_timer: Timer
 
+var can_move: bool = true
+
 const BUTTONS: Dictionary = {
 	"space": "space",
 	"left_mb": "left_mb",
@@ -24,8 +26,12 @@ func jump_input_buffered(buffer_time: float = 0.2) -> bool:
 
 
 func get_direction() -> Vector2:
-	var dir := Input.get_vector("left", "right", "forward", "backward")
-	return dir
+	# var dir := Input.get_vector("left", "right", "forward", "backward")
+	# return dir
+	if can_move:
+		return Input.get_vector("left", "right", "forward", "backward")
+	else:
+		return Vector2.ZERO
 
 
 func left_mb() -> bool:

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://df4jhn441n8ob"]
+
+[ext_resource type="Texture2D" uid="uid://dxqwgw32pxsct" path="res://assets/GreyboxTextures/greybox_yellow_grid.png" id="1_stebq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2qsmu"]
+albedo_texture = ExtResource("1_stebq")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[node name="TestWallJump" type="Node3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9812975, 1, -0.50070965)
+size = Vector3(6, 2, 1)
+material = SubResource("StandardMaterial3D_2qsmu")

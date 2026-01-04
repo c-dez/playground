@@ -19,14 +19,14 @@ enum move_states {
 	dash
 }
 # wall run
-var can_wall_run: bool = false
-var wall_normal: Vector3
+
+@onready var wall_run_component: WallRunComponent = get_node('WallRunComponent')
 
 
 func _ready() -> void:
 	# debug
 	# uso un mesh para el jugador para poder visualizarlo en godot, en juego no se debe  de mostrar este mesh
-	get_node("MeshInstance3D").visible = false
+	# get_node("MeshInstance3D").visible = false
 	pass
 	
 
@@ -36,8 +36,10 @@ func _physics_process(delta: float) -> void:
 	dash(delta)
 	move()
 	jump()
+	wall_jump()
 	coyote_time(delta)
 	move_and_slide()
+	# print(can_wall_run)
 	
 
 func jump() -> void:
@@ -75,27 +77,31 @@ func dash(delta: float) -> void:
 
 func apply_gravity(delta: float) -> void:
 	if not is_on_floor():
-		if can_wall_run == false:
+		if wall_run_component.can_wall_run == false:
 			velocity += get_gravity() * delta
 
 
 # wall run
 func wall_run() -> void:
-	if is_on_wall_only():
-		await get_tree().create_timer(0.2).timeout
-		can_wall_run = true
-		wall_normal = get_wall_normal()
+	if wall_run_component.can_wall_run:
+		if not is_on_floor():
+			velocity.y = 0
 
+func wall_jump() -> void:
+	if wall_run_component.can_wall_run == true:
+		if Input.is_action_just_pressed(PlayerInput.BUTTONS['space']):
+			wall_run_component.can_wall_run = false
+			wall_run_component.wall_timer.start()
+			
+	if wall_run_component.wall_timer.time_left > 0:
+		PlayerInput.can_move = false
+		velocity.x = wall_run_component.wall_normal.x * (1.5 * stats.move_speed)
+		velocity.z = wall_run_component.wall_normal.z * (1.5 * stats.move_speed)
+		velocity.y = stats.jump_force * 1.2
 	else:
-		can_wall_run = false
-	if can_wall_run:
-		print(can_wall_run)
-		velocity = Vector3(-wall_normal.x, 0, -wall_normal.z) * stats.move_speed
+		PlayerInput.can_move = true
 
 
-	pass
-
-	
 # coyote time
 const coyote: float = 0.2
 var _coyote: float = 0.0

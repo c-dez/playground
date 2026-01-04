@@ -22,7 +22,6 @@ albedo_color = Color(0.30692267, 0.3069227, 0.3069227, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_dfn24")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -117.708496, 127.720474, 32.17041)
-floor_max_angle = 0.7853982
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_e37ux")
@@ -185,6 +184,18 @@ size = Vector3(19, 5, 8)
 [node name="Building53" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 2.5344095, 0, 0, 0, 2.6501446, -110.277565, 133.0565, -6.8784027)
 size = Vector3(19, 5, 8)
+
+[node name="Building56" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 2.5344095, 0, 0, 0, 2.6501446, -103.277565, 139.39253, 102.02536)
+size = Vector3(5, 20, 60)
+
+[node name="Building57" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 2.5344095, 0, 0, 0, 2.6501446, -123.277565, 139.39253, 102.02535)
+size = Vector3(5, 20, 60)
+
+[node name="Building58" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 2.5344095, 0, 0, 0, 2.6501446, -115.777565, 106.72048, 62.273186)
+size = Vector3(20, 10, 30)
 
 [node name="Building55" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 2.5344095, 0, 0, 0, 2.6501446, -110.277565, 133.0565, -36.878403)
