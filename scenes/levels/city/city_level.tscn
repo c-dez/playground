@@ -186,7 +186,7 @@ transform = Transform3D(1, 0, 0, 0, 2.5344095, 0, 0, 0, 2.6501446, -110.277565, 
 size = Vector3(19, 5, 8)
 
 [node name="Building56" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 2.5344095, 0, 0, 0, 2.6501446, -103.277565, 139.39253, 102.02536)
+transform = Transform3D(1, 0, 0, 0, 2.5344095, 0, 0, 0, 2.6501446, -113.277565, 139.39253, 102.02536)
 size = Vector3(5, 20, 60)
 
 [node name="Building57" type="CSGBox3D" parent="CSGCombiner3D"]

@@ -97,7 +97,7 @@ func wall_jump() -> void:
 	
 			var final_value := Vector3(
 				wall_run_component.wall_normal.x * 1.5,
-				stats.jump_force,
+				stats.jump_force*0.5,
 				wall_run_component.wall_normal.z * 1.5
 				)
 			tween.tween_property(self, "velocity", final_value, wall_run_component.wall_jump_tween_time)

@@ -1,18 +1,109 @@
-[gd_scene load_steps=3 format=3 uid="uid://df4jhn441n8ob"]
+[gd_scene load_steps=8 format=3 uid="uid://df4jhn441n8ob"]
 
-[ext_resource type="Texture2D" uid="uid://dxqwgw32pxsct" path="res://assets/GreyboxTextures/greybox_yellow_grid.png" id="1_stebq"]
+[ext_resource type="PackedScene" uid="uid://c4yas41fxgspe" path="res://scenes/player/player.tscn" id="1_2qsmu"]
+[ext_resource type="PackedScene" uid="uid://dmhtqrdjcm80a" path="res://scenes/test/movement/floor.tscn" id="2_730oj"]
+[ext_resource type="PackedScene" uid="uid://dqp0q00oipopk" path="res://assets/blocks/wall.tscn" id="3_730oj"]
+[ext_resource type="PackedScene" uid="uid://ch2j1lrfxtc7f" path="res://scenes/test/enemy/target_practice.tscn" id="4_341aj"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2qsmu"]
-albedo_texture = ExtResource("1_stebq")
-uv1_scale = Vector3(0.5, 0.5, 0.5)
-uv1_triplanar = true
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2qsmu"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_730oj"]
+sky_material = SubResource("ProceduralSkyMaterial_2qsmu")
+
+[sub_resource type="Environment" id="Environment_341aj"]
+background_mode = 2
+sky = SubResource("Sky_730oj")
+tonemap_mode = 2
+glow_enabled = true
 
 [node name="TestWallJump" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_341aj")
+
+[node name="Player" parent="." instance=ExtResource("1_2qsmu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 22)
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 use_collision = true
 
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9812975, 1, -0.50070965)
-size = Vector3(6, 2, 1)
-material = SubResource("StandardMaterial3D_2qsmu")
+[node name="Floor" parent="CSGCombiner3D" instance=ExtResource("2_730oj")]
+size = Vector3(100, 1, 100)
+
+[node name="Wall" parent="CSGCombiner3D" instance=ExtResource("3_730oj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.933115, 2.4999998, -3.45)
+size = Vector3(1, 4, 5)
+
+[node name="Wall2" parent="CSGCombiner3D" instance=ExtResource("3_730oj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.566885, 6, -9.95)
+size = Vector3(1, 11, 5)
+
+[node name="Wall6" parent="CSGCombiner3D" instance=ExtResource("3_730oj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.566885, 6, 5.3)
+size = Vector3(1, 11, 13.5)
+
+[node name="Wall9" parent="CSGCombiner3D" instance=ExtResource("3_730oj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.566885, 6, 30.05)
+size = Vector3(1, 11, 32)
+
+[node name="Wall7" parent="CSGCombiner3D" instance=ExtResource("3_730oj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.933115, 6, 26.55)
+size = Vector3(1, 11, 29)
+
+[node name="Wall10" parent="CSGCombiner3D" instance=ExtResource("3_730oj")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.933115, 6, 45.3)
+size = Vector3(1, 11, 13.5)
+
+[node name="Wall3" parent="CSGCombiner3D" instance=ExtResource("3_730oj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.933115, 5.25, -14.95)
+size = Vector3(1, 9.5, 5)
+
+[node name="Wall4" parent="CSGCombiner3D" instance=ExtResource("3_730oj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.566885, 7, -24.45)
+size = Vector3(1, 13, 13)
+
+[node name="Wall5" parent="CSGCombiner3D" instance=ExtResource("3_730oj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.433115, 7, -38.45)
+size = Vector3(1, 13, 13)
+
+[node name="Wall8" parent="CSGCombiner3D" instance=ExtResource("3_730oj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.566885, 7, -38.45)
+size = Vector3(1, 13, 13)
+
+[node name="Targets" type="Node3D" parent="."]
+
+[node name="TargetPractice" parent="Targets" instance=ExtResource("4_341aj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 2, 1)
+
+[node name="TargetPractice2" parent="Targets" instance=ExtResource("4_341aj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 6.5, 1)
+
+[node name="TargetPractice3" parent="Targets" instance=ExtResource("4_341aj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 6.5, -8.5)
+
+[node name="TargetPractice4" parent="Targets" instance=ExtResource("4_341aj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 11, -8.5)
+
+[node name="TargetPractice5" parent="Targets" instance=ExtResource("4_341aj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 6.5, 10)
+
+[node name="TargetPractice6" parent="Targets" instance=ExtResource("4_341aj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 11, 10)
+
+[node name="TargetPractice7" parent="Targets" instance=ExtResource("4_341aj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 6.5, -21)
+
+[node name="TargetPractice8" parent="Targets" instance=ExtResource("4_341aj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 11, -21)
+
+[node name="TargetPractice9" parent="Targets" instance=ExtResource("4_341aj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 3, -26)
+
+[node name="TargetPractice10" parent="Targets" instance=ExtResource("4_341aj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 7.5, -26)

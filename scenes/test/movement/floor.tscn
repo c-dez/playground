@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmhtqrdjcm80a"]
+
+[ext_resource type="Texture2D" uid="uid://bhsi1n2auswhq" path="res://assets/GreyboxTextures/greybox_grey_grid.png" id="1_67by6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2qsmu"]
+albedo_texture = ExtResource("1_67by6")
+uv1_triplanar = true
+
+[node name="Floor" type="CSGBox3D"]
+material = SubResource("StandardMaterial3D_2qsmu")

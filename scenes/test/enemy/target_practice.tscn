@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://ch2j1lrfxtc7f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ngk4p"]
+albedo_color = Color(1, 0.120000005, 0.120000005, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_5e3ao"]
+material = SubResource("StandardMaterial3D_ngk4p")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_sjyj1"]
+
+[node name="TargetPractice" type="CharacterBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_5e3ao")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_sjyj1")
