@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://ch2j1lrfxtc7f"]
+[gd_scene load_steps=5 format=3 uid="uid://ch2j1lrfxtc7f"]
+
+[ext_resource type="Script" uid="uid://2plbi61u38or" path="res://scenes/test/target/target_practice.gd" id="1_nx3ov"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ngk4p"]
 albedo_color = Color(1, 0.120000005, 0.120000005, 1)
@@ -8,7 +10,10 @@ material = SubResource("StandardMaterial3D_ngk4p")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_sjyj1"]
 
-[node name="TargetPractice" type="CharacterBody3D"]
+[node name="TargetPractice" type="CharacterBody3D" groups=["enemy"]]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_nx3ov")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_5e3ao")

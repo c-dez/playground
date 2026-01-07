@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgxlbk0sf200h"]
+
+[ext_resource type="Script" uid="uid://yowwp0hkig27" path="res://scenes/player/shooting_manager.gd" id="1_j6fuw"]
+
+[node name="ShootingManager" type="Node3D" node_paths=PackedStringArray("camera")]
+script = ExtResource("1_j6fuw")
+camera = NodePath("")
+
+[node name="ShootingRayCast" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -20)

@@ -5,17 +5,17 @@
 [ext_resource type="Resource" uid="uid://dqxje8dl7krao" path="res://resources/player_stats.tres" id="2_p47bc"]
 [ext_resource type="Script" uid="uid://dsqyoq7tb7yo8" path="res://scenes/player/wall_run_component.gd" id="3_5gtgg"]
 [ext_resource type="Script" uid="uid://bfdcs8j8pu05q" path="res://scenes/player/control.gd" id="3_gmlin"]
-[ext_resource type="Script" uid="uid://yowwp0hkig27" path="res://scenes/player/shooting_manager.gd" id="5_p47bc"]
 [ext_resource type="Script" uid="uid://dlm7mtj3725on" path="res://scenes/player/reload_bar.gd" id="6_75vfm"]
 [ext_resource type="Texture2D" uid="uid://c8klqpvmnpoms" path="res://assets/bullet_sprites.png" id="7_0owmy"]
 [ext_resource type="Script" uid="uid://cans6knxduvsl" path="res://scenes/player/bullets_hud.gd" id="8_qek5x"]
+[ext_resource type="Script" uid="uid://npmlsd20d8xs" path="res://scenes/player/proyectile_component.gd" id="9_5gtgg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x7p2l"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_5gtgg"]
-size = Vector3(0.26, 0.145, 1)
-
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_x7p2l"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_5gtgg"]
+size = Vector3(0.095, 0.11, 0.245)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_75vfm"]
 bg_color = Color(0.93877894, 0.35656756, 0.627428, 1)
@@ -37,14 +37,6 @@ target_position = Vector3(-1, 0, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_x7p2l")
 
-[node name="Muzzle" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5878664, 0, -1.0137784)
-
-[node name="Arm" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5878664, 0, -0.50066537)
-mesh = SubResource("BoxMesh_5gtgg")
-skeleton = NodePath("../Skin")
-
 [node name="Skin" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_x7p2l")
 
@@ -54,14 +46,15 @@ script = ExtResource("2_dovo2")
 mouse_sens_horizontal = 0.05
 mouse_sens_vertical = 0.043
 
-[node name="ShootingManager" type="Node3D" parent="." node_paths=PackedStringArray("camera")]
-script = ExtResource("5_p47bc")
-camera = NodePath("../PlayerCamera")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerCamera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17733777, -0.3, -0.4283718)
+mesh = SubResource("BoxMesh_5gtgg")
 
-[node name="ShootingRayCast" type="RayCast3D" parent="ShootingManager"]
-target_position = Vector3(0, 0, -20)
+[node name="Muzzle" type="Marker3D" parent="PlayerCamera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12662631, -0.2035732, -0.61316407)
 
 [node name="HUD" type="CanvasLayer" parent="."]
+process_mode = 4
 
 [node name="CrossHair" type="Control" parent="HUD"]
 layout_mode = 3
@@ -76,6 +69,7 @@ script = ExtResource("3_gmlin")
 metadata/_edit_lock_ = true
 
 [node name="ProgressBar" type="ProgressBar" parent="HUD"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -94,6 +88,7 @@ show_percentage = false
 script = ExtResource("6_75vfm")
 
 [node name="BulletsHUD" type="TextureProgressBar" parent="HUD" node_paths=PackedStringArray("shooting_manager")]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -109,4 +104,10 @@ scale = Vector2(0.56000125, 0.56000125)
 value = 100.0
 texture_progress = ExtResource("7_0owmy")
 script = ExtResource("8_qek5x")
-shooting_manager = NodePath("../../ShootingManager")
+shooting_manager = NodePath("")
+
+[node name="ProyectileComponent" type="Node3D" parent="."]
+script = ExtResource("9_5gtgg")
+
+[node name="RayCast3D" type="RayCast3D" parent="ProyectileComponent"]
+target_position = Vector3(0, 0, -1000)

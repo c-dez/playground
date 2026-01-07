@@ -32,24 +32,24 @@ signal start_reloading(reloading_time: float)
 signal hit_confirm()
 
 
-func _ready() -> void:
-	_set_up_reload_timer()
-	label = Label.new()
-	add_child(label)
-	ray_cast.target_position.z = - player.stats.attack_range
+# func _ready() -> void:
+# 	_set_up_reload_timer()
+# 	label = Label.new()
+# 	add_child(label)
+# 	ray_cast.target_position.z = - player.stats.attack_range
 
-	progress_bar.connect('active_reload_signal', on_active_reload)
+# 	progress_bar.connect('active_reload_signal', on_active_reload)
 
 
-func _process(_delta: float) -> void:
-	_set_tranform()
-	shoot()
-	if Input.is_action_just_pressed('r_key') and revolver_current_state == revolver_states.fire:
-		reload_gun()
+# func _process(_delta: float) -> void:
+# 	_set_tranform()
+# 	shoot()
+# 	if Input.is_action_just_pressed('r_key') and revolver_current_state == revolver_states.fire:
+# 		reload_gun()
 	
-	#debug
-	var label_text := str(bullets, '\n', reload_timer.time_left, '\n', revolver_current_state)
-	label.text = label_text
+# 	#debug
+# 	var label_text := str(bullets, '\n', reload_timer.time_left, '\n', revolver_current_state)
+# 	label.text = label_text
 
 
 func shoot() -> void:

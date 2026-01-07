@@ -8,10 +8,6 @@
 
 config_version=5
 
-[accessibility]
-
-general/updates_per_second=100
-
 [application]
 
 config/name="playground"
@@ -37,6 +33,10 @@ enabled=PackedStringArray("res://addons/road-generator/plugin.cfg")
 folder_colors={
 "res://scenes/": "red"
 }
+
+[global_group]
+
+enemy=""
 
 [input]
 
