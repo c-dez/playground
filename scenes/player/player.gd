@@ -22,8 +22,18 @@ enum move_states {
 
 @onready var wall_run_component: WallRunComponent = get_node('WallRunComponent')
 
+# jump gravity
+@export var jump_height: float = 2.0
+@export var jump_time_to_peak: float = 0.4
+@export var jump_time_to_descend: float = 0.5
+
+var _jump_velocity: float
+var _jump_gravity: float
+var _jump_fall_gravity: float
+
 
 func _ready() -> void:
+	_calculate_jump_gravity()
 	# debug
 	# uso un mesh para el jugador para poder visualizarlo en godot, en juego no se debe  de mostrar este mesh
 	# get_node("MeshInstance3D").visible = false
@@ -31,7 +41,8 @@ func _ready() -> void:
 	
 
 func _physics_process(delta: float) -> void:
-	apply_gravity(delta)
+	gravity(delta)
+	# apply_gravity(delta)
 	wall_run()
 	dash(delta)
 	move()
@@ -44,7 +55,8 @@ func _physics_process(delta: float) -> void:
 
 func jump() -> void:
 	if PlayerInput.jump_input_buffered() and (is_on_floor() or can_jump):
-		velocity.y = stats.jump_force
+		# velocity.y = stats.jump_force
+		velocity.y = _jump_velocity
 
 
 func move() -> void:
@@ -74,6 +86,12 @@ func dash(delta: float) -> void:
 			dash_time = 0.5
 			dash_mult = DASH_MULT_DEFAULT
 
+func gravity(delta:float):
+	if not is_on_floor():
+		if velocity.y < 0.0:
+			velocity.y -= _jump_fall_gravity * delta
+		else:
+			velocity.y -= _jump_gravity * delta
 
 func apply_gravity(delta: float) -> void:
 	if not is_on_floor():
@@ -97,7 +115,7 @@ func wall_jump() -> void:
 	
 			var final_value := Vector3(
 				wall_run_component.wall_normal.x * 1.5,
-				stats.jump_force*0.5,
+				stats.jump_force * 0.5,
 				wall_run_component.wall_normal.z * 1.5
 				)
 			tween.tween_property(self, "velocity", final_value, wall_run_component.wall_jump_tween_time)
@@ -114,3 +132,9 @@ func coyote_time(delta) -> void:
 		_coyote -= delta
 	
 	can_jump = _coyote > 0 as bool
+
+
+func _calculate_jump_gravity() ->void:
+	_jump_velocity = 2.0 * jump_height / jump_time_to_peak
+	_jump_gravity = 2.0 * jump_height / (jump_time_to_peak * jump_time_to_peak)
+	_jump_fall_gravity = 2.0 * jump_height / (jump_time_to_descend * jump_time_to_descend)
