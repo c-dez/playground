@@ -1,5 +1,5 @@
 extends CharacterBody3D
-class_name BaseEnemy
+class_name BaseEnemyOld
 
 ## Clase base para enemigos
 # old
