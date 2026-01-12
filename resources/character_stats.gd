@@ -4,8 +4,8 @@ class_name CharacterStats
 ## Stats para enemigos y player como health, damage, move_speed 
 ##  y metodos para modificarlos como take_damage()
 
-@export var health: int = 1
-@export var damage: int = 1
+@export var health: int = 100
+@export var damage: int = 10
 @export var attack_range: int = 30
 @export var chase_range: int = 20
 

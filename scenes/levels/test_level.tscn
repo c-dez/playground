@@ -27,7 +27,7 @@ shadow_enabled = true
 environment = SubResource("Environment_fr1um")
 
 [node name="Player" parent="." instance=ExtResource("1_jbqir")]
-transform = Transform3D(0.9659258, 0, 0.25881922, 0, 1, 0, -0.25881922, 0, 0.9659258, -10.262584, 24.5, -26.696526)
+transform = Transform3D(0.9659258, 0, 0.25881922, 0, 1, 0, -0.25881922, 0, 0.9659258, -5.432955, 16.5, -27.990622)
 
 [node name="Terrain" type="CSGCombiner3D" parent="."]
 use_collision = true

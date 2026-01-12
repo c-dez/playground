@@ -2,6 +2,7 @@ extends CharacterBody3D
 class_name BaseEnemy
 
 ## Clase base para enemigos
+# old
 
 @onready var nav: NavigationAgent3D = get_node("NavigationAgent3D")
 

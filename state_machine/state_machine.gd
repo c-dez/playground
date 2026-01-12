@@ -1,5 +1,6 @@
 extends Node
 class_name StateMachine
+# old
 
 var label: Label
 @export var initial_state: State
