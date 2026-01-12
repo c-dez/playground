@@ -103,20 +103,18 @@ func apply_gravity(delta: float) -> void:
 func wall_run() -> void:
 	if wall_run_component.can_wall_run:
 		if not is_on_floor():
-			velocity.y = 0
+			velocity.y = -1.0
 
 
 func wall_jump() -> void:
 	if wall_run_component.can_wall_run == true:
-		if Input.is_action_just_pressed(PlayerInput.BUTTONS['space']):
-			wall_run_component.can_wall_run = false
+		if PlayerInput.jump_input_buffered():
 			var tween = get_tree().create_tween()
-			
 	
 			var final_value := Vector3(
-				wall_run_component.wall_normal.x * 1.5,
-				stats.jump_force * 0.5,
-				wall_run_component.wall_normal.z * 1.5
+				wall_run_component.wall_normal.x * 5,
+				_jump_velocity * 0.5,
+				wall_run_component.wall_normal.z * 5
 				)
 			tween.tween_property(self, "velocity", final_value, wall_run_component.wall_jump_tween_time)
 

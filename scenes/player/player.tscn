@@ -87,7 +87,7 @@ value = 18.0
 show_percentage = false
 script = ExtResource("6_75vfm")
 
-[node name="BulletsHUD" type="TextureProgressBar" parent="HUD" node_paths=PackedStringArray("shooting_manager")]
+[node name="BulletsHUD" type="TextureProgressBar" parent="HUD"]
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
@@ -104,7 +104,6 @@ scale = Vector2(0.56000125, 0.56000125)
 value = 100.0
 texture_progress = ExtResource("7_0owmy")
 script = ExtResource("8_qek5x")
-shooting_manager = NodePath("")
 
 [node name="ProyectileComponent" type="Node3D" parent="."]
 script = ExtResource("9_5gtgg")
