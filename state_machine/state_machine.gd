@@ -27,16 +27,16 @@ func _process(delta: float) -> void:
 	# print(current_state)
 
 
-var deb_time := 0.0
+var debug_time := 0.0
 func _physics_process(delta: float) -> void:
 	if current_state:
 		current_state.physics_process(delta)
 
 	var label_text = str(current_state)
-	deb_time += delta
-	if deb_time >= 0.5:
+	debug_time += delta
+	if debug_time >= 0.5:
 		label.text = label_text
-		deb_time = 0
+		debug_time = 0
 
 
 func on_child_transitioned(state: State, new_state_name: String):
