@@ -4,9 +4,11 @@ class_name Enemy
 @export var stats: CharacterStats
 @export var attack_machine: StateMachine
 @onready var navigation: NavigationAgent3D = get_node('NavigationAgent3D')
+@onready var muzzle: Node3D = get_node('Muzzle')
 
 
 func _physics_process(_delta: float) -> void:
+    # falta poder especificar si vuela o es grounded su movimiento
     if not is_on_floor():
         velocity = get_gravity()
     move_and_slide()
