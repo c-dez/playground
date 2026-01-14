@@ -5,7 +5,7 @@ var damage: int = 10
 var speed: float = 50.0
 @onready var area: Area3D = get_node('Area3D')
 @onready var timer: Timer = Timer.new()
-var despawn_time: int = 10
+var despawn_time: float = 10.0
 var type = ENEMY
 enum {
 	ENEMY,
@@ -29,7 +29,6 @@ func _process(_delta: float) -> void:
 
 func on_body_entered(body: Node3D) -> void:
 	if body.is_in_group('enemy'):
-		queue_free()
 		match type:
 			PLAYER:
 				if body.is_in_group('enemy'):
@@ -41,9 +40,8 @@ func on_body_entered(body: Node3D) -> void:
 			_:
 				pass
 		
-	
+	call_deferred('queue_free')
 
 
 func on_timer_timeout() -> void:
 	call_deferred('queue_free')
-	print('time')
