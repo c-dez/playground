@@ -9,7 +9,7 @@ func process(_delta: float) -> void:
 	enemy.nav.set_target_position(player.global_position)
 
 	if enemy.global_position.distance_to(player.global_position) > enemy.stats.attack_range:
-		emit_signal('transitioned', self, 'EnemyWander')
+		emit_signal('change_state_to', self, 'EnemyWander')
 
 	# if enemy.global_position.distance_to(player.global_position) < enemy.stats.chase_range:
 	# 	emit_signal('transitioned',self,'EnemyAttack')

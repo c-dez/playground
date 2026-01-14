@@ -7,4 +7,5 @@ albedo_texture = ExtResource("1_67by6")
 uv1_triplanar = true
 
 [node name="Floor" type="CSGBox3D"]
+size = Vector3(3, 0.1, 3)
 material = SubResource("StandardMaterial3D_2qsmu")

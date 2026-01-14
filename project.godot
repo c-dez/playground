@@ -8,14 +8,10 @@
 
 config_version=5
 
-[accessibility]
-
-general/updates_per_second=100
-
 [application]
 
 config/name="playground"
-run/main_scene="uid://df4jhn441n8ob"
+run/main_scene="uid://unw31vd7gc8f"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 

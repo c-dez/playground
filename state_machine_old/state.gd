@@ -3,15 +3,10 @@ class_name State
 # old
 
 
-
-signal transitioned(state: State, new_state_name: String)
+signal change_state_to(current_state: State, new_state_string: String)
 
 
 func enter() -> void:
-	pass
-
-func exit() -> void:
-	# print('exit()', name)
 	pass
 
 func process(_delta: float) -> void:
@@ -20,3 +15,5 @@ func process(_delta: float) -> void:
 func physics_process(_delta: float) -> void:
 	pass
 
+func exit() -> void:
+	pass

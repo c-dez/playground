@@ -1,19 +1,31 @@
-[gd_scene load_steps=6 format=3 uid="uid://dq8sxn20xvh84"]
+[gd_scene load_steps=11 format=3 uid="uid://dq8sxn20xvh84"]
 
 [ext_resource type="Script" uid="uid://c48jy7sj44o4u" path="res://scenes/enemies/base_enemy/enemy.gd" id="1_lyrdw"]
 [ext_resource type="Script" uid="uid://b86pfxkk0k6e8" path="res://resources/character_stats.gd" id="2_b67gf"]
+[ext_resource type="Script" uid="uid://qdikaf6s2kim" path="res://components/state_machine/state_machine.gd" id="3_b67gf"]
+[ext_resource type="Script" uid="uid://bslns5hx7d40w" path="res://scenes/enemies/base_enemy/idle.gd" id="4_re576"]
+[ext_resource type="Script" uid="uid://btyuywvohsb3s" path="res://scenes/enemies/base_enemy/chase.gd" id="5_n1pnn"]
 
 [sub_resource type="Resource" id="Resource_xalon"]
 script = ExtResource("2_b67gf")
+attack_range = 5
 metadata/_custom_type_script = "uid://b86pfxkk0k6e8"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5dpe4"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_1qoam"]
 
-[node name="BaseEnemy" type="CharacterBody3D"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n1pnn"]
+albedo_color = Color(1, 0.14901961, 0.14901961, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_e87fy"]
+material = SubResource("StandardMaterial3D_n1pnn")
+size = Vector3(0.735, 0.395, 0.53)
+
+[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("attack_machine")]
 script = ExtResource("1_lyrdw")
 stats = SubResource("Resource_xalon")
+attack_machine = NodePath("AttackMachine")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_5dpe4")
@@ -21,4 +33,22 @@ shape = SubResource("CapsuleShape3D_5dpe4")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_1qoam")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.5)
+mesh = SubResource("BoxMesh_e87fy")
+
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+debug_enabled = true
+
+[node name="AttackMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_b67gf")
+initial_state = NodePath("Idle")
+metadata/_custom_type_script = "uid://qdikaf6s2kim"
+
+[node name="Idle" type="Node" parent="AttackMachine"]
+script = ExtResource("4_re576")
+metadata/_custom_type_script = "uid://tydw06mj8mlt"
+
+[node name="Chase" type="Node" parent="AttackMachine"]
+script = ExtResource("5_n1pnn")
+metadata/_custom_type_script = "uid://tydw06mj8mlt"
