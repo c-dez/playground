@@ -2,17 +2,16 @@ extends State
 class_name Idle
 
 
-var parent: Enemy
+@onready var parent: Enemy = get_parent().get_parent()
 @onready var player: PlayerBody = get_tree().get_first_node_in_group('player')
 var check_state_time: float
 var _check_state_time: float = 1.0
 
+
 func enter() -> void:
-	if parent == null:
-		parent = get_parent().parent
 	check_state_time = _check_state_time
 
-	pass
+
 func process(_delta: float) -> void:
 	check_state_time -= _delta
 	if check_state_time < 0:

@@ -59,8 +59,7 @@ script = ExtResource("6_e87fy")
 metadata/_custom_type_script = "uid://tydw06mj8mlt"
 
 [node name="Muzzle" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4935338, -0.3738674)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4935338, -0.8738674)
 
 [node name="RayCast3D" type="RayCast3D" parent="Muzzle"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 target_position = Vector3(0, 0, -10)

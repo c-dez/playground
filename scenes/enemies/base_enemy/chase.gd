@@ -1,15 +1,14 @@
 extends State
 class_name Chase
 
-var parent: Enemy
+# var parent: Enemy = null
+@onready var parent: Enemy = get_parent().get_parent()
 @onready var player: PlayerBody = get_tree().get_first_node_in_group('player')
 
 var check_state_time: float
 var _check_state_time: float = 3.0
 
 func enter() -> void:
-	if parent == null:
-		parent = get_parent().parent
 	check_state_time = _check_state_time
 
 
@@ -44,4 +43,3 @@ func _change_state_to() -> void:
 	# attack
 	elif parent.global_position.distance_to(player.global_position) < parent.stats.attack_range:
 		emit_signal('change_state_to', self, 'attack')
-
