@@ -36,7 +36,7 @@ func on_body_entered(body: Node3D) -> void:
 					body.stats.health -= damage
 					print(body.stats.health)
 			ENEMY:
-				if body.is_in_group('enemy'):
+				if body.is_in_group('player'):
 					print(body.name)
 			_:
 				pass
