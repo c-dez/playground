@@ -3,7 +3,7 @@ class_name ProyectileComponent
 
 
 @onready var ray: RayCast3D = get_node('RayCast3D')
-@onready var bullet: PackedScene = preload('res://assets/bullet/bullet.tscn')
+@onready var bullet: PackedScene = preload('res://components/bullet/bullet.tscn')
 @onready var camera: Camera3D = get_parent().get_node('PlayerCamera')
 @onready var muzzle: Marker3D = camera.get_node('Muzzle')
 @onready var player: PlayerBody = get_parent()
@@ -26,9 +26,6 @@ func _physics_process(_delta: float) -> void:
 			b.damage = player.stats.damage
 			muzzle.add_child(b)
 			b.look_at(target, Vector3.UP)
-
-	
-	pass
 
 
 func _set_position() -> void:
