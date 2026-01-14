@@ -10,15 +10,13 @@ func enter() -> void:
 	pass
 
 func process(_delta: float) -> void:
-	# muzzle/ raycast debe mirar a jugador
 	# shoot
 	# checar cuando se debe de cambiar de state
-		# y a que state
 	_change_state_to()
 	pass
 
-func physic_process(_delta):
-	# parent.muzzle.look_at(player.global_position)
+func physics_process(_delta):
+	parent.get_node('MeshInstance3D').look_at(player.global_position) 
 	pass
 
 func shoot() -> void:

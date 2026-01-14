@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dq8sxn20xvh84"]
+[gd_scene load_steps=13 format=3 uid="uid://dq8sxn20xvh84"]
 
 [ext_resource type="Script" uid="uid://c48jy7sj44o4u" path="res://scenes/enemies/base_enemy/enemy.gd" id="1_lyrdw"]
 [ext_resource type="Script" uid="uid://b86pfxkk0k6e8" path="res://resources/character_stats.gd" id="2_b67gf"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bslns5hx7d40w" path="res://scenes/enemies/base_enemy/idle.gd" id="4_re576"]
 [ext_resource type="Script" uid="uid://btyuywvohsb3s" path="res://scenes/enemies/base_enemy/chase.gd" id="5_n1pnn"]
 [ext_resource type="Script" uid="uid://3aykwr0shre3" path="res://scenes/enemies/base_enemy/attack.gd" id="6_e87fy"]
+[ext_resource type="Script" uid="uid://dofgl1x5wuqhd" path="res://scenes/enemies/base_enemy/muzzle.gd" id="7_rl3cs"]
 
 [sub_resource type="Resource" id="Resource_xalon"]
 script = ExtResource("2_b67gf")
@@ -24,7 +25,7 @@ albedo_color = Color(1, 0.14901961, 0.14901961, 1)
 material = SubResource("StandardMaterial3D_n1pnn")
 size = Vector3(0.735, 0.395, 0.53)
 
-[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("attack_machine")]
+[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("attack_machine") groups=["enemy"]]
 script = ExtResource("1_lyrdw")
 stats = SubResource("Resource_xalon")
 attack_machine = NodePath("AttackMachine")
@@ -59,7 +60,9 @@ script = ExtResource("6_e87fy")
 metadata/_custom_type_script = "uid://tydw06mj8mlt"
 
 [node name="Muzzle" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4935338, -0.8738674)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+script = ExtResource("7_rl3cs")
 
 [node name="RayCast3D" type="RayCast3D" parent="Muzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 target_position = Vector3(0, 0, -10)

@@ -1,7 +1,6 @@
 extends State
 class_name Chase
 
-# var parent: Enemy = null
 @onready var parent: Enemy = get_parent().get_parent()
 @onready var player: PlayerBody = get_tree().get_first_node_in_group('player')
 
