@@ -1,7 +1,7 @@
 extends Node
 class_name StateMachine
 
-@export var initial_state: State
+var initial_state: State
 @onready var parent:Enemy = get_parent()
 var current_state: State = null
 var states: Dictionary = {}
@@ -21,6 +21,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	current_state.process(_delta)
+	# print(current_state)
 	pass
 
 
