@@ -8,7 +8,8 @@
 
 [sub_resource type="Resource" id="Resource_xalon"]
 script = ExtResource("2_b67gf")
-attack_range = 5
+attack_range = 10
+chase_range = 15
 metadata/_custom_type_script = "uid://b86pfxkk0k6e8"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5dpe4"]

@@ -1,7 +1,7 @@
 extends Node
 class_name StateMachine
 
-var initial_state: State
+@export var initial_state: State
 @onready var parent:Enemy = get_parent()
 var current_state: State = null
 var states: Dictionary = {}
