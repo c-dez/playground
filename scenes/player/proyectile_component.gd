@@ -22,10 +22,13 @@ func _physics_process(_delta: float) -> void:
 		if Input.is_action_just_pressed('left_mb'):
 			var target = ray.get_collision_point()
 			var b = bullet.instantiate()
+
+			b.bullet_radius = 0.25
 			b.type = b.PLAYER
 			b.damage = player.stats.damage
 			muzzle.add_child(b)
 			b.look_at(target, Vector3.UP)
+
 
 
 func _set_position() -> void:

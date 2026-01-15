@@ -47,11 +47,11 @@ mouse_sens_horizontal = 0.05
 mouse_sens_vertical = 0.043
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerCamera"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17733777, -0.3, -0.4283718)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.38965046, -0.22084981, -0.33646512)
 mesh = SubResource("BoxMesh_5gtgg")
 
 [node name="Muzzle" type="Marker3D" parent="PlayerCamera"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12662631, -0.2035732, -0.61316407)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37190938, -0.1825768, -1.1794989)
 
 [node name="HUD" type="CanvasLayer" parent="."]
 process_mode = 4
