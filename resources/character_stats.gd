@@ -15,7 +15,7 @@ class_name CharacterStats
 @export var dash_speed: float = 1
 @export var jump_force: float = 1
 
-@export var type: Type = 0 as Type
+@export var type: Type = Type.ENEMY
 enum Type {
     ENEMY,
     PLAYER
