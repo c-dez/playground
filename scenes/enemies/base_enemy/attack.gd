@@ -3,28 +3,35 @@ class_name Attack
 
 @onready var player: PlayerBody = get_tree().get_first_node_in_group('player')
 @onready var parent: Enemy = get_parent().get_parent()
-
+@onready var bullet: PackedScene = preload('res://components/bullet/bullet.tscn')
+var attack_cooldown: float
 
 func enter() -> void:
 	parent.velocity = Vector3.ZERO
+	attack_cooldown = parent.stats.attack_cooldown
 	pass
 
 func process(_delta: float) -> void:
 	# shoot
+	shoot(_delta)
 	# checar cuando se debe de cambiar de state
 	_change_state_to()
 	pass
 
 func physics_process(_delta):
-	parent.get_node('MeshInstance3D').look_at(player.global_position) 
+	parent.get_node('MeshInstance3D').look_at(player.global_position)
+
 	pass
 
-func shoot() -> void:
-	# disparar cada intervalo de tiempo
-	# bullet.gd extenderlo para que se pueda reusar con enemigos
-		# darle una propiedad de a quien pertenece( player/enemigo)
-		# poder cambiar el tanano de mesh y collision de bala
-	pass
+func shoot(_delta) -> void:
+	attack_cooldown -= _delta
+	if attack_cooldown < 0:
+		var b = bullet.instantiate()
+		b.bullet_radius = 0.25
+		b.type = b.ENEMY
+		b.damage = parent.stats.damage
+		parent.muzzle.add_child(b)
+		attack_cooldown = parent.stats.attack_cooldown
 
 
 func _change_state_to() -> void:

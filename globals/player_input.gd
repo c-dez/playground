@@ -16,6 +16,10 @@ const BUTTONS: Dictionary = {
 
 func _ready():
 	_set_jump_buffer_timer()
+
+# for debug
+func _process(_delta: float) -> void:
+	exit_game()
 	
 	
 func jump_input_buffered(buffer_time: float = 0.2) -> bool:
@@ -52,3 +56,7 @@ func shift_buffer():
 
 func right_mb() -> bool:
 	return Input.is_action_just_pressed(BUTTONS['right_mb'])
+
+func exit_game()->void:
+	if Input.is_action_just_pressed('exit'):
+		get_tree().quit()

@@ -10,8 +10,8 @@
 
 [sub_resource type="Resource" id="Resource_xalon"]
 script = ExtResource("2_b67gf")
-attack_range = 10
-chase_range = 15
+attack_range = 20
+chase_range = 50
 move_speed = 3.0
 metadata/_custom_type_script = "uid://b86pfxkk0k6e8"
 
@@ -52,18 +52,14 @@ metadata/_custom_type_script = "uid://qdikaf6s2kim"
 
 [node name="Idle" type="Node" parent="AttackMachine"]
 script = ExtResource("4_re576")
-metadata/_custom_type_script = "uid://tydw06mj8mlt"
 
 [node name="Chase" type="Node" parent="AttackMachine"]
 script = ExtResource("5_n1pnn")
-metadata/_custom_type_script = "uid://tydw06mj8mlt"
 
 [node name="Attack" type="Node" parent="AttackMachine"]
 script = ExtResource("6_e87fy")
-metadata/_custom_type_script = "uid://tydw06mj8mlt"
 
 [node name="Muzzle" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("7_rl3cs")
 
 [node name="RayCast3D" type="RayCast3D" parent="Muzzle"]
