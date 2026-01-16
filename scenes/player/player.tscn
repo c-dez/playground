@@ -29,9 +29,11 @@ stats = ExtResource("2_p47bc")
 script = ExtResource("3_5gtgg")
 
 [node name="RayCast3DRight" type="RayCast3D" parent="WallRunComponent"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 target_position = Vector3(1, 0, 0)
 
 [node name="RayCast3DLeft" type="RayCast3D" parent="WallRunComponent"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 target_position = Vector3(-1, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

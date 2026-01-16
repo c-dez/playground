@@ -23,9 +23,9 @@ enum move_states {
 @onready var wall_run_component: WallRunComponent = get_node('WallRunComponent')
 
 # jump gravity
-@export var jump_height: float = 2.0
+@export var jump_height: float = 1.0
 @export var jump_time_to_peak: float = 0.4
-@export var jump_time_to_descend: float = 0.5
+@export var jump_time_to_descend: float = 0.3
 
 var _jump_velocity: float
 var _jump_gravity: float
@@ -37,13 +37,14 @@ func _ready() -> void:
 	# debug
 	# uso un mesh para el jugador para poder visualizarlo en godot, en juego no se debe  de mostrar este mesh
 	# get_node("MeshInstance3D").visible = false
+
 	pass
 	
 
 func _physics_process(delta: float) -> void:
 	gravity(delta)
 	# apply_gravity(delta)
-	wall_run()
+	# wall_run()
 	dash(delta)
 	move()
 	jump()
@@ -103,7 +104,7 @@ func apply_gravity(delta: float) -> void:
 func wall_run() -> void:
 	if wall_run_component.can_wall_run:
 		if not is_on_floor():
-			velocity.y = -1.0
+			velocity.y = -2
 
 
 func wall_jump() -> void:
@@ -113,7 +114,7 @@ func wall_jump() -> void:
 	
 			var final_value := Vector3(
 				wall_run_component.wall_normal.x * 5,
-				_jump_velocity * 0.5,
+				_jump_velocity * 0.9,
 				wall_run_component.wall_normal.z * 5
 				)
 			tween.tween_property(self, "velocity", final_value, wall_run_component.wall_jump_tween_time)

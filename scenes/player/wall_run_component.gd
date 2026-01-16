@@ -7,7 +7,7 @@ class_name WallRunComponent
 
 var can_wall_run: bool = false
 var wall_normal: Vector3
-var wall_jump_tween_time:float = 0.2
+var wall_jump_tween_time:float = 0.1
 
 func _physics_process(_delta: float) -> void:
 	_is_touching_wall()
