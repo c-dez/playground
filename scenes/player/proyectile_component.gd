@@ -9,12 +9,11 @@ class_name ProyectileComponent
 @onready var player: PlayerBody = get_parent()
 
 var max_bullets: int = 6
-var current_bullets:int
-signal player_shoot(current_bullets)
+var current_bullets: int
+signal player_shoot(current_bullets: int)
 
 func _ready() -> void:
 	current_bullets = max_bullets
-	pass
 
 
 func _process(_delta: float) -> void:
@@ -29,10 +28,10 @@ func shoot() -> void:
 	if ray.is_colliding():
 		if Input.is_action_just_pressed('left_mb') and current_bullets > 0:
 			current_bullets -= 1
-			emit_signal('player_shoot',current_bullets)
-			var target = ray.get_collision_point()
-			var b = bullet.instantiate()
+			emit_signal('player_shoot', current_bullets)
+			var target := ray.get_collision_point()
 
+			var b := bullet.instantiate()
 			b.damage = player.stats.damage
 			b.bullet_radius = 0.1
 			b.type = b.PLAYER
