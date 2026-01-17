@@ -4,7 +4,7 @@ class_name ShootingManager
 
 ## Controla el disparar de el jugador, hacer dano, reload...
 
-
+# DEPRECATED
 var target_enemy: CharacterBody3D
 var target_collision_point: Vector3
 
