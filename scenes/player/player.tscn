@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://wg55cpxvjljq" path="res://scenes/player/camera.gd" id="2_dovo2"]
 [ext_resource type="Resource" uid="uid://dqxje8dl7krao" path="res://resources/player_stats.tres" id="2_p47bc"]
 [ext_resource type="Script" uid="uid://dsqyoq7tb7yo8" path="res://scenes/player/wall_run_component.gd" id="3_5gtgg"]
-[ext_resource type="Script" uid="uid://bfdcs8j8pu05q" path="res://scenes/player/control.gd" id="3_gmlin"]
+[ext_resource type="Script" uid="uid://bfdcs8j8pu05q" path="res://scenes/player/cross_hair.gd" id="3_gmlin"]
 [ext_resource type="Script" uid="uid://dlm7mtj3725on" path="res://scenes/player/reload_bar.gd" id="6_75vfm"]
 [ext_resource type="Texture2D" uid="uid://c8klqpvmnpoms" path="res://assets/bullet_sprites.png" id="7_0owmy"]
 [ext_resource type="Script" uid="uid://cans6knxduvsl" path="res://scenes/player/bullets_hud.gd" id="8_qek5x"]
@@ -88,7 +88,7 @@ value = 18.0
 show_percentage = false
 script = ExtResource("6_75vfm")
 
-[node name="BulletsHUD" type="TextureProgressBar" parent="HUD" node_paths=PackedStringArray("proyectile_component")]
+[node name="BulletsHUD" type="TextureProgressBar" parent="HUD"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -104,7 +104,6 @@ scale = Vector2(0.56000125, 0.56000125)
 value = 100.0
 texture_progress = ExtResource("7_0owmy")
 script = ExtResource("8_qek5x")
-proyectile_component = NodePath("../../ProyectileComponent")
 
 [node name="ProyectileComponent" type="Node3D" parent="."]
 script = ExtResource("9_5gtgg")
