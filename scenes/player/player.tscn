@@ -56,7 +56,6 @@ mesh = SubResource("BoxMesh_5gtgg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10350001, -0.25986162, -0.3406343)
 
 [node name="HUD" type="CanvasLayer" parent="."]
-process_mode = 4
 
 [node name="CrossHair" type="Control" parent="HUD"]
 layout_mode = 3
@@ -89,8 +88,7 @@ value = 18.0
 show_percentage = false
 script = ExtResource("6_75vfm")
 
-[node name="BulletsHUD" type="TextureProgressBar" parent="HUD"]
-visible = false
+[node name="BulletsHUD" type="TextureProgressBar" parent="HUD" node_paths=PackedStringArray("proyectile_component")]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -106,6 +104,7 @@ scale = Vector2(0.56000125, 0.56000125)
 value = 100.0
 texture_progress = ExtResource("7_0owmy")
 script = ExtResource("8_qek5x")
+proyectile_component = NodePath("../../ProyectileComponent")
 
 [node name="ProyectileComponent" type="Node3D" parent="."]
 script = ExtResource("9_5gtgg")

@@ -3,15 +3,19 @@ extends TextureProgressBar
 
 # BulletsHUD
 
-@export var shooting_manager:ShootingManager
+@onready var proyectile_component: ProyectileComponent = get_parent().get_parent().get_node('ProyectileComponent')
 
-var max_bullets:float
-var current_bullets:float
+var max_bullets: float = 6
+var current_bullets: float
 
+func _ready():
+	value = 100
+	proyectile_component.connect('player_shoot', on_player_shoot)
 
-func _physics_process(_delta: float) -> void:
-	max_bullets = shooting_manager.max_bullets
-	current_bullets = shooting_manager.bullets
-
-	var percent = (current_bullets/max_bullets) * 100
+	
+func on_player_shoot(_current_bullets: int) -> void:
+	current_bullets = _current_bullets
+	var percent = (current_bullets / max_bullets) * 100
 	value = percent
+
+	pass

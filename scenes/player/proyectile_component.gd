@@ -1,6 +1,6 @@
 extends Node3D
+## usado para que player dispare
 class_name ProyectileComponent
-
 
 @onready var ray: RayCast3D = get_node('RayCast3D')
 @onready var bullet: PackedScene = preload('res://components/bullet/bullet.tscn')
@@ -8,8 +8,12 @@ class_name ProyectileComponent
 @onready var muzzle: Marker3D = camera.get_node('Muzzle')
 @onready var player: PlayerBody = get_parent()
 
+var max_bullets: int = 6
+var current_bullets:int
+signal player_shoot(current_bullets)
 
 func _ready() -> void:
+	current_bullets = max_bullets
 	pass
 
 
@@ -18,8 +22,14 @@ func _process(_delta: float) -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	shoot()
+
+
+func shoot() -> void:
 	if ray.is_colliding():
-		if Input.is_action_just_pressed('left_mb'):
+		if Input.is_action_just_pressed('left_mb') and current_bullets > 0:
+			current_bullets -= 1
+			emit_signal('player_shoot',current_bullets)
 			var target = ray.get_collision_point()
 			var b = bullet.instantiate()
 
@@ -29,7 +39,6 @@ func _physics_process(_delta: float) -> void:
 			b.damage = player.stats.damage
 			muzzle.add_child(b)
 			b.look_at(target, Vector3.UP)
-
 
 
 func _set_position() -> void:
