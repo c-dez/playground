@@ -4,15 +4,14 @@ class_name Bullet
 var bullet_radius: float = 0.25
 var damage: int = 10
 var speed: float = 30.0
-@onready var area: Area3D = get_node('Area3D')
-@onready var timer: Timer = Timer.new()
 var despawn_time: float = 10.0
 var type = ENEMY
 enum {
 	ENEMY,
 	PLAYER
 }
-
+@onready var area: Area3D = get_node('Area3D')
+@onready var timer: Timer = Timer.new()
 
 @onready var area_collision: CollisionShape3D = get_node('Area3D').get_node('CollisionShape3D')
 @onready var mesh: MeshInstance3D = get_node('MeshInstance3D')
@@ -38,6 +37,7 @@ func on_area_entered(_area: Area3D) -> void:
 	if _area.get_parent() is Bullet:
 		call_deferred('queue_free')
 
+
 func on_body_entered(body: Node3D) -> void:
 	match type:
 		PLAYER:
@@ -52,10 +52,8 @@ func on_body_entered(body: Node3D) -> void:
 			else:
 				call_deferred('queue_free')
 
-
 		ENEMY:
 			if body.is_in_group('player'):
-				# print(body.name)
 				if body.has_method('take_damage'):
 					body.take_damage(damage)
 				call_deferred('queue_free')
@@ -64,8 +62,6 @@ func on_body_entered(body: Node3D) -> void:
 
 		_:
 			pass
-		
-	# call_deferred('queue_free')
 
 
 func on_timer_timeout() -> void:
@@ -73,11 +69,6 @@ func on_timer_timeout() -> void:
 
 
 func _set_bullet_radius(radius: float) -> void:
-	# var mesh_shape = mesh.mesh as SphereMesh
-	# mesh_shape.radius = radius
-	# mesh_shape.height = radius * 2
-	# var area_shape = area_collision.shape as SphereShape3D
-	# area_shape.radius = radius + 0.05
 	area_collision.shape = area_collision.shape.duplicate()
 	(area_collision.shape as SphereShape3D).radius = radius
 

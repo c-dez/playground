@@ -2,15 +2,16 @@ extends Node3D
 ## usado para que player dispare
 class_name ProyectileComponent
 
+
+var max_bullets: int = 6
+var current_bullets: int
 @onready var ray: RayCast3D = get_node('RayCast3D')
 @onready var bullet: PackedScene = preload('res://components/bullet/bullet.tscn')
 @onready var camera: Camera3D = get_parent().get_node('PlayerCamera')
 @onready var muzzle: Marker3D = camera.get_node('Muzzle')
 @onready var player: PlayerBody = get_parent()
-
-var max_bullets: int = 6
-var current_bullets: int
 signal player_shoot(current_bullets: int)
+
 
 func _ready() -> void:
 	current_bullets = max_bullets
