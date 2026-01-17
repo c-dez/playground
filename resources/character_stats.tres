@@ -4,9 +4,7 @@
 
 [resource]
 script = ExtResource("1_nusmv")
-health = 250
-damage = 10
-attack_range = 10
+chase_range = 35
 move_speed = 4.0
 walk_speed = 2.0
 jump_force = 5.0

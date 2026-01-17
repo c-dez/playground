@@ -30,12 +30,11 @@ func _ready() -> void:
 	timer.start(despawn_time)
 
 
-	
 func _process(_delta: float) -> void:
 	linear_velocity = - transform.basis.z * speed
 
 
-func on_area_entered(_area: Area3D):
+func on_area_entered(_area: Area3D) -> void:
 	if _area.get_parent() is Bullet:
 		call_deferred('queue_free')
 
@@ -43,11 +42,10 @@ func on_body_entered(body: Node3D) -> void:
 	match type:
 		PLAYER:
 			if body.is_in_group('enemy'):
-				body.stats.health -= damage
-				print(body.name, ' enemy')
+				if body.has_method('take_damage'):
+					body.take_damage(damage)
 				call_deferred('queue_free')
 			elif body is StaticBody3D:
-				print(body.name)
 				call_deferred('queue_free')
 			elif body.is_in_group('player'):
 				pass
@@ -57,7 +55,11 @@ func on_body_entered(body: Node3D) -> void:
 
 		ENEMY:
 			if body.is_in_group('player'):
-				print(body.name)
+				# print(body.name)
+				if body.has_method('take_damage'):
+					body.take_damage(damage)
+				call_deferred('queue_free')
+			elif body is StaticBody3D:
 				call_deferred('queue_free')
 
 		_:

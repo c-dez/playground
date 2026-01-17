@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_wld0n")
-damage = 30
+damage = 50
 attack_range = 100
 move_speed = 9.0
 dash_speed = 1.5

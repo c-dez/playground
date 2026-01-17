@@ -5,7 +5,7 @@ class_name Chase
 @onready var player: PlayerBody = get_tree().get_first_node_in_group('player')
 
 var check_state_time: float
-var _check_state_time: float = 3.0
+var _check_state_time: float = 1.0
 
 func enter() -> void:
 	check_state_time = _check_state_time
@@ -41,4 +41,8 @@ func _change_state_to() -> void:
 		emit_signal('change_state_to', self, 'idle')
 	# attack
 	elif parent.global_position.distance_to(player.global_position) < parent.stats.attack_range:
-		emit_signal('change_state_to', self, 'attack')
+		if parent.muzzle.ray.is_colliding():
+			var target = parent.muzzle.ray.get_collider()
+			if target is PlayerBody:
+				emit_signal('change_state_to', self, 'attack')
+				# print('sdsd')

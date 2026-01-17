@@ -30,3 +30,5 @@ func _change_state_to() -> void:
 	# chase
 	if parent.global_position.distance_to(player.global_position) < parent.stats.chase_range:
 		emit_signal('change_state_to', self, 'chase')
+	
+

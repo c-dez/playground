@@ -18,10 +18,10 @@ func process(_delta: float) -> void:
 	_change_state_to()
 	pass
 
-func physics_process(_delta):
+func physics_process(_delta) -> void:
+
 	parent.get_node('MeshInstance3D').look_at(player.global_position)
 
-	pass
 
 func shoot(_delta) -> void:
 	attack_cooldown -= _delta
@@ -32,9 +32,15 @@ func shoot(_delta) -> void:
 		b.damage = parent.stats.damage
 		parent.muzzle.add_child(b)
 		attack_cooldown = parent.stats.attack_cooldown
+		b.look_at(player.global_position)
 
 
 func _change_state_to() -> void:
 	#chase
 	if parent.global_position.distance_to(player.global_position) > parent.stats.attack_range:
 		emit_signal('change_state_to', self, 'chase')
+	# chase if cant see player
+	elif parent.muzzle.ray.is_colliding():
+		var target = parent.muzzle.ray.get_collider()
+		if target is not PlayerBody:
+			emit_signal('change_state_to', self, 'chase')

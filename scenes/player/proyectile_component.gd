@@ -23,7 +23,7 @@ func _physics_process(_delta: float) -> void:
 			var target = ray.get_collision_point()
 			var b = bullet.instantiate()
 
-
+			b.damage = player.stats.damage
 			b.bullet_radius = 0.1
 			b.type = b.PLAYER
 			b.damage = player.stats.damage

@@ -137,3 +137,9 @@ func _calculate_jump_gravity() ->void:
 	_jump_velocity = 2.0 * jump_height / jump_time_to_peak
 	_jump_gravity = 2.0 * jump_height / (jump_time_to_peak * jump_time_to_peak)
 	_jump_fall_gravity = 2.0 * jump_height / (jump_time_to_descend * jump_time_to_descend)
+
+
+func take_damage(damage:int)-> void:
+	stats.health -= damage
+	if stats.health <= 0:
+		print('player dies!')
