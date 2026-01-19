@@ -31,12 +31,16 @@ var _jump_velocity: float
 var _jump_gravity: float
 var _jump_fall_gravity: float
 
+# HUD
+@onready var health_bar: ProgressBar = get_node('HUD/HealthBar')
+
 
 func _ready() -> void:
 	_calculate_jump_gravity()
 	# debug
 	# uso un mesh para el jugador para poder visualizarlo en godot, en juego no se debe  de mostrar este mesh
 	# get_node("MeshInstance3D").visible = false
+	_set_healthbar_value()
 
 	pass
 	
@@ -87,7 +91,8 @@ func dash(delta: float) -> void:
 			dash_time = 0.5
 			dash_mult = DASH_MULT_DEFAULT
 
-func gravity(delta:float):
+
+func gravity(delta: float):
 	if not is_on_floor():
 		if velocity.y < 0.0:
 			velocity.y -= _jump_fall_gravity * delta
@@ -100,7 +105,7 @@ func apply_gravity(delta: float) -> void:
 			velocity += get_gravity() * delta
 
 
-# wall run
+# wall run DESACTIVADO
 func wall_run() -> void:
 	if wall_run_component.can_wall_run:
 		if not is_on_floor():
@@ -111,7 +116,7 @@ func wall_jump() -> void:
 	if wall_run_component.can_wall_run == true:
 		if PlayerInput.jump_input_buffered():
 			var tween = get_tree().create_tween()
-	
+			# no funciona como esperaba, solo aplica valor en Y, en el futuro revisar esto o simplificar logica
 			var final_value := Vector3(
 				wall_run_component.wall_normal.x * 5,
 				_jump_velocity * 0.9,
@@ -133,13 +138,20 @@ func coyote_time(delta) -> void:
 	can_jump = _coyote > 0 as bool
 
 
-func _calculate_jump_gravity() ->void:
+func _calculate_jump_gravity() -> void:
 	_jump_velocity = 2.0 * jump_height / jump_time_to_peak
 	_jump_gravity = 2.0 * jump_height / (jump_time_to_peak * jump_time_to_peak)
 	_jump_fall_gravity = 2.0 * jump_height / (jump_time_to_descend * jump_time_to_descend)
 
 
-func take_damage(damage:int)-> void:
+func take_damage(damage: int) -> void:
 	stats.health -= damage
+	_set_healthbar_value()
 	if stats.health <= 0:
 		print('player dies!')
+
+
+func _set_healthbar_value() -> void:
+	var current_health: float = stats.health
+	var percent := (current_health / stats.max_health) * 100
+	health_bar.value = percent
