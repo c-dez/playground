@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://b2vpvlij1clwh"]
+[gd_scene load_steps=12 format=3 uid="uid://b2vpvlij1clwh"]
 
 [ext_resource type="PackedScene" uid="uid://dqp0q00oipopk" path="res://assets/blocks/wall.tscn" id="1_1plv5"]
 [ext_resource type="PackedScene" uid="uid://c4yas41fxgspe" path="res://scenes/player/player.tscn" id="2_g5ds0"]
 [ext_resource type="PackedScene" uid="uid://b1dl7jcwfww68" path="res://scenes/levels/assets/red_box.tscn" id="3_g5ds0"]
 [ext_resource type="PackedScene" uid="uid://dq8sxn20xvh84" path="res://scenes/enemies/base_enemy/enemy.tscn" id="4_1lmy2"]
 [ext_resource type="PackedScene" uid="uid://dmhtqrdjcm80a" path="res://scenes/test/movement/floor.tscn" id="5_qaat3"]
+[ext_resource type="Texture2D" uid="uid://cu7hnrb3iqkwp" path="res://icon.svg" id="6_ora44"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dpr3"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -518,3 +519,9 @@ size = Vector3(32, 0.1, 3)
 [node name="Floor3" parent="NavigationRegion3D" instance=ExtResource("5_qaat3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.77362, 0.5500002, 53.5)
 size = Vector3(11, 0.1, 18)
+
+[node name="Decal" type="Decal" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0.9836707, 12.5)
+size = Vector3(6, 2, 9)
+texture_albedo = ExtResource("6_ora44")
+modulate = Color(1, 0.07999998, 0.07999998, 1)
