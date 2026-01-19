@@ -5,6 +5,6 @@ extends Node3D
 
 
 func _process(_delta: float) -> void:
-    rotation = mesh.rotation
+    # rotation = mesh.rotation
 
     pass

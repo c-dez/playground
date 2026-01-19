@@ -28,7 +28,7 @@ func physics_process(_delta: float) -> void:
 	parent.velocity = direction * parent.stats.move_speed
 
 	parent.get_node('MeshInstance3D').look_at(parent.navigation.target_position)
-
+	parent.get_node('Muzzle').look_at(player.global_position)
 
 func exit() -> void:
 	check_state_time = _check_state_time

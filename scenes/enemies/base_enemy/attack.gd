@@ -21,6 +21,7 @@ func process(_delta: float) -> void:
 func physics_process(_delta) -> void:
 
 	parent.get_node('MeshInstance3D').look_at(player.global_position)
+	parent.get_node('Muzzle').look_at(player.global_position)
 
 
 func shoot(_delta) -> void:
