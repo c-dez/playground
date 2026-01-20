@@ -34,6 +34,8 @@ var _jump_fall_gravity: float
 # HUD
 @onready var health_bar: ProgressBar = get_node('HUD/HealthBar')
 
+# test damage_area
+var damage_area: PackedScene = preload('res://assets/damage_area/damage_area.tscn')
 
 func _ready() -> void:
 	_calculate_jump_gravity()
@@ -56,6 +58,14 @@ func _physics_process(delta: float) -> void:
 	coyote_time(delta)
 	move_and_slide()
 	# print(can_wall_run)
+
+	# test damage_area
+	if Input.is_action_just_pressed('e_key'):
+		var d = damage_area.instantiate()
+		d.duplicate()
+		d.damage = randi() % 10
+
+		add_child(d)
 	
 
 func jump() -> void:
@@ -147,6 +157,7 @@ func _calculate_jump_gravity() -> void:
 func take_damage(damage: int) -> void:
 	stats.health -= damage
 	_set_healthbar_value()
+	# print(stats.health)
 	if stats.health <= 0:
 		print('player dies!')
 
