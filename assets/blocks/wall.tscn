@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqp0q00oipopk"]
+
+[ext_resource type="Texture2D" uid="uid://c7epwarja5jhd" path="res://addons/GreyboxTextures/greybox_light_grid.png" id="1_8uv2h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8uv2h"]
+albedo_texture = ExtResource("1_8uv2h")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[node name="Wall" type="CSGBox3D"]
+material = SubResource("StandardMaterial3D_8uv2h")
