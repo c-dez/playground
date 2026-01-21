@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://b2vpvlij1clwh"]
+[gd_scene load_steps=16 format=3 uid="uid://b2vpvlij1clwh"]
 
 [ext_resource type="PackedScene" uid="uid://dqp0q00oipopk" path="res://assets/blocks/wall.tscn" id="1_1plv5"]
 [ext_resource type="PackedScene" uid="uid://c4yas41fxgspe" path="res://scenes/player/player.tscn" id="2_g5ds0"]
 [ext_resource type="PackedScene" uid="uid://b1dl7jcwfww68" path="res://scenes/levels/assets/red_box.tscn" id="3_g5ds0"]
 [ext_resource type="PackedScene" uid="uid://dq8sxn20xvh84" path="res://scenes/enemies/base_enemy/enemy.tscn" id="4_1lmy2"]
 [ext_resource type="PackedScene" uid="uid://dmhtqrdjcm80a" path="res://scenes/test/movement/floor.tscn" id="5_qaat3"]
+[ext_resource type="PackedScene" uid="uid://bmuu6hss2ngf0" path="res://assets/health_pack/health_pack.tscn" id="6_ora44"]
+[ext_resource type="Script" uid="uid://csxi0ejxe2yyb" path="res://scenes/levels/school_island/clouds.gd" id="7_djrve"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dpr3"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -18,16 +20,28 @@ background_mode = 2
 sky = SubResource("Sky_t0usx")
 tonemap_mode = 2
 glow_enabled = true
-fog_enabled = true
 fog_light_color = Color(0.63767165, 0.5238644, 0.45131022, 1)
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.007
+volumetric_fog_albedo = Color(1, 0.42000002, 0.79700005, 1)
+
+[sub_resource type="FogMaterial" id="FogMaterial_ora44"]
+density = 8.0
+albedo = Color(1, 0.100000024, 0.100000024, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_g5ds0"]
 radius = 7.072
 height = 28.284
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_ora44"]
-vertices = PackedVector3Array(179.77362, -4, -38, 179.77362, -4, -34, 189.77362, -4, -34, 189.77362, -4, -38, 35.523624, 1, 17, 35.523624, 1, 11, 28.773624, 1, 11, 28.773624, 1, 17, 50.273624, 1, 28, 50.523624, 1, 30, 51.773624, 1, 29.75, 51.773624, 1, 25.25, 55.273624, 1, 25, 55.273624, 1, 11, 37.773624, 1, 17.25, 37.773624, 1, 28, 57.273624, 1, 25, 57.523624, 1, 26.75, 81.77362, 1, 26.5, 81.77362, 1, 11, 164.77362, 2, 35.75, 162.52362, 2, 36, 162.52362, 2, 41, 173.77362, 2, 41, 173.77362, 2, 26, 164.77362, 2, 26, 57.523624, 1, 41.5, 61.273624, 1, 44, 81.77362, 1, 44, 60.773624, 1, 44.25, 57.273624, 1, 42, 51.773624, 1, 41.75, 50.523624, 1, 62, 63.023624, 1, 62, 63.023624, 1, 56, 60.773624, 1, 55.75, 110.77362, 2, 41.25, 113.02362, 2, 41, 113.02362, 2, 36, 99.77362, 2, 36, 99.77362, 2, 63, 110.77362, 2, 63, 69.77362, 1, 62, 69.77362, 1, 56)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 11), PackedInt32Array(12, 11, 13), PackedInt32Array(13, 11, 14), PackedInt32Array(13, 14, 5), PackedInt32Array(14, 4, 5), PackedInt32Array(8, 15, 11), PackedInt32Array(11, 15, 14), PackedInt32Array(16, 12, 13), PackedInt32Array(18, 17, 16), PackedInt32Array(18, 16, 19), PackedInt32Array(19, 16, 13), PackedInt32Array(21, 20, 22), PackedInt32Array(22, 20, 23), PackedInt32Array(25, 24, 20), PackedInt32Array(20, 24, 23), PackedInt32Array(26, 17, 27), PackedInt32Array(27, 17, 28), PackedInt32Array(28, 17, 18), PackedInt32Array(30, 26, 29), PackedInt32Array(29, 26, 27), PackedInt32Array(10, 31, 9), PackedInt32Array(9, 31, 32), PackedInt32Array(34, 33, 35), PackedInt32Array(35, 33, 32), PackedInt32Array(30, 29, 31), PackedInt32Array(31, 29, 35), PackedInt32Array(31, 35, 32), PackedInt32Array(37, 36, 38), PackedInt32Array(38, 36, 39), PackedInt32Array(41, 40, 36), PackedInt32Array(36, 40, 39), PackedInt32Array(38, 21, 37), PackedInt32Array(37, 21, 22), PackedInt32Array(34, 43, 33), PackedInt32Array(33, 43, 42)]
+vertices = PackedVector3Array(179.77362, -4, -38, 179.77362, -4, -34, 189.77362, -4, -34, 189.77362, -4, -38, 79.52362, 1, 25.75, 79.02362, 1, 26, 82.77362, 1, 26.25, 79.27362, 1, 11, 72.02362, 1, 11, 72.02362, 1, 13, 79.52362, 1, 13.25, 82.77362, 1, 1, 79.52362, 1, 1, 69.77362, 1, 13.25, 68.77362, 1, 10.75, 60.273624, 1, 11, 57.273624, 1, 25, 57.523624, 1, 25.75, 69.77362, 1, 25.5, 68.77362, 1, 5, 60.523624, 1, 5, 54.023624, 1, 11, 54.023624, 1, 25, 35.523624, 1, 17, 35.523624, 1, 11, 28.773624, 1, 11, 28.773624, 1, 17, 50.273624, 1, 28, 50.523624, 1, 30, 51.773624, 1, 29.75, 51.773624, 1, 25.25, 37.773624, 1, 17.25, 37.773624, 1, 28, 70.02362, 1, 26, 57.523624, 1, 41.5, 61.273624, 1, 44, 72.02362, 1, 44, 72.02362, 1, 26, 81.77362, 1, 44, 81.77362, 1, 41.25, 82.77362, 1, 41, 162.52362, 2, 36, 162.52362, 2, 40, 164.52362, 2, 40, 164.77362, 2, 35.75, 173.77362, 2, 26, 164.77362, 2, 26, 173.77362, 2, 41, 164.77362, 2, 41, 60.773624, 1, 44.25, 57.273624, 1, 42, 51.773624, 1, 41.75, 50.523624, 1, 62, 63.023624, 1, 62, 63.023624, 1, 56, 60.773624, 1, 55.75, 126.52362, 2, 40, 126.52362, 2, 36, 99.77362, 2, 36, 99.77362, 2, 40, 128.77362, 2, 40.25, 132.77362, 2, 40.25, 135.02362, 2, 40, 135.02362, 2, 36, 128.77362, 2, 43, 132.77362, 2, 43, 99.77362, 2, 42, 99.77362, 2, 63, 110.77362, 2, 63, 110.77362, 2, 42, 69.77362, 1, 62, 69.77362, 1, 56)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(4, 6, 5), PackedInt32Array(8, 7, 9), PackedInt32Array(9, 7, 10), PackedInt32Array(4, 10, 6), PackedInt32Array(6, 10, 11), PackedInt32Array(12, 11, 7), PackedInt32Array(7, 11, 10), PackedInt32Array(9, 13, 8), PackedInt32Array(8, 13, 14), PackedInt32Array(14, 13, 15), PackedInt32Array(15, 13, 18), PackedInt32Array(15, 18, 16), PackedInt32Array(16, 18, 17), PackedInt32Array(19, 14, 20), PackedInt32Array(20, 14, 15), PackedInt32Array(22, 21, 16), PackedInt32Array(16, 21, 15), PackedInt32Array(26, 25, 23), PackedInt32Array(23, 25, 24), PackedInt32Array(28, 27, 29), PackedInt32Array(29, 27, 30), PackedInt32Array(22, 30, 21), PackedInt32Array(21, 30, 31), PackedInt32Array(21, 31, 24), PackedInt32Array(31, 23, 24), PackedInt32Array(27, 32, 30), PackedInt32Array(30, 32, 31), PackedInt32Array(18, 33, 17), PackedInt32Array(17, 33, 34), PackedInt32Array(34, 33, 35), PackedInt32Array(35, 33, 36), PackedInt32Array(33, 37, 36), PackedInt32Array(39, 38, 36), PackedInt32Array(5, 6, 37), PackedInt32Array(37, 6, 39), PackedInt32Array(37, 39, 36), PackedInt32Array(40, 39, 6), PackedInt32Array(42, 41, 43), PackedInt32Array(43, 41, 44), PackedInt32Array(46, 45, 44), PackedInt32Array(44, 45, 47), PackedInt32Array(43, 44, 48), PackedInt32Array(48, 44, 47), PackedInt32Array(50, 34, 49), PackedInt32Array(49, 34, 35), PackedInt32Array(29, 51, 28), PackedInt32Array(28, 51, 52), PackedInt32Array(54, 53, 55), PackedInt32Array(55, 53, 52), PackedInt32Array(50, 49, 51), PackedInt32Array(51, 49, 55), PackedInt32Array(51, 55, 52), PackedInt32Array(59, 58, 56), PackedInt32Array(56, 58, 57), PackedInt32Array(56, 57, 60), PackedInt32Array(60, 57, 61), PackedInt32Array(61, 57, 62), PackedInt32Array(62, 57, 63), PackedInt32Array(61, 65, 60), PackedInt32Array(60, 65, 64), PackedInt32Array(63, 41, 62), PackedInt32Array(62, 41, 42), PackedInt32Array(69, 68, 66), PackedInt32Array(66, 68, 67), PackedInt32Array(54, 71, 53), PackedInt32Array(53, 71, 70)]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ora44"]
+size = Vector3(1, 1000, 1000)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_djrve"]
+size = Vector3(1000, 1, 1000)
 
 [node name="City" type="Node3D"]
 
@@ -37,6 +51,11 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_2qsgu")
+
+[node name="FogVolume" type="FogVolume" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -25, 0)
+size = Vector3(1000, 2, 1000)
+material = SubResource("FogMaterial_ora44")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 use_collision = true
@@ -89,28 +108,12 @@ size = Vector3(26, 3, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.5, 1, 54)
 size = Vector3(4, 1, 21)
 
-[node name="Wall43" parent="CSGCombiner3D" instance=ExtResource("1_1plv5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.5, 7, 54)
-size = Vector3(4, 1, 21)
-
 [node name="Wall35" parent="CSGCombiner3D" instance=ExtResource("1_1plv5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.5, 4, 64)
 size = Vector3(4, 5, 1)
 
-[node name="Wall45" parent="CSGCombiner3D" instance=ExtResource("1_1plv5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.5, 8, 64)
-size = Vector3(4, 1, 1)
-
-[node name="Wall46" parent="CSGCombiner3D" instance=ExtResource("1_1plv5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95, 8, 54)
-size = Vector3(1, 1, 21)
-
 [node name="Wall38" parent="CSGCombiner3D" instance=ExtResource("1_1plv5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97, 2, 43.75)
-size = Vector3(5, 1, 0.5)
-
-[node name="Wall44" parent="CSGCombiner3D" instance=ExtResource("1_1plv5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97, 8, 43.75)
 size = Vector3(5, 1, 0.5)
 
 [node name="Wall41" parent="CSGCombiner3D" instance=ExtResource("1_1plv5")]
@@ -180,10 +183,6 @@ size = Vector3(1, 1, 7)
 [node name="Wall47" parent="CSGCombiner3D" instance=ExtResource("1_1plv5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131, 2, 35)
 size = Vector3(65, 1, 1)
-
-[node name="Wall40" parent="CSGCombiner3D" instance=ExtResource("1_1plv5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99, 15.5, 49.5)
-size = Vector3(1, 18, 30)
 
 [node name="Wall34" parent="CSGCombiner3D" instance=ExtResource("1_1plv5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 137, 1, 49.5)
@@ -322,8 +321,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.13867, 2.5000002, 4.623920
 size = Vector3(7.2773438, 4, 10)
 
 [node name="Wall14" parent="CSGCombiner3D" instance=ExtResource("1_1plv5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.13867, 2.5000002, 4.6239204)
-size = Vector3(7.2773438, 4, 10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.13867, 6.5, 2.6239204)
+size = Vector3(7.2773438, 12, 6)
+
+[node name="Wall26" parent="CSGCombiner3D" instance=ExtResource("1_1plv5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.83867, 6.5, 1.6239204)
+size = Vector3(7.2773438, 12, 4)
+
+[node name="Wall31" parent="CSGCombiner3D" instance=ExtResource("1_1plv5")]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 44.90711, 1.0000002, 7.266813)
+size = Vector3(9.400001, 1, 3.3)
 
 [node name="Wall28" parent="CSGCombiner3D" instance=ExtResource("1_1plv5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.777344, 1.5000002, 28.12392)
@@ -341,13 +348,13 @@ size = Vector3(2, 2, 3)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.13867, 2.5000002, 4.6239204)
 size = Vector3(7.2773438, 4, 10)
 
-[node name="Wall26" parent="CSGCombiner3D" instance=ExtResource("1_1plv5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.13867, 2.5000002, 4.6239204)
-size = Vector3(7.2773438, 4, 10)
-
 [node name="Wall32" parent="CSGCombiner3D" instance=ExtResource("1_1plv5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.13867, 2.5000002, 4.6239204)
 size = Vector3(7.2773438, 4, 10)
+
+[node name="Wall40" parent="CSGCombiner3D" instance=ExtResource("1_1plv5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.13867, 1.5000002, 19.62392)
+size = Vector3(7.2773438, 2, 10)
 
 [node name="Wall33" parent="CSGCombiner3D" instance=ExtResource("1_1plv5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 84.27734, 1.5000002, 22.62392)
@@ -465,16 +472,16 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -15.
 [node name="Enemies" type="Node" parent="Actors"]
 
 [node name="Enemy" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63, 1.4999998, 12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62, 1.4999998, 7)
 
 [node name="Enemy2" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63, 1.4999998, 33)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 1.4999998, 33)
 
 [node name="Enemy3" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75, 1.4999998, 33)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81, 1.4999998, 12)
 
 [node name="Enemy4" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75, 1.4999998, 21)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67, 1.4999998, 19)
 
 [node name="Enemy5" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53, 1.4999998, 21)
@@ -483,13 +490,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53, 1.4999998, 21)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53, 1.4999998, 16)
 
 [node name="Enemy7" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77, 1.4999998, 16)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77, 1.4999998, 33)
 
 [node name="Enemy8" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77, 1.4999998, 12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67, 1.4999998, 7)
 
 [node name="Enemy9" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77, 1.4999998, 26)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81, 1.4999998, 24)
 
 [node name="Enemy10" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77, 1.4999998, 40)
@@ -500,11 +507,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65, 1.4999998, 40)
 [node name="Enemy12" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61, 1.4999999, 58)
 
+[node name="Enemy15" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108, 2.5, 58)
+
+[node name="Enemy17" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98, 2.5, 58)
+
+[node name="Enemy18" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148, 2.5, 42)
+
+[node name="Enemy19" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156, 2.5, 37)
+
+[node name="Enemy16" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129, 2.5, 43)
+
 [node name="Enemy13" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57, 1.4999998, 58)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51, 1.4999998, 58)
 
 [node name="Enemy14" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57, 1.5, 48)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 1.5, 38)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 visible = false
@@ -519,8 +541,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105.27362, 1.55, 52.5)
 size = Vector3(12, 0.1, 22)
 
 [node name="Floor10" parent="NavigationRegion3D" instance=ExtResource("5_qaat3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131.77362, 1.55, 38.5)
-size = Vector3(65, 0.1, 6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131.77362, 1.55, 38)
+size = Vector3(65, 0.1, 5)
+
+[node name="Floor17" parent="NavigationRegion3D" instance=ExtResource("5_qaat3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 130.82362, 1.55, 42)
+size = Vector3(4.9, 0.1, 3)
 
 [node name="Floor11" parent="NavigationRegion3D" instance=ExtResource("5_qaat3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 169.27362, 1.55, 33.5)
@@ -531,8 +557,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 184.77362, -4.45, -36)
 size = Vector3(11, 0.1, 5)
 
 [node name="Floor6" parent="NavigationRegion3D" instance=ExtResource("5_qaat3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.77362, 0.5500002, 26)
-size = Vector3(25, 0.1, 31)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.77362, 0.5500002, 26)
+size = Vector3(13, 0.1, 31)
+
+[node name="Floor14" parent="NavigationRegion3D" instance=ExtResource("5_qaat3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.77362, 0.5500002, 33.5)
+size = Vector3(13, 0.1, 16)
+
+[node name="Floor15" parent="NavigationRegion3D" instance=ExtResource("5_qaat3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.77362, 0.5500002, 12)
+size = Vector3(9, 0.1, 3)
+
+[node name="Floor16" parent="NavigationRegion3D" instance=ExtResource("5_qaat3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.27362, 0.5500002, 13)
+size = Vector3(4, 0.1, 25)
+
+[node name="Floor13" parent="NavigationRegion3D" instance=ExtResource("5_qaat3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.77362, 0.5500002, 7.5)
+size = Vector3(9, 0.1, 6)
 
 [node name="Floor7" parent="NavigationRegion3D" instance=ExtResource("5_qaat3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.77362, 0.5500002, 18)
@@ -557,3 +599,54 @@ size = Vector3(32, 0.1, 3)
 [node name="Floor3" parent="NavigationRegion3D" instance=ExtResource("5_qaat3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.77362, 0.5500002, 53.5)
 size = Vector3(11, 0.1, 18)
+
+[node name="PowerUps" type="Node" parent="."]
+
+[node name="HealthPack" parent="PowerUps" instance=ExtResource("6_ora44")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.83634, 4.4, 6)
+
+[node name="HealthPack3" parent="PowerUps" instance=ExtResource("6_ora44")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.83634, 8, 8)
+
+[node name="HealthPack4" parent="PowerUps" instance=ExtResource("6_ora44")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.33634, 6, -6.6)
+
+[node name="HealthPack5" parent="PowerUps" instance=ExtResource("6_ora44")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.33634, 5.7, -1.5999999)
+
+[node name="HealthPack6" parent="PowerUps" instance=ExtResource("6_ora44")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.33634, 5.7, -6.6)
+
+[node name="HealthPack2" parent="PowerUps" instance=ExtResource("6_ora44")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.83634, 3.1090922, 28)
+
+[node name="HealthPack7" parent="PowerUps" instance=ExtResource("6_ora44")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.83634, 5.109092, 49)
+
+[node name="HealthPack8" parent="PowerUps" instance=ExtResource("6_ora44")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.83634, 5.109092, 49)
+
+[node name="WorldWalls" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51, 0, 0)
+shape = SubResource("BoxShape3D_ora44")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="WorldWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 442, 0, 2)
+shape = SubResource("BoxShape3D_ora44")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="WorldWalls"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2.9999936, 0, 306.99997)
+shape = SubResource("BoxShape3D_ora44")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="WorldWalls"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.9999657, 0, -194.00006)
+shape = SubResource("BoxShape3D_ora44")
+
+[node name="Clouds" type="Area3D" parent="."]
+script = ExtResource("7_djrve")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Clouds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -25, 0)
+shape = SubResource("BoxShape3D_djrve")

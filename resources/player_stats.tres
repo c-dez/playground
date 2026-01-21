@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_wld0n")
 max_health = 250
-health = 250
+health = 200
 damage = 50
 attack_range = 100
 move_speed = 9.0

@@ -80,4 +80,6 @@ func on_activation_timer_timeout() -> void:
 		for body in get_overlapping_bodies():
 			if body is PlayerBody:
 				damage_timer.start(damage_timer_time)
+				var explosion_damage := 20
+				body.take_damage(explosion_damage)
 	pass

@@ -7,7 +7,7 @@ class_name PlayerBody
 
 @export var stats: CharacterStats
 ## uso un Vector2 para representar rango entre dos valores usado para active_reload system
-@export var active_reload_range := Vector2(40, 60)
+# @export var active_reload_range := Vector2(40, 60)
 
 var dash_time: float = 0.5
 var dash_mult = 1.0
@@ -36,6 +36,9 @@ var _jump_fall_gravity: float
 
 # test damage_area
 var damage_area: PackedScene = preload('res://assets/damage_area/damage_area.tscn')
+# test last_position
+var last_position:Vector3
+
 
 func _ready() -> void:
 	_calculate_jump_gravity()
@@ -63,6 +66,7 @@ func _physics_process(delta: float) -> void:
 	# if Input.is_action_just_pressed('e_key'):
 	if is_on_floor():
 		test_time-= delta
+		last_position = global_position
 	if test_time < 0:
 		var d = damage_area.instantiate()
 		# d.damage = randi() %20
@@ -162,6 +166,10 @@ func take_damage(damage: int) -> void:
 	# print(stats.health)
 	if stats.health <= 0:
 		print('player dies!')
+
+func take_health(health:int)-> void:
+	stats.health += health
+	_set_healthbar_value()
 
 
 func _set_healthbar_value() -> void:

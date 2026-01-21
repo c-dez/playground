@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmuu6hss2ngf0"]
+
+[ext_resource type="Script" uid="uid://bs2ne00w3c4l6" path="res://assets/health_pack/health_pack.gd" id="1_kdw8m"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_50a6h"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_kdw8m"]
+material = SubResource("StandardMaterial3D_50a6h")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bpyy7"]
+radius = 1.0
+
+[node name="HealthPack" type="MeshInstance3D"]
+mesh = SubResource("SphereMesh_kdw8m")
+script = ExtResource("1_kdw8m")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_bpyy7")
