@@ -467,6 +467,45 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -15.
 [node name="Enemy" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63, 1.4999998, 12)
 
+[node name="Enemy2" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63, 1.4999998, 33)
+
+[node name="Enemy3" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75, 1.4999998, 33)
+
+[node name="Enemy4" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75, 1.4999998, 21)
+
+[node name="Enemy5" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53, 1.4999998, 21)
+
+[node name="Enemy6" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53, 1.4999998, 16)
+
+[node name="Enemy7" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77, 1.4999998, 16)
+
+[node name="Enemy8" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77, 1.4999998, 12)
+
+[node name="Enemy9" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77, 1.4999998, 26)
+
+[node name="Enemy10" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77, 1.4999998, 40)
+
+[node name="Enemy11" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65, 1.4999998, 40)
+
+[node name="Enemy12" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61, 1.4999999, 58)
+
+[node name="Enemy13" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57, 1.4999998, 58)
+
+[node name="Enemy14" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57, 1.5, 48)
+
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 visible = false
 navigation_mesh = SubResource("NavigationMesh_ora44")

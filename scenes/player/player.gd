@@ -46,7 +46,7 @@ func _ready() -> void:
 
 	pass
 	
-
+var test_time = 5
 func _physics_process(delta: float) -> void:
 	gravity(delta)
 	# apply_gravity(delta)
@@ -60,12 +60,14 @@ func _physics_process(delta: float) -> void:
 	# print(can_wall_run)
 
 	# test damage_area
-	if Input.is_action_just_pressed('e_key'):
+	# if Input.is_action_just_pressed('e_key'):
+	if is_on_floor():
+		test_time-= delta
+	if test_time < 0:
 		var d = damage_area.instantiate()
-		d.duplicate()
-		d.damage = randi() % 10
-
+		# d.damage = randi() %20
 		add_child(d)
+		test_time = 5
 	
 
 func jump() -> void:
