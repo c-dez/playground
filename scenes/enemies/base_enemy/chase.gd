@@ -17,18 +17,24 @@ func process(_delta: float) -> void:
 		_change_state_to()
 		check_state_time = _check_state_time
 
-
+var navigation_check_time:float = 0.5
+var _navigation_check_time:float = 0.5
 func physics_process(_delta: float) -> void:
-	parent.navigation.target_position = Vector3(player.global_position.x, parent.global_position.y, player.global_position.z)
+	navigation_check_time -= _delta
+	if navigation_check_time < 0:
 
-	var current_pos := parent.global_position
-	var next_pos := parent.navigation.get_next_path_position()
-	var direction = (next_pos - current_pos).normalized()
+		parent.navigation.target_position = Vector3(player.global_position.x, parent.global_position.y, player.global_position.z)
 
-	parent.velocity = direction * parent.stats.move_speed
+		var current_pos := parent.global_position
+		var next_pos := parent.navigation.get_next_path_position()
+		var direction = (next_pos - current_pos).normalized()
 
-	parent.get_node('MeshInstance3D').look_at(parent.navigation.target_position)
+		parent.velocity = direction * parent.stats.move_speed
+		parent.get_node('MeshInstance3D').look_at(parent.navigation.target_position)
+
+		navigation_check_time = _navigation_check_time
 	parent.get_node('Muzzle').look_at(player.global_position)
+
 
 func exit() -> void:
 	check_state_time = _check_state_time

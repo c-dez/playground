@@ -18,8 +18,16 @@ func _ready():
 	_set_jump_buffer_timer()
 
 # for debug
+# var fps_time:float = 1.0
 func _process(_delta: float) -> void:
 	exit_game()
+
+
+	# fps_time += _delta
+	# if fps_time >= 1.0:
+	# 	fps_time = 0.0
+	# 	print("FPS:", Engine.get_frames_per_second())
+	pass
 
 func _input(event):
 	if event.is_action_pressed("e_key"):

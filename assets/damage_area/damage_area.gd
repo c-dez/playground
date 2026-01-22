@@ -69,8 +69,8 @@ func on_damage_timer_timeout() -> void:
 
 
 func on_duration_timer_timeout() -> void:
-	# call_deferred('queue_free')
-	queue_free()
+	call_deferred('queue_free')
+	# queue_free()
 
 
 func on_activation_timer_timeout() -> void:

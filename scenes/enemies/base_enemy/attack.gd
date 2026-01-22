@@ -5,6 +5,8 @@ class_name Attack
 @onready var parent: Enemy = get_parent().get_parent()
 @onready var bullet: PackedScene = preload('res://components/bullet/bullet.tscn')
 var attack_cooldown: float
+var check_state_time:float
+var _check_state_time:float = 1.0
 
 func enter() -> void:
 	parent.velocity = Vector3.ZERO
@@ -15,7 +17,10 @@ func process(_delta: float) -> void:
 	# shoot
 	shoot(_delta)
 	# checar cuando se debe de cambiar de state
-	_change_state_to()
+	check_state_time -= _delta
+	if check_state_time < 0:
+		_change_state_to()
+		check_state_time = _check_state_time
 	pass
 
 func physics_process(_delta) -> void:
