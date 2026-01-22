@@ -20,6 +20,14 @@ func _ready():
 # for debug
 func _process(_delta: float) -> void:
 	exit_game()
+
+func _input(event):
+	if event.is_action_pressed("e_key"):
+		var mode = DisplayServer.window_get_mode()
+		if mode == DisplayServer.WINDOW_MODE_FULLSCREEN:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		else:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	
 	
 func jump_input_buffered(buffer_time: float = 0.2) -> bool:
