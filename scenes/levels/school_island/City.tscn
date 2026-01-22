@@ -20,9 +20,15 @@ background_mode = 2
 sky = SubResource("Sky_t0usx")
 tonemap_mode = 2
 glow_enabled = true
-fog_light_color = Color(0.63767165, 0.5238644, 0.45131022, 1)
+fog_enabled = true
+fog_light_color = Color(0.8705183, 0.32253346, 0.5624211, 1)
+fog_light_energy = 0.31
+fog_sun_scatter = 1.0
+fog_density = 0.0
+fog_aerial_perspective = 0.258
+fog_sky_affect = 0.903
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.007
+volumetric_fog_density = 0.0
 volumetric_fog_albedo = Color(1, 0.42000002, 0.79700005, 1)
 
 [sub_resource type="FogMaterial" id="FogMaterial_ora44"]
@@ -193,8 +199,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 169.5, -15, 30)
 size = Vector3(12, 33, 11)
 
 [node name="Wall65" parent="CSGCombiner3D" instance=ExtResource("1_1plv5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 174, -19.5, -16)
-size = Vector3(5, 24, 27)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 174, -29.5, -16)
+size = Vector3(5, 44, 27)
 
 [node name="Wall67" parent="CSGCombiner3D" instance=ExtResource("1_1plv5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 174, -6, -7)
@@ -225,24 +231,24 @@ transform = Transform3D(0.7071067, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, 0.70710
 size = Vector3(2, 1, 2)
 
 [node name="Wall69" parent="CSGCombiner3D" instance=ExtResource("1_1plv5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190, -18, -35)
-size = Vector3(37, 27, 11)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190, -29, -35)
+size = Vector3(37, 49, 11)
 
 [node name="Wall73" parent="CSGCombiner3D" instance=ExtResource("1_1plv5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 179.5, -15, -101.5)
-size = Vector3(38, 45, 14)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 179.5, -31, -101.5)
+size = Vector3(38, 77, 14)
 
 [node name="Wall66" parent="CSGCombiner3D" instance=ExtResource("1_1plv5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 192.5, -11.25, -16)
-size = Vector3(32, 40.5, 27)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 192.5, -22.5, -16)
+size = Vector3(32, 63, 27)
 
 [node name="Wall84" parent="CSGCombiner3D" instance=ExtResource("1_1plv5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 192.5, 11, -24)
 size = Vector3(32, 4, 11)
 
 [node name="Wall62" parent="CSGCombiner3D" instance=ExtResource("1_1plv5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 183.5, -7, 14)
-size = Vector3(2, 49, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 183.5, -19.5, 14)
+size = Vector3(2, 74, 5)
 
 [node name="Wall85" parent="CSGCombiner3D" instance=ExtResource("1_1plv5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 183.5, -2.5, -45.887894)

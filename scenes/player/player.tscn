@@ -127,3 +127,5 @@ script = ExtResource("9_5gtgg")
 
 [node name="RayCast3D" type="RayCast3D" parent="ProyectileComponent"]
 target_position = Vector3(0, 0, -1000)
+
+[node name="Dump" type="Node3D" parent="."]

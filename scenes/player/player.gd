@@ -62,16 +62,16 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	# print(can_wall_run)
 
-	# test damage_area
-	# if Input.is_action_just_pressed('e_key'):
+	# test damage_area/last_position
 	if is_on_floor():
 		test_time-= delta
 		last_position = global_position
 	if test_time < 0:
 		var d = damage_area.instantiate()
-		# d.damage = randi() %20
-		add_child(d)
+		get_node('Dump').add_child(d)
 		test_time = 5
+		print_orphan_nodes()
+
 	
 
 func jump() -> void:

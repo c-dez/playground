@@ -47,7 +47,6 @@ func _ready() -> void:
 	var player_height: float = 1.5
 	position.y = player.global_position.y - player_height
 
-	duplicate()
 
 
 func _physics_process(_delta: float) -> void:
@@ -70,7 +69,8 @@ func on_damage_timer_timeout() -> void:
 
 
 func on_duration_timer_timeout() -> void:
-	call_deferred('queue_free')
+	# call_deferred('queue_free')
+	queue_free()
 
 
 func on_activation_timer_timeout() -> void:

@@ -6,7 +6,6 @@ var health:int = 20
 
 func _ready() -> void:
     area.connect('body_entered', on_player_entered)
-    duplicate()
 
 
 func on_player_entered(body:Node3D)-> void:
