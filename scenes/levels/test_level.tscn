@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://unw31vd7gc8f"]
+[gd_scene load_steps=12 format=3 uid="uid://unw31vd7gc8f"]
 
 [ext_resource type="PackedScene" uid="uid://c4yas41fxgspe" path="res://scenes/player/player.tscn" id="1_jbqir"]
 [ext_resource type="PackedScene" uid="uid://dmhtqrdjcm80a" path="res://scenes/test/movement/floor.tscn" id="2_fr1um"]
 [ext_resource type="PackedScene" uid="uid://dqp0q00oipopk" path="res://assets/blocks/wall.tscn" id="3_v45ci"]
 [ext_resource type="PackedScene" uid="uid://dt116p2agm2h3" path="res://scenes/enemies/flying_enemy/flying_enemy.tscn" id="5_6xh4u"]
+[ext_resource type="Script" uid="uid://b86pfxkk0k6e8" path="res://resources/character_stats.gd" id="5_48ne7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_48ne7"]
 size = Vector3(1660.5, 1000, 1)
@@ -22,6 +23,11 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_v45ci"]
+
+[sub_resource type="Resource" id="Resource_6xh4u"]
+resource_local_to_scene = true
+script = ExtResource("5_48ne7")
+jump_force = 5.0
 
 [node name="TestLevel" type="Node3D"]
 
@@ -123,3 +129,6 @@ polygon = PackedVector2Array(0, 0, 0, 4, 2, 4, 11.150001, 0)
 
 [node name="FlyingEnemy" parent="." instance=ExtResource("5_6xh4u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.951313, 0)
+stats = SubResource("Resource_6xh4u")
+
+[node name="Dump" type="Node3D" parent="." groups=["dump"]]

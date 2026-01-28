@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b2vpvlij1clwh"]
+[gd_scene load_steps=34 format=3 uid="uid://b2vpvlij1clwh"]
 
 [ext_resource type="PackedScene" uid="uid://dqp0q00oipopk" path="res://assets/blocks/wall.tscn" id="1_1plv5"]
 [ext_resource type="PackedScene" uid="uid://c4yas41fxgspe" path="res://scenes/player/player.tscn" id="2_g5ds0"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dq8sxn20xvh84" path="res://scenes/enemies/base_enemy/enemy.tscn" id="4_1lmy2"]
 [ext_resource type="PackedScene" uid="uid://dmhtqrdjcm80a" path="res://scenes/test/movement/floor.tscn" id="5_qaat3"]
 [ext_resource type="PackedScene" uid="uid://dt116p2agm2h3" path="res://scenes/enemies/flying_enemy/flying_enemy.tscn" id="5_r37n6"]
+[ext_resource type="Script" uid="uid://b86pfxkk0k6e8" path="res://resources/character_stats.gd" id="5_yyb4y"]
 [ext_resource type="PackedScene" uid="uid://bmuu6hss2ngf0" path="res://assets/health_pack/health_pack.tscn" id="6_ora44"]
 [ext_resource type="Script" uid="uid://csxi0ejxe2yyb" path="res://scenes/levels/city/clouds.gd" id="7_djrve"]
 
@@ -39,6 +40,100 @@ albedo = Color(1, 0.100000024, 0.100000024, 1)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_g5ds0"]
 radius = 7.072
 height = 28.284
+
+[sub_resource type="Resource" id="Resource_6cof7"]
+resource_local_to_scene = true
+script = ExtResource("5_yyb4y")
+attack_cooldown = 1.5
+jump_force = 5.0
+
+[sub_resource type="Resource" id="Resource_yt44j"]
+resource_local_to_scene = true
+script = ExtResource("5_yyb4y")
+attack_cooldown = 1.5
+jump_force = 5.0
+
+[sub_resource type="Resource" id="Resource_e7g8w"]
+resource_local_to_scene = true
+script = ExtResource("5_yyb4y")
+attack_cooldown = 1.5
+jump_force = 5.0
+
+[sub_resource type="Resource" id="Resource_0fi2o"]
+resource_local_to_scene = true
+script = ExtResource("5_yyb4y")
+attack_cooldown = 1.5
+jump_force = 5.0
+
+[sub_resource type="Resource" id="Resource_t65kg"]
+resource_local_to_scene = true
+script = ExtResource("5_yyb4y")
+attack_cooldown = 1.5
+jump_force = 5.0
+
+[sub_resource type="Resource" id="Resource_8qe07"]
+resource_local_to_scene = true
+script = ExtResource("5_yyb4y")
+attack_cooldown = 1.5
+jump_force = 5.0
+
+[sub_resource type="Resource" id="Resource_pi6bm"]
+resource_local_to_scene = true
+script = ExtResource("5_yyb4y")
+attack_cooldown = 1.5
+jump_force = 5.0
+
+[sub_resource type="Resource" id="Resource_ek2fl"]
+resource_local_to_scene = true
+script = ExtResource("5_yyb4y")
+attack_cooldown = 1.5
+jump_force = 5.0
+
+[sub_resource type="Resource" id="Resource_u35v7"]
+resource_local_to_scene = true
+script = ExtResource("5_yyb4y")
+attack_cooldown = 1.5
+jump_force = 5.0
+
+[sub_resource type="Resource" id="Resource_pophl"]
+resource_local_to_scene = true
+script = ExtResource("5_yyb4y")
+attack_cooldown = 1.5
+jump_force = 5.0
+
+[sub_resource type="Resource" id="Resource_0x46f"]
+resource_local_to_scene = true
+script = ExtResource("5_yyb4y")
+attack_cooldown = 1.5
+jump_force = 5.0
+
+[sub_resource type="Resource" id="Resource_v85x1"]
+resource_local_to_scene = true
+script = ExtResource("5_yyb4y")
+attack_cooldown = 1.5
+jump_force = 5.0
+
+[sub_resource type="Resource" id="Resource_u2y6b"]
+resource_local_to_scene = true
+script = ExtResource("5_yyb4y")
+attack_cooldown = 1.5
+jump_force = 5.0
+
+[sub_resource type="Resource" id="Resource_v0yx7"]
+resource_local_to_scene = true
+script = ExtResource("5_yyb4y")
+attack_cooldown = 1.5
+jump_force = 5.0
+
+[sub_resource type="Resource" id="Resource_e12f8"]
+resource_local_to_scene = true
+script = ExtResource("5_yyb4y")
+jump_force = 5.0
+
+[sub_resource type="Resource" id="Resource_dha85"]
+resource_local_to_scene = true
+script = ExtResource("5_yyb4y")
+jump_force = 5.0
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_ora44"]
 vertices = PackedVector3Array(179.77362, -4, -38, 179.77362, -4, -34, 189.77362, -4, -34, 189.77362, -4, -38, 79.52362, 1, 25.75, 79.02362, 1, 26, 82.77362, 1, 26.25, 79.27362, 1, 11, 72.02362, 1, 11, 72.02362, 1, 13, 79.52362, 1, 13.25, 82.77362, 1, 1, 79.52362, 1, 1, 69.77362, 1, 13.25, 68.77362, 1, 10.75, 60.273624, 1, 11, 57.273624, 1, 25, 57.523624, 1, 25.75, 69.77362, 1, 25.5, 68.77362, 1, 5, 60.523624, 1, 5, 54.023624, 1, 11, 54.023624, 1, 25, 35.523624, 1, 17, 35.523624, 1, 11, 28.773624, 1, 11, 28.773624, 1, 17, 50.273624, 1, 28, 50.523624, 1, 30, 51.773624, 1, 29.75, 51.773624, 1, 25.25, 37.773624, 1, 17.25, 37.773624, 1, 28, 70.02362, 1, 26, 57.523624, 1, 41.5, 61.273624, 1, 44, 72.02362, 1, 44, 72.02362, 1, 26, 81.77362, 1, 44, 81.77362, 1, 41.25, 82.77362, 1, 41, 162.52362, 2, 36, 162.52362, 2, 40, 164.52362, 2, 40, 164.77362, 2, 35.75, 173.77362, 2, 26, 164.77362, 2, 26, 173.77362, 2, 41, 164.77362, 2, 41, 60.773624, 1, 44.25, 57.273624, 1, 42, 51.773624, 1, 41.75, 50.523624, 1, 62, 63.023624, 1, 62, 63.023624, 1, 56, 60.773624, 1, 55.75, 126.52362, 2, 40, 126.52362, 2, 36, 99.77362, 2, 36, 99.77362, 2, 40, 128.77362, 2, 40.25, 132.77362, 2, 40.25, 135.02362, 2, 40, 135.02362, 2, 36, 128.77362, 2, 43, 132.77362, 2, 43, 99.77362, 2, 42, 99.77362, 2, 63, 110.77362, 2, 63, 110.77362, 2, 42, 69.77362, 1, 62, 69.77362, 1, 56)
@@ -490,51 +585,67 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -15.
 
 [node name="Enemy" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62, 1.4999998, 7)
+stats = SubResource("Resource_6cof7")
 
 [node name="Enemy5" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53, 1.4999998, 21)
+stats = SubResource("Resource_yt44j")
 
 [node name="Enemy6" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53, 1.4999998, 16)
+stats = SubResource("Resource_e7g8w")
 
 [node name="Enemy7" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77, 1.4999998, 33)
+stats = SubResource("Resource_0fi2o")
 
 [node name="Enemy9" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81, 1.4999998, 24)
+stats = SubResource("Resource_t65kg")
 
 [node name="Enemy11" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65, 1.4999998, 40)
+stats = SubResource("Resource_8qe07")
 
 [node name="Enemy12" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61, 1.4999999, 58)
+stats = SubResource("Resource_pi6bm")
 
 [node name="Enemy15" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108, 2.5, 58)
+stats = SubResource("Resource_ek2fl")
 
 [node name="Enemy17" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98, 2.5, 58)
+stats = SubResource("Resource_u35v7")
 
 [node name="Enemy18" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148, 2.5, 42)
+stats = SubResource("Resource_pophl")
 
 [node name="Enemy19" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156, 2.5, 37)
+stats = SubResource("Resource_0x46f")
 
 [node name="Enemy16" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129, 2.5, 43)
+stats = SubResource("Resource_v85x1")
 
 [node name="Enemy13" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51, 1.4999998, 58)
+stats = SubResource("Resource_u2y6b")
 
 [node name="Enemy14" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 1.5, 38)
+stats = SubResource("Resource_v0yx7")
 
 [node name="FlyingEnemy" parent="Actors/Enemies" instance=ExtResource("5_r37n6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 6.981617, 5)
+stats = SubResource("Resource_e12f8")
 
 [node name="FlyingEnemy2" parent="Actors/Enemies" instance=ExtResource("5_r37n6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, 6.981617, 5)
+stats = SubResource("Resource_dha85")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 visible = false
@@ -658,3 +769,5 @@ script = ExtResource("7_djrve")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Clouds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -25, 0)
 shape = SubResource("BoxShape3D_djrve")
+
+[node name="Dump" type="Node3D" parent="." groups=["dump"]]

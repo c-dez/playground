@@ -36,7 +36,10 @@ func shoot(_delta) -> void:
 		b.bullet_radius = 0.25
 		b.type = b.ENEMY
 		b.damage = parent.stats.damage
-		parent.muzzle.add_child(b)
+		# parent.muzzle.add_child(b)
+		parent.dump.add_child(b)
+		b.global_position = parent.muzzle.global_position
+		b.top_level = true
 		attack_cooldown = parent.stats.attack_cooldown
 		b.look_at(player.global_position)
 

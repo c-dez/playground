@@ -4,10 +4,9 @@
 [ext_resource type="Script" uid="uid://b2j5jtgurf31y" path="res://scenes/enemies/flying_enemy/flying_enemy.gd" id="2_e0twi"]
 [ext_resource type="Script" uid="uid://cdcl6bomggg60" path="res://scenes/enemies/flying_enemy/flying_chase.gd" id="3_3gwj6"]
 [ext_resource type="Script" uid="uid://b86pfxkk0k6e8" path="res://resources/character_stats.gd" id="3_jeukw"]
-[ext_resource type="Script" uid="uid://cy37w1j8e5atf" path="res://scenes/enemies/flying_enemy/attack.gd" id="4_a3mt0"]
+[ext_resource type="Script" uid="uid://cy37w1j8e5atf" path="res://scenes/enemies/flying_enemy/flying_attack.gd" id="4_a3mt0"]
 
 [sub_resource type="Resource" id="Resource_q8l7o"]
-resource_local_to_scene = true
 script = ExtResource("3_jeukw")
 max_health = 20
 health = 20
