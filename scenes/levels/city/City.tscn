@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://b2vpvlij1clwh"]
+[gd_scene load_steps=17 format=3 uid="uid://b2vpvlij1clwh"]
 
 [ext_resource type="PackedScene" uid="uid://dqp0q00oipopk" path="res://assets/blocks/wall.tscn" id="1_1plv5"]
 [ext_resource type="PackedScene" uid="uid://c4yas41fxgspe" path="res://scenes/player/player.tscn" id="2_g5ds0"]
 [ext_resource type="PackedScene" uid="uid://b1dl7jcwfww68" path="res://scenes/levels/assets/red_box.tscn" id="3_g5ds0"]
 [ext_resource type="PackedScene" uid="uid://dq8sxn20xvh84" path="res://scenes/enemies/base_enemy/enemy.tscn" id="4_1lmy2"]
 [ext_resource type="PackedScene" uid="uid://dmhtqrdjcm80a" path="res://scenes/test/movement/floor.tscn" id="5_qaat3"]
+[ext_resource type="PackedScene" uid="uid://dt116p2agm2h3" path="res://scenes/enemies/flying_enemy/flying_enemy.tscn" id="5_r37n6"]
 [ext_resource type="PackedScene" uid="uid://bmuu6hss2ngf0" path="res://assets/health_pack/health_pack.tscn" id="6_ora44"]
 [ext_resource type="Script" uid="uid://csxi0ejxe2yyb" path="res://scenes/levels/city/clouds.gd" id="7_djrve"]
 
@@ -531,6 +532,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51, 1.4999998, 58)
 
 [node name="Enemy14" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 1.5, 38)
+
+[node name="FlyingEnemy" parent="Actors/Enemies" instance=ExtResource("5_r37n6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 12.981617, 15)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 visible = false
