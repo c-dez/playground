@@ -34,20 +34,23 @@ var _jump_fall_gravity: float
 # HUD
 @onready var health_bar: ProgressBar = get_node('HUD/HealthBar')
 
-# test damage_area
-var damage_area: PackedScene = preload('res://assets/damage_area/damage_area.tscn')
-# test last_position
-var last_position:Vector3
+# debug label
+@onready var debug_label:Label = get_node('DebugLabel')
 
 
 func _ready() -> void:
 	_calculate_jump_gravity()
-	# debug
-	# uso un mesh para el jugador para poder visualizarlo en godot, en juego no se debe  de mostrar este mesh
-	# get_node("MeshInstance3D").visible = false
 	_set_healthbar_value()
 
-	pass
+
+var debug_time:float = 1.0
+func _process(delta: float) -> void:
+	# debug label
+	debug_time -= delta
+	if debug_time < 0:
+		debug_label.text = str(Engine.get_frames_per_second(),' fps','\n','debug','\n')
+		debug_time = 1
+
 	
 var test_time = 5
 func _physics_process(delta: float) -> void:
@@ -60,23 +63,10 @@ func _physics_process(delta: float) -> void:
 	wall_jump()
 	coyote_time(delta)
 	move_and_slide()
-	# print(can_wall_run)
 
-	# test damage_area/last_position
-	if is_on_floor():
-		test_time-= delta
-		last_position = global_position
-	if test_time < 0:
-		var d = damage_area.instantiate()
-		get_node('Dump').add_child(d)
-		test_time = 5
-		print_orphan_nodes()
-
-	
 
 func jump() -> void:
 	if PlayerInput.jump_input_buffered() and (is_on_floor() or can_jump):
-		# velocity.y = stats.jump_force
 		velocity.y = _jump_velocity
 
 
