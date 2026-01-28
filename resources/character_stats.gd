@@ -6,11 +6,11 @@ class_name CharacterStats
 @export var max_health: int = 100
 @export var health: int = 100
 @export var damage: int = 10
-@export var attack_range: int = 30
-@export var chase_range: int = 20
+@export var attack_range: int = 20
+@export var chase_range: int = 30
 @export var attack_cooldown: float = 1
 
-@export var move_speed: float = 1
+@export var move_speed: float = 5
 @export var walk_speed: float = 1
 @export var dash_speed: float = 1
 @export var jump_force: float = 1

@@ -491,9 +491,6 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -15.
 [node name="Enemy" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62, 1.4999998, 7)
 
-[node name="Enemy3" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81, 1.4999998, 12)
-
 [node name="Enemy5" parent="Actors/Enemies" instance=ExtResource("4_1lmy2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53, 1.4999998, 21)
 
@@ -534,7 +531,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51, 1.4999998, 58)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 1.5, 38)
 
 [node name="FlyingEnemy" parent="Actors/Enemies" instance=ExtResource("5_r37n6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 12.981617, 15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 6.981617, 5)
+
+[node name="FlyingEnemy2" parent="Actors/Enemies" instance=ExtResource("5_r37n6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, 6.981617, 5)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 visible = false

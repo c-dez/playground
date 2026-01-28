@@ -4,7 +4,7 @@ class_name PlayerBody
 
 ## Controla el movimiento de Player   
 
-
+var last_position:Vector3
 @export var stats: CharacterStats
 ## uso un Vector2 para representar rango entre dos valores usado para active_reload system
 # @export var active_reload_range := Vector2(40, 60)
@@ -41,18 +41,24 @@ var _jump_fall_gravity: float
 func _ready() -> void:
 	_calculate_jump_gravity()
 	_set_healthbar_value()
+	last_position = global_position
 
 
-var debug_time:float = 1.0
+
+var countdown_time:float = 2.0
 func _process(delta: float) -> void:
-	# debug label
-	debug_time -= delta
-	if debug_time < 0:
+	# countdown usado para monitorear varias cosas refinar en el futuro
+	countdown_time -= delta
+	if countdown_time < 0:
+		# debug
 		debug_label.text = str(Engine.get_frames_per_second(),' fps','\n','debug','\n')
-		debug_time = 1
+		# last_on_floor_position
+		set_last_on_floor_position()
+
+		countdown_time = 2
 
 	
-var test_time = 5
+# var test_time = 5
 func _physics_process(delta: float) -> void:
 	gravity(delta)
 	# apply_gravity(delta)
@@ -64,9 +70,18 @@ func _physics_process(delta: float) -> void:
 	coyote_time(delta)
 	move_and_slide()
 
+	
+	
+
+	
+func set_last_on_floor_position()-> void:
+	if is_on_floor():
+		last_position = global_position
+
 
 func jump() -> void:
 	if PlayerInput.jump_input_buffered() and (is_on_floor() or can_jump):
+		# velocity.y = stats.jump_force
 		velocity.y = _jump_velocity
 
 

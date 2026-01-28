@@ -9,7 +9,7 @@ class_name Enemy
 var health:int
 
 func _ready() -> void:
-    stats.duplicate()
+    stats.duplicate(true)
     health = stats.health
 
 

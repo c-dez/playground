@@ -65,12 +65,10 @@ func on_player_exited(body: Node3D) -> void:
 
 func on_damage_timer_timeout() -> void:
 	player.take_damage(damage)
-	print(damage)
 
 
 func on_duration_timer_timeout() -> void:
 	call_deferred('queue_free')
-	# queue_free()
 
 
 func on_activation_timer_timeout() -> void:

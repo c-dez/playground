@@ -21,7 +21,6 @@ func shoot(_delta) -> void:
                 var d = damage_area.instantiate()
                 add_child(d)
                 d.global_position = ray.get_collision_point()
-                print('shoot')
         attack_cooldown = parent.stats.attack_cooldown
 
 

@@ -4,7 +4,7 @@ class_name Bullet
 var bullet_radius: float = 0.25
 var damage: int = 10
 var speed: float = 30.0
-var despawn_time: float = 10.0
+var despawn_time: float = 5.0
 var type = ENEMY
 enum {
 	ENEMY,
