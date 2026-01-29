@@ -1,6 +1,5 @@
 extends Node
 class_name State
-# old
 
 
 signal change_state_to(current_state: State, new_state_string: String)

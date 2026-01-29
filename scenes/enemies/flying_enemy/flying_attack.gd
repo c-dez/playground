@@ -8,10 +8,9 @@ var damage_area: PackedScene = preload('res://assets/damage_area/damage_area.tsc
 func _ready() -> void:
 	ray.add_exception(player)
 
-	
+
 func enter() -> void:
-	parent.velocity = Vector3.ZERO
-	attack_cooldown = parent.stats.attack_cooldown
+	super.enter()
 	ray.global_position = get_ray_global_position()
 
 
