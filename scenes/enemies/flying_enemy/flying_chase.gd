@@ -1,5 +1,5 @@
 extends Chase
-class_name FlyingChase
+# class_name FlyingChase
 
 func physics_process(_delta: float) -> void:
 	navigation_check_time -= _delta

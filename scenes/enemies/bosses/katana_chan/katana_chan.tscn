@@ -1,17 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://dihlem0to5ywl"]
+[gd_scene load_steps=6 format=3 uid="uid://dihlem0to5ywl"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lnot5"]
-albedo_color = Color(1, 0.21960784, 0.21960784, 1)
+[ext_resource type="PackedScene" uid="uid://dq8sxn20xvh84" path="res://scenes/enemies/base_enemy/enemy.tscn" id="1_vxfib"]
+[ext_resource type="Script" uid="uid://b86pfxkk0k6e8" path="res://resources/character_stats.gd" id="2_2bpg4"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_fevcs"]
-material = SubResource("StandardMaterial3D_lnot5")
+[sub_resource type="Resource" id="Resource_vxfib"]
+resource_local_to_scene = true
+script = ExtResource("2_2bpg4")
+max_health = 500
+health = 500
+attack_cooldown = 1.5
+jump_force = 5.0
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vxfib"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vxfib"]
+albedo_color = Color(1, 0.09019608, 0.09019608, 1)
 
-[node name="KatanaChan" type="CharacterBody3D"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_2bpg4"]
+material = SubResource("StandardMaterial3D_vxfib")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_fevcs")
+[node name="KatanaChan" instance=ExtResource("1_vxfib")]
+stats = SubResource("Resource_vxfib")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_vxfib")
+[node name="MeshInstance3D" parent="." index="1"]
+mesh = SubResource("CapsuleMesh_2bpg4")

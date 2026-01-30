@@ -1,5 +1,5 @@
 extends Attack
-class_name FlyingAttack
+# class_name FlyingAttack
 
 
 var damage_area: PackedScene = preload('res://assets/damage_area/damage_area.tscn')
