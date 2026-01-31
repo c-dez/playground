@@ -5,9 +5,9 @@ class_name Enemy
 @export var attack_machine: StateMachine
 @onready var navigation: NavigationAgent3D = get_node('NavigationAgent3D')
 @onready var muzzle: Node3D = get_node('Muzzle')
-## nodo para bullets
+## nodo para bullets/objetos que se van a borrar
 @onready var dump:Node3D = get_tree().get_first_node_in_group('dump')
-
+@onready var mesh:MeshInstance3D = get_node('MeshInstance3D')
 var health:int
 
 func _ready() -> void:

@@ -1,15 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://dihlem0to5ywl"]
+[gd_scene load_steps=13 format=3 uid="uid://dihlem0to5ywl"]
 
-[ext_resource type="PackedScene" uid="uid://dq8sxn20xvh84" path="res://scenes/enemies/base_enemy/enemy.tscn" id="1_vxfib"]
+[ext_resource type="Script" uid="uid://b1hkoithid70j" path="res://scenes/enemies/bosses/katana_chan/katana_chan.gd" id="1_4bais"]
 [ext_resource type="Script" uid="uid://b86pfxkk0k6e8" path="res://resources/character_stats.gd" id="2_2bpg4"]
+[ext_resource type="Script" uid="uid://qdikaf6s2kim" path="res://components/state_machine/state_machine.gd" id="3_dbw1a"]
+[ext_resource type="Script" uid="uid://c3pgw2egnchrk" path="res://scenes/enemies/bosses/katana_chan/idle.gd" id="4_dbw1a"]
+[ext_resource type="Script" uid="uid://dofgl1x5wuqhd" path="res://scenes/enemies/base_enemy/muzzle.gd" id="5_701s4"]
+[ext_resource type="Script" uid="uid://cyobtoduk6jwu" path="res://scenes/enemies/bosses/katana_chan/chase.gd" id="5_o3f2o"]
 
 [sub_resource type="Resource" id="Resource_vxfib"]
 resource_local_to_scene = true
 script = ExtResource("2_2bpg4")
 max_health = 500
 health = 500
+attack_range = 5
 attack_cooldown = 1.5
+walk_speed = 2.0
 jump_force = 5.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5dpe4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vxfib"]
 albedo_color = Color(1, 0.09019608, 0.09019608, 1)
@@ -17,8 +25,51 @@ albedo_color = Color(1, 0.09019608, 0.09019608, 1)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_2bpg4"]
 material = SubResource("StandardMaterial3D_vxfib")
 
-[node name="KatanaChan" instance=ExtResource("1_vxfib")]
-stats = SubResource("Resource_vxfib")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n1pnn"]
+albedo_color = Color(1, 0.94, 0.94, 1)
 
-[node name="MeshInstance3D" parent="." index="1"]
+[sub_resource type="BoxMesh" id="BoxMesh_e87fy"]
+material = SubResource("StandardMaterial3D_n1pnn")
+size = Vector3(0.735, 0.395, 0.53)
+
+[node name="KatanaChan" type="CharacterBody3D" node_paths=PackedStringArray("attack_machine") groups=["enemy"]]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_4bais")
+stats = SubResource("Resource_vxfib")
+attack_machine = NodePath("AttackMachine")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_5dpe4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_2bpg4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(-0.49, 0, -8.742278e-08, 0, 0.5, 0, 4.283716e-08, 0, -1, -1.3113417e-08, 0.5, -0.65)
+mesh = SubResource("BoxMesh_e87fy")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="AttackMachine" type="Node" parent="."]
+script = ExtResource("3_dbw1a")
+metadata/_custom_type_script = "uid://qdikaf6s2kim"
+
+[node name="Idle" type="Node" parent="AttackMachine"]
+script = ExtResource("4_dbw1a")
+
+[node name="Chase" type="Node" parent="AttackMachine"]
+script = ExtResource("5_o3f2o")
+
+[node name="AttackSelect" type="Node" parent="AttackMachine"]
+
+[node name="Recovery" type="Node" parent="AttackMachine"]
+
+[node name="Dodge" type="Node" parent="AttackMachine"]
+
+[node name="Muzzle" type="Node3D" parent="."]
+script = ExtResource("5_701s4")
+
+[node name="RayCast3D" type="RayCast3D" parent="Muzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -1)
+target_position = Vector3(0, 0, -30)

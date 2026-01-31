@@ -16,3 +16,6 @@ func physics_process(_delta: float) -> void:
 
 func exit() -> void:
 	pass
+
+func _change_state_to()-> void:
+	pass

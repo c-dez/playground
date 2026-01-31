@@ -7,6 +7,10 @@ var _check_state_time: float = 1.0
 @onready var parent: Enemy = get_parent().get_parent()
 @onready var player: PlayerBody = get_tree().get_first_node_in_group('player')
 
+var navigation_check_time:float = 0.5
+var _navigation_check_time:float = 0.5
+
+
 func enter() -> void:
 	check_state_time = _check_state_time
 
@@ -17,24 +21,8 @@ func process(_delta: float) -> void:
 		_change_state_to()
 		check_state_time = _check_state_time
 
-var navigation_check_time:float = 0.5
-var _navigation_check_time:float = 0.5
 func physics_process(_delta: float) -> void:
-	navigation_check_time -= _delta
-	if navigation_check_time < 0:
-
-		parent.navigation.target_position = Vector3(player.global_position.x, parent.global_position.y, player.global_position.z)
-
-		var current_pos := parent.global_position
-		var next_pos := parent.navigation.get_next_path_position()
-		var direction = (next_pos - current_pos).normalized()
-
-		parent.velocity = direction * parent.stats.move_speed
-		parent.get_node('MeshInstance3D').look_at(parent.navigation.target_position)
-
-		navigation_check_time = _navigation_check_time
-	parent.get_node('Muzzle').look_at(player.global_position)
-
+	chase(_delta,parent.stats.move_speed)
 
 func exit() -> void:
 	check_state_time = _check_state_time
@@ -50,3 +38,20 @@ func _change_state_to() -> void:
 			var target = parent.muzzle.ray.get_collider()
 			if target is PlayerBody:
 				emit_signal('change_state_to', self, 'attack')
+
+
+func chase(_delta:float, move_speed)-> void:
+	navigation_check_time -= _delta
+	if navigation_check_time < 0:
+
+		parent.navigation.target_position = Vector3(player.global_position.x, parent.global_position.y, player.global_position.z)
+
+		var current_pos := parent.global_position
+		var next_pos := parent.navigation.get_next_path_position()
+		var direction = (next_pos - current_pos).normalized()
+
+		parent.velocity = direction * move_speed
+		parent.get_node('MeshInstance3D').look_at(parent.navigation.target_position)
+
+		navigation_check_time = _navigation_check_time
+	parent.get_node('Muzzle').look_at(player.global_position)
