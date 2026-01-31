@@ -14,8 +14,8 @@ func enter() -> void:
 	pass
 
 func process(_delta: float) -> void:
-	# shoot
-	shoot(_delta)
+	# attack
+	attack(_delta)
 	# checar cuando se debe de cambiar de state
 	check_state_time -= _delta
 	if check_state_time < 0:
@@ -29,7 +29,7 @@ func physics_process(_delta) -> void:
 	parent.get_node('Muzzle').look_at(player.global_position)
 
 
-func shoot(_delta) -> void:
+func attack(_delta) -> void:
 	attack_cooldown -= _delta
 	if attack_cooldown < 0:
 		var b = bullet.instantiate()
