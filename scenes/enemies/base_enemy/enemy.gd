@@ -1,7 +1,7 @@
 extends CharacterBody3D
 class_name Enemy
 
-@export var stats: CharacterStats
+@export var stats: Resource
 @export var attack_machine: StateMachine
 @onready var navigation: NavigationAgent3D = get_node('NavigationAgent3D')
 @onready var muzzle: Node3D = get_node('Muzzle')
@@ -20,7 +20,6 @@ func _physics_process(_delta: float) -> void:
     if not is_on_floor():
         velocity = get_gravity()
     move_and_slide()
-
 
 
 func take_damage(damage:int)->void:

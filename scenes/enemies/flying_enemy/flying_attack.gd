@@ -14,7 +14,7 @@ func enter() -> void:
 	ray.global_position = get_ray_global_position()
 
 
-func shoot(_delta) -> void:
+func attack(_delta) -> void:
 	attack_cooldown -= _delta
 	if attack_cooldown < 0:
 		ray.global_position = get_ray_global_position()

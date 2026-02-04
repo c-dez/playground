@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="KatanaStats" load_steps=2 format=3 uid="uid://ro6x24n5l2pu"]
+
+[ext_resource type="Script" uid="uid://dvsoi3vrobstc" path="res://resources/katana_stats.gd" id="1_nfs1r"]
+
+[resource]
+script = ExtResource("1_nfs1r")
+metadata/_custom_type_script = "uid://dvsoi3vrobstc"

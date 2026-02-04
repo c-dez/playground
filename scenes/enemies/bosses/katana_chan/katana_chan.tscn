@@ -1,21 +1,22 @@
-[gd_scene load_steps=13 format=3 uid="uid://dihlem0to5ywl"]
+[gd_scene format=3 uid="uid://dihlem0to5ywl"]
 
 [ext_resource type="Script" uid="uid://b1hkoithid70j" path="res://scenes/enemies/bosses/katana_chan/katana_chan.gd" id="1_4bais"]
-[ext_resource type="Script" uid="uid://b86pfxkk0k6e8" path="res://resources/character_stats.gd" id="2_2bpg4"]
+[ext_resource type="Script" uid="uid://dvsoi3vrobstc" path="res://resources/katana_stats.gd" id="2_dbw1a"]
 [ext_resource type="Script" uid="uid://qdikaf6s2kim" path="res://components/state_machine/state_machine.gd" id="3_dbw1a"]
 [ext_resource type="Script" uid="uid://c3pgw2egnchrk" path="res://scenes/enemies/bosses/katana_chan/idle.gd" id="4_dbw1a"]
 [ext_resource type="Script" uid="uid://dofgl1x5wuqhd" path="res://scenes/enemies/base_enemy/muzzle.gd" id="5_701s4"]
 [ext_resource type="Script" uid="uid://cyobtoduk6jwu" path="res://scenes/enemies/bosses/katana_chan/chase.gd" id="5_o3f2o"]
+[ext_resource type="Script" uid="uid://cbk6iamfyx6gq" path="res://scenes/enemies/bosses/katana_chan/light_attack.gd" id="6_o3f2o"]
+[ext_resource type="Script" uid="uid://djs7kugn5dv8j" path="res://scenes/enemies/bosses/katana_chan/heavy_attack.gd" id="7_jfrbj"]
+[ext_resource type="Script" uid="uid://cxty1xwdvtyjg" path="res://scenes/enemies/bosses/katana_chan/combo_attack.gd" id="8_vhwx5"]
+[ext_resource type="Script" uid="uid://dm5trgol82myq" path="res://scenes/enemies/bosses/katana_chan/special_attack.gd" id="9_pr8ej"]
 
-[sub_resource type="Resource" id="Resource_vxfib"]
-resource_local_to_scene = true
-script = ExtResource("2_2bpg4")
-max_health = 500
-health = 500
-attack_range = 5
-attack_cooldown = 1.5
-walk_speed = 2.0
-jump_force = 5.0
+[sub_resource type="Resource" id="Resource_o3f2o"]
+script = ExtResource("2_dbw1a")
+light_range = 5
+move_speed = 6.0
+dash_speed = 10.0
+metadata/_custom_type_script = "uid://dvsoi3vrobstc"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5dpe4"]
 
@@ -32,44 +33,70 @@ albedo_color = Color(1, 0.94, 0.94, 1)
 material = SubResource("StandardMaterial3D_n1pnn")
 size = Vector3(0.735, 0.395, 0.53)
 
-[node name="KatanaChan" type="CharacterBody3D" node_paths=PackedStringArray("attack_machine") groups=["enemy"]]
+[node name="KatanaChan" type="CharacterBody3D" unique_id=1464487538 node_paths=PackedStringArray("attack_machine") groups=["enemy"]]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_4bais")
-stats = SubResource("Resource_vxfib")
+stats = SubResource("Resource_o3f2o")
 attack_machine = NodePath("AttackMachine")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=566222809]
 shape = SubResource("CapsuleShape3D_5dpe4")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=62782969]
 mesh = SubResource("CapsuleMesh_2bpg4")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=1898205312]
 transform = Transform3D(-0.49, 0, -8.742278e-08, 0, 0.5, 0, 4.283716e-08, 0, -1, -1.3113417e-08, 0.5, -0.65)
 mesh = SubResource("BoxMesh_e87fy")
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=737767856]
 
-[node name="AttackMachine" type="Node" parent="."]
+[node name="AttackMachine" type="Node" parent="." unique_id=1789665521]
 script = ExtResource("3_dbw1a")
 metadata/_custom_type_script = "uid://qdikaf6s2kim"
 
-[node name="Idle" type="Node" parent="AttackMachine"]
+[node name="Idle" type="Node" parent="AttackMachine" unique_id=473343297]
 script = ExtResource("4_dbw1a")
 
-[node name="Chase" type="Node" parent="AttackMachine"]
+[node name="Chase" type="Node" parent="AttackMachine" unique_id=1443278830]
 script = ExtResource("5_o3f2o")
 
-[node name="AttackSelect" type="Node" parent="AttackMachine"]
+[node name="Recovery" type="Node" parent="AttackMachine" unique_id=1528129043]
 
-[node name="Recovery" type="Node" parent="AttackMachine"]
+[node name="Dodge" type="Node" parent="AttackMachine" unique_id=2057539825]
 
-[node name="Dodge" type="Node" parent="AttackMachine"]
+[node name="Light" type="Node" parent="AttackMachine" unique_id=1539950348]
+script = ExtResource("6_o3f2o")
 
-[node name="Muzzle" type="Node3D" parent="."]
+[node name="Heavy" type="Node" parent="AttackMachine" unique_id=340022666]
+script = ExtResource("7_jfrbj")
+
+[node name="Combo" type="Node" parent="AttackMachine" unique_id=907443108]
+script = ExtResource("8_vhwx5")
+
+[node name="Special" type="Node" parent="AttackMachine" unique_id=117254533]
+script = ExtResource("9_pr8ej")
+
+[node name="Muzzle" type="Node3D" parent="." unique_id=1949243413]
 script = ExtResource("5_701s4")
 
-[node name="RayCast3D" type="RayCast3D" parent="Muzzle"]
+[node name="RayCast3D" type="RayCast3D" parent="Muzzle" unique_id=913483570]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -1)
 target_position = Vector3(0, 0, -30)
+
+[node name="Label" type="Label" parent="." unique_id=1570709734]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=242120860]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -258.0
+offset_bottom = 190.0
+grow_horizontal = 0
