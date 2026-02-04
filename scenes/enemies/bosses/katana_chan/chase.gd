@@ -5,6 +5,7 @@ var dice: int
 var trow_dice_time: float = 3
 const _trow_dice_time: float = 3
 var selected_attack: String
+var distance_to_player: float
 
 var attacks: Dictionary = {
 	'light': 'light',
@@ -12,11 +13,12 @@ var attacks: Dictionary = {
 	'combo': 'combo',
 	'special': 'special'
 }
-var distance_to_player
+
+
 func enter() -> void:
 	super.enter()
 	trow_dice()
-	selected_attack = select_attack()
+	selected_attack = get_selected_attack()
 
 
 func process(_delta: float) -> void:
@@ -46,8 +48,8 @@ func trow_dice_to_change_chase_speed(_delta: float) -> void:
 func trow_dice() -> void:
 	dice = randi() % 10
 
-
-func select_attack() -> String:
+## a random selecciona un ataque
+func get_selected_attack() -> String:
 	var rand_num := randi() % 4
 	var result: String
 	match rand_num:
