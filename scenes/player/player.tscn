@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c4yas41fxgspe"]
+[gd_scene format=3 uid="uid://c4yas41fxgspe"]
 
 [ext_resource type="Script" uid="uid://7tqgmjjd126m" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://wg55cpxvjljq" path="res://scenes/player/camera.gd" id="2_dovo2"]
@@ -20,44 +20,44 @@ size = Vector3(0.095, 0.11, 0.245)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_75vfm"]
 bg_color = Color(0.93877894, 0.35656756, 0.627428, 1)
 
-[node name="Player" type="CharacterBody3D" groups=["player"]]
+[node name="Player" type="CharacterBody3D" unique_id=31142548 groups=["player"]]
 floor_snap_length = 0.5
 script = ExtResource("1_8afob")
 stats = ExtResource("2_p47bc")
 
-[node name="WallRunComponent" type="Node3D" parent="."]
+[node name="WallRunComponent" type="Node3D" parent="." unique_id=394145984]
 script = ExtResource("3_5gtgg")
 
-[node name="RayCast3DRight" type="RayCast3D" parent="WallRunComponent"]
+[node name="RayCast3DRight" type="RayCast3D" parent="WallRunComponent" unique_id=2078168904]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 target_position = Vector3(1, 0, 0)
 
-[node name="RayCast3DLeft" type="RayCast3D" parent="WallRunComponent"]
+[node name="RayCast3DLeft" type="RayCast3D" parent="WallRunComponent" unique_id=237129089]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 target_position = Vector3(-1, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1955485084]
 shape = SubResource("CapsuleShape3D_x7p2l")
 
-[node name="Skin" type="MeshInstance3D" parent="."]
+[node name="Skin" type="MeshInstance3D" parent="." unique_id=366088161]
 mesh = SubResource("CapsuleMesh_x7p2l")
 
-[node name="PlayerCamera" type="Camera3D" parent="."]
+[node name="PlayerCamera" type="Camera3D" parent="." unique_id=1032396243]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49333978, -0.28225356)
 script = ExtResource("2_dovo2")
 mouse_sens_horizontal = 0.05
 mouse_sens_vertical = 0.043
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerCamera"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerCamera" unique_id=996407467]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.114210546, -0.22084981, -0.18666697)
 mesh = SubResource("BoxMesh_5gtgg")
 
-[node name="Muzzle" type="Marker3D" parent="PlayerCamera"]
+[node name="Muzzle" type="Marker3D" parent="PlayerCamera" unique_id=1018769341]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10350001, -0.25986162, -0.3406343)
 
-[node name="HUD" type="CanvasLayer" parent="."]
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1476705407]
 
-[node name="CrossHair" type="Control" parent="HUD"]
+[node name="CrossHair" type="Control" parent="HUD" unique_id=107446168]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -69,7 +69,7 @@ grow_vertical = 2
 script = ExtResource("3_gmlin")
 metadata/_edit_lock_ = true
 
-[node name="ProgressBar" type="ProgressBar" parent="HUD"]
+[node name="ProgressBar" type="ProgressBar" parent="HUD" unique_id=1734765127]
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
@@ -88,7 +88,7 @@ value = 18.0
 show_percentage = false
 script = ExtResource("6_75vfm")
 
-[node name="BulletsHUD" type="TextureProgressBar" parent="HUD"]
+[node name="BulletsHUD" type="TextureProgressBar" parent="HUD" unique_id=234608999]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -105,7 +105,7 @@ value = 100.0
 texture_progress = ExtResource("7_0owmy")
 script = ExtResource("8_qek5x")
 
-[node name="HealthBar" type="ProgressBar" parent="HUD"]
+[node name="HealthBar" type="ProgressBar" parent="HUD" unique_id=651522954]
 modulate = Color(1, 0.01999998, 0.01999998, 1)
 anchors_preset = 7
 anchor_left = 0.5
@@ -122,14 +122,14 @@ theme_override_font_sizes/font_size = 1
 step = 1.0
 value = 50.0
 
-[node name="ProyectileComponent" type="Node3D" parent="."]
+[node name="ProyectileComponent" type="Node3D" parent="." unique_id=1750779191]
 script = ExtResource("9_5gtgg")
 
-[node name="RayCast3D" type="RayCast3D" parent="ProyectileComponent"]
+[node name="RayCast3D" type="RayCast3D" parent="ProyectileComponent" unique_id=1046935912]
 target_position = Vector3(0, 0, -1000)
 
-[node name="Dump" type="Node3D" parent="."]
+[node name="Dump" type="Node3D" parent="." unique_id=801869068]
 
-[node name="DebugLabel" type="Label" parent="."]
+[node name="DebugLabel" type="Label" parent="." unique_id=1606334200]
 offset_right = 198.0
 offset_bottom = 104.0
