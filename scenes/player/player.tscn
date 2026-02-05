@@ -42,7 +42,7 @@ shape = SubResource("CapsuleShape3D_x7p2l")
 [node name="Skin" type="MeshInstance3D" parent="." unique_id=366088161]
 mesh = SubResource("CapsuleMesh_x7p2l")
 
-[node name="PlayerCamera" type="Camera3D" parent="." unique_id=1032396243]
+[node name="PlayerCamera" type="Camera3D" parent="." unique_id=1032396243 groups=["camera"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49333978, -0.28225356)
 script = ExtResource("2_dovo2")
 mouse_sens_horizontal = 0.05

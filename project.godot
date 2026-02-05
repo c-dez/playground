@@ -22,6 +22,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 PlayerInput="*res://globals/player_input.gd"
+GameSettings="*uid://bnw1whn2hco4l"
 
 [display]
 
@@ -44,6 +45,7 @@ folder_colors={
 
 enemy=""
 dump=""
+camera="player camera"
 
 [input]
 
