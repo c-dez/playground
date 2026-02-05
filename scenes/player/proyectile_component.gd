@@ -42,15 +42,21 @@ func shoot() -> void:
 			if _is_reloading == false:
 				current_bullets -= 1
 				emit_signal('current_bullets_update', current_bullets)
-				var target := ray.get_collision_point()
+				var target := ray.get_collider()
 
-				var b := bullet.instantiate()
-				b.damage = player.stats.damage
-				b.bullet_radius = 0.1
-				b.type = b.PLAYER
-				b.damage = player.stats.damage
-				muzzle.add_child(b)
-				b.look_at(target, Vector3.UP)
+				if target is Enemy:
+					target.take_damage(player.stats.damage)
+				
+				
+		# 		var target := ray.get_collision_point()
+
+		# 		var b := bullet.instantiate()
+		# 		b.damage = player.stats.damage
+		# 		b.bullet_radius = 0.1
+		# 		b.type = b.PLAYER
+		# 		b.damage = player.stats.damage
+		# 		muzzle.add_child(b)
+		# 		b.look_at(target, Vector3.UP)
 
 
 func reload(_delta) -> void:
