@@ -25,7 +25,7 @@ func pause_game() -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
-func on_slider_value_changed(value: int) -> void:
+func on_fov_slider_value_changed(value: int) -> void:
 	fov_label.text = str(value)
 	camera.fov = value
 	GameSettings.data['fov'] = value
@@ -40,4 +40,4 @@ func set_camera_field_of_view() -> void:
 
 func connect_signals() -> void:
 	connect('visibility_changed', pause_game)
-	fov_slider.connect('value_changed', on_slider_value_changed)
+	fov_slider.connect('value_changed', on_fov_slider_value_changed)
