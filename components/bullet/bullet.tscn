@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cj63qlm42cav4"]
+[gd_scene format=3 uid="uid://cj63qlm42cav4"]
 
 [ext_resource type="Script" uid="uid://cqvjsldbdg8qb" path="res://components/bullet/bullet.gd" id="1_a4s3u"]
 
@@ -11,24 +11,26 @@ height = 0.5
 [sub_resource type="SphereShape3D" id="SphereShape3D_iel4s"]
 radius = 0.3
 
-[node name="Bullet" type="RigidBody3D"]
+[node name="Bullet" type="RigidBody3D" unique_id=2115821879]
 collision_layer = 0
 collision_mask = 0
 gravity_scale = 0.0
 script = ExtResource("1_a4s3u")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=782792683]
 visible = false
 shape = SubResource("SphereShape3D_142lv")
 disabled = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=948033957]
 mesh = SubResource("SphereMesh_j7bu3")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." unique_id=2133014761]
 collision_layer = 3
 collision_mask = 3
+monitoring = false
+monitorable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=638694561]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
 shape = SubResource("SphereShape3D_iel4s")

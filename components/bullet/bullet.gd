@@ -17,6 +17,10 @@ enum {
 @onready var mesh: MeshInstance3D = get_node('MeshInstance3D')
 
 
+signal deactivate()
+signal activate()
+var is_activated: bool = false
+
 func _ready() -> void:
 	_set_bullet_radius(bullet_radius)
 	area.connect('body_entered', on_body_entered)
@@ -26,46 +30,78 @@ func _ready() -> void:
 	timer.one_shot = true
 	timer.autostart = false
 	add_child(timer)
-	timer.start(despawn_time)
+	# timer.start(despawn_time)
+
+	connect('deactivate', on_deactivate)
+	connect('activate', on_activate)
+	on_deactivate()
 
 
 func _process(_delta: float) -> void:
-	linear_velocity = - transform.basis.z * speed
+	if is_activated:
+		linear_velocity = - transform.basis.z * speed
+	else:
+		linear_velocity = Vector3.ZERO
 
 
 func on_area_entered(_area: Area3D) -> void:
 	if _area.get_parent() is Bullet:
-		call_deferred('queue_free')
+		# call_deferred('queue_free')
+		pass
 
 
 func on_body_entered(body: Node3D) -> void:
 	match type:
 		PLAYER:
-			if body.is_in_group('enemy'):
-				if body.has_method('take_damage'):
-					body.take_damage(damage)
-				call_deferred('queue_free')
-			elif body is StaticBody3D:
-				call_deferred('queue_free')
-			elif body.is_in_group('player'):
-				pass
-			else:
-				call_deferred('queue_free')
+			# if body.is_in_group('enemy'):
+			# 	if body.has_method('take_damage'):
+			# 		body.take_damage(damage)
+			# 	call_deferred('queue_free')
+			# elif body is StaticBody3D:
+			# 	call_deferred('queue_free')
+			# elif body.is_in_group('player'):
+			# 	pass
+			# else:
+			# 	call_deferred('queue_free')
+			pass
 
 		ENEMY:
 			if body.is_in_group('player'):
 				if body.has_method('take_damage'):
 					body.take_damage(damage)
-				call_deferred('queue_free')
+				
+				emit_signal('deactivate')
 			elif body is StaticBody3D:
-				call_deferred('queue_free')
+				emit_signal('deactivate')
+				# call_deferred('queue_free')
+				pass
 
 		_:
 			pass
 
+func on_deactivate() -> void:
+	set_deferred('area.monitoring', false)
+	set_deferred('area.monitorable', false)
+	visible = false
+	is_activated = false
+	global_position = get_parent().global_position
+	pass
+#CHECAR QUE MONITORABLE/MONITORING ESTEN FUNCIONANDO CORRECTAMENTE
+func on_activate() -> void:
+	area.monitoring = true
+	# set_deferred('area.monitoring', true)
+	set_deferred('area.monitorable', true)
+	visible = true
+	is_activated = true
+	timer.start(despawn_time)
+	
+	pass
 
+## cuando se acaba timer la bala se desactiva
 func on_timer_timeout() -> void:
-	call_deferred('queue_free')
+	# call_deferred('queue_free')
+	emit_signal('deactivate')
+	pass
 
 
 func _set_bullet_radius(radius: float) -> void:

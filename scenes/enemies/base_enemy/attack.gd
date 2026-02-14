@@ -5,9 +5,25 @@ class_name Attack
 @onready var parent: Enemy = get_parent().get_parent()
 @onready var bullet: PackedScene = preload('res://components/bullet/bullet.tscn')
 var attack_cooldown: float
-var check_state_time:float
-var _check_state_time:float = 1.0
+var check_state_time: float
+var _check_state_time: float = 1.0
 
+
+@onready var bullets_node: Node3D = get_node("Bullets")
+
+# var bullets_pool:Array = []
+
+func _ready() -> void:
+	for i in range(10):
+		var b = bullet.instantiate()
+		b.name = 'Bullet%s' % [i]
+
+		bullets_node.add_child(b)
+
+
+	
+
+		
 func enter() -> void:
 	parent.velocity = Vector3.ZERO
 	attack_cooldown = parent.stats.attack_cooldown
@@ -24,7 +40,6 @@ func process(_delta: float) -> void:
 	pass
 
 func physics_process(_delta) -> void:
-
 	parent.get_node('MeshInstance3D').look_at(player.global_position)
 	parent.get_node('Muzzle').look_at(player.global_position)
 
@@ -32,17 +47,28 @@ func physics_process(_delta) -> void:
 func attack(_delta) -> void:
 	attack_cooldown -= _delta
 	if attack_cooldown < 0:
-		var b = bullet.instantiate()
-		b.bullet_radius = 0.25
-		b.type = b.ENEMY
-		b.damage = parent.stats.damage
-		# parent.muzzle.add_child(b)
-		parent.dump.add_child(b)
-		b.global_position = parent.muzzle.global_position
-		b.top_level = true
-		attack_cooldown = parent.stats.attack_cooldown
-		b.look_at(player.global_position)
+		# var b = bullet.instantiate()
+		# b.bullet_radius = 0.25
+		# b.type = b.ENEMY
+		# b.damage = parent.stats.damage
+		# # parent.muzzle.add_child(b)
+		# parent.dump.add_child(b)
+		# b.global_position = parent.muzzle.global_position
+		# b.top_level = true
+		# b.look_at(player.global_position)
 
+		
+		for i in bullets_node.get_child_count():
+			var item := bullets_node.get_child(i)
+			if item.is_activated == false:
+				item.global_position = parent.muzzle.global_position
+				item.on_activate()
+				item.look_at(player.global_position)
+				print(item.area.monitoring)
+				break
+
+
+		attack_cooldown = parent.stats.attack_cooldown
 
 func _change_state_to() -> void:
 	#chase
