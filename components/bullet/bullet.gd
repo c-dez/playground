@@ -30,7 +30,6 @@ func _ready() -> void:
 	timer.one_shot = true
 	timer.autostart = false
 	add_child(timer)
-	# timer.start(despawn_time)
 
 	connect('deactivate', on_deactivate)
 	connect('activate', on_activate)
@@ -66,31 +65,27 @@ func on_body_entered(body: Node3D) -> void:
 			pass
 
 		ENEMY:
-			if body.is_in_group('player'):
+			if body.is_in_group('player') and is_activated:
 				if body.has_method('take_damage'):
 					body.take_damage(damage)
 				
 				emit_signal('deactivate')
-			elif body is StaticBody3D:
+			elif body is StaticBody3D and is_activated:
 				emit_signal('deactivate')
-				# call_deferred('queue_free')
 				pass
 
 		_:
 			pass
 
 func on_deactivate() -> void:
-	set_deferred('area.monitoring', false)
-	set_deferred('area.monitorable', false)
 	visible = false
 	is_activated = false
 	global_position = get_parent().global_position
 	pass
-#CHECAR QUE MONITORABLE/MONITORING ESTEN FUNCIONANDO CORRECTAMENTE
+
+
 func on_activate() -> void:
-	area.monitoring = true
-	# set_deferred('area.monitoring', true)
-	set_deferred('area.monitorable', true)
+	
 	visible = true
 	is_activated = true
 	timer.start(despawn_time)
@@ -99,7 +94,6 @@ func on_activate() -> void:
 
 ## cuando se acaba timer la bala se desactiva
 func on_timer_timeout() -> void:
-	# call_deferred('queue_free')
 	emit_signal('deactivate')
 	pass
 
