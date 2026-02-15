@@ -47,7 +47,8 @@ func attack(_delta) -> void:
 			var item := bullets_node.get_child(i)
 			if item.is_activated == false:
 				item.global_position = parent.muzzle.global_position
-				item.on_activate()
+				# item.on_activate()
+				item.emit_signal('activate')
 				item.look_at(player.global_position)
 				break
 

@@ -44,7 +44,7 @@ func _process(_delta: float) -> void:
 
 
 func on_area_entered(_area: Area3D) -> void:
-	if _area.get_parent() is Bullet:
+	if _area.get_parent() is Bullet and is_activated:
 		# call_deferred('queue_free')
 		pass
 
@@ -85,7 +85,6 @@ func on_deactivate() -> void:
 
 
 func on_activate() -> void:
-	
 	visible = true
 	is_activated = true
 	timer.start(despawn_time)

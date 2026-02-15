@@ -58,7 +58,7 @@ script = ExtResource("5_n1pnn")
 script = ExtResource("6_e87fy")
 
 [node name="Bullets" type="Node3D" parent="AttackMachine/Attack" unique_id=284958123]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13, 0)
 
 [node name="Muzzle" type="Node3D" parent="." unique_id=1241205155]
 script = ExtResource("7_rl3cs")
