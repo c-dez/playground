@@ -1,13 +1,30 @@
 [gd_scene format=3 uid="uid://bp53d46vbf5s8"]
 
+[ext_resource type="Script" uid="uid://dly3eva5negqt" path="res://scenes/player/katana_player/katana_player.gd" id="1_ay1kh"]
+[ext_resource type="Resource" uid="uid://dqxje8dl7krao" path="res://resources/player_stats.tres" id="2_wd0kt"]
+[ext_resource type="Script" uid="uid://cl3utaufswjjo" path="res://scenes/player/katana_player/camera.gd" id="3_wd0kt"]
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5tj81"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ay1kh"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_wd0kt"]
+
 [node name="KatanaPlayer" type="CharacterBody3D" unique_id=1538907837]
+script = ExtResource("1_ay1kh")
+stats = ExtResource("2_wd0kt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=520949204]
 shape = SubResource("CapsuleShape3D_5tj81")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1497634338]
 mesh = SubResource("CapsuleMesh_ay1kh")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="." unique_id=1889114395]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8291266, 0)
+shape = SubResource("SphereShape3D_wd0kt")
+spring_length = 7.0
+script = ExtResource("3_wd0kt")
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D" unique_id=910673505]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5081673, 0)
