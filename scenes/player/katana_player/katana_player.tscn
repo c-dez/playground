@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bp53d46vbf5s8"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5tj81"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ay1kh"]
+
+[node name="KatanaPlayer" type="CharacterBody3D" unique_id=1538907837]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=520949204]
+shape = SubResource("CapsuleShape3D_5tj81")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1497634338]
+mesh = SubResource("CapsuleMesh_ay1kh")
