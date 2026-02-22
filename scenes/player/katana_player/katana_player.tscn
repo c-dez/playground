@@ -27,7 +27,7 @@ shape = SubResource("CapsuleShape3D_5tj81")
 mesh = SubResource("CapsuleMesh_ay1kh")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=321634769]
-transform = Transform3D(0.5098209, 0, 0, 0, 0.2690699, 0, 0, 0, 0.4396379, 0, 0.38530886, -0.5784256)
+transform = Transform3D(0.5098209, 0, 0, 0, 0.2690699, 0, 0, 0, 0.4396379, 0, 0.38530886, 0.57709676)
 mesh = SubResource("BoxMesh_6d0gc")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="." unique_id=1889114395]
