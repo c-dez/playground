@@ -20,7 +20,7 @@ func attack(_delta) -> void:
 		ray.global_position = get_ray_global_position()
 		if ray.is_colliding():
 
-			# if ray.get_collider() is not PlayerBody:
+			# if ray.get_collider() is not CharacterBody3D:
 			if ray.get_collider() is CSGCombiner3D:
 				var d = damage_area.instantiate()
 				parent.dump.add_child(d)

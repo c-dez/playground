@@ -1,7 +1,7 @@
 extends State
 class_name Attack
 
-@onready var player: PlayerBody = get_tree().get_first_node_in_group('player')
+@onready var player: CharacterBody3D = get_tree().get_first_node_in_group('player')
 @onready var parent: Enemy = get_parent().get_parent()
 @onready var bullet: PackedScene = preload('res://components/bullet/bullet.tscn')
 var attack_cooldown: float
@@ -61,5 +61,5 @@ func _change_state_to() -> void:
 	# chase if cant see player
 	elif parent.muzzle.ray.is_colliding():
 		var target = parent.muzzle.ray.get_collider()
-		if target is not PlayerBody:
+		if target is not CharacterBody3D:
 			emit_signal('change_state_to', self, 'chase')

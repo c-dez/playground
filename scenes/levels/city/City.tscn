@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b2vpvlij1clwh"]
 
 [ext_resource type="PackedScene" uid="uid://dqp0q00oipopk" path="res://assets/blocks/wall.tscn" id="1_1plv5"]
-[ext_resource type="PackedScene" uid="uid://c4yas41fxgspe" path="res://scenes/player/player.tscn" id="2_g5ds0"]
+[ext_resource type="PackedScene" uid="uid://bp53d46vbf5s8" path="res://scenes/player/katana_player/katana_player.tscn" id="3_6cof7"]
 [ext_resource type="PackedScene" uid="uid://b1dl7jcwfww68" path="res://scenes/levels/assets/red_box.tscn" id="3_g5ds0"]
 [ext_resource type="PackedScene" uid="uid://dq8sxn20xvh84" path="res://scenes/enemies/base_enemy/enemy.tscn" id="4_1lmy2"]
 [ext_resource type="PackedScene" uid="uid://dmhtqrdjcm80a" path="res://scenes/test/movement/floor.tscn" id="5_qaat3"]
@@ -41,12 +41,6 @@ albedo = Color(1, 0.100000024, 0.100000024, 1)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_g5ds0"]
 radius = 7.072
 height = 28.284
-
-[sub_resource type="Resource" id="Resource_6cof7"]
-resource_local_to_scene = true
-script = ExtResource("5_yyb4y")
-attack_cooldown = 1.5
-jump_force = 5.0
 
 [sub_resource type="Resource" id="Resource_yt44j"]
 resource_local_to_scene = true
@@ -129,10 +123,16 @@ jump_force = 5.0
 [sub_resource type="Resource" id="Resource_e12f8"]
 resource_local_to_scene = true
 script = ExtResource("5_yyb4y")
-attack_cooldown = 0.5
+attack_cooldown = 1.5
 jump_force = 5.0
 
 [sub_resource type="Resource" id="Resource_dha85"]
+resource_local_to_scene = true
+script = ExtResource("5_yyb4y")
+attack_cooldown = 0.5
+jump_force = 5.0
+
+[sub_resource type="Resource" id="Resource_sv6t8"]
 resource_local_to_scene = true
 script = ExtResource("5_yyb4y")
 jump_force = 5.0
@@ -580,74 +580,74 @@ mesh = SubResource("CapsuleMesh_g5ds0")
 
 [node name="Actors" type="Node" parent="." unique_id=1452118929]
 
-[node name="Player" parent="Actors" unique_id=243538050 instance=ExtResource("2_g5ds0")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -15.000001, 1.5, 9.999994)
+[node name="KatanaPlayer" parent="Actors" unique_id=1538907837 instance=ExtResource("3_6cof7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.494543, 5.4999695, 7.0604653)
 
 [node name="Enemies" type="Node" parent="Actors" unique_id=454651069]
 
 [node name="Enemy" parent="Actors/Enemies" unique_id=1709730043 instance=ExtResource("4_1lmy2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62, 1.4999998, 7)
-stats = SubResource("Resource_6cof7")
+stats = SubResource("Resource_yt44j")
 
 [node name="Enemy5" parent="Actors/Enemies" unique_id=634793733 instance=ExtResource("4_1lmy2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53, 1.4999998, 21)
-stats = SubResource("Resource_yt44j")
+stats = SubResource("Resource_e7g8w")
 
 [node name="Enemy6" parent="Actors/Enemies" unique_id=1240482677 instance=ExtResource("4_1lmy2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53, 1.4999998, 16)
-stats = SubResource("Resource_e7g8w")
+stats = SubResource("Resource_0fi2o")
 
 [node name="Enemy7" parent="Actors/Enemies" unique_id=1369246191 instance=ExtResource("4_1lmy2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77, 1.4999998, 33)
-stats = SubResource("Resource_0fi2o")
+stats = SubResource("Resource_t65kg")
 
 [node name="Enemy9" parent="Actors/Enemies" unique_id=949380357 instance=ExtResource("4_1lmy2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81, 1.4999998, 24)
-stats = SubResource("Resource_t65kg")
+stats = SubResource("Resource_8qe07")
 
 [node name="Enemy11" parent="Actors/Enemies" unique_id=639454093 instance=ExtResource("4_1lmy2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65, 1.4999998, 40)
-stats = SubResource("Resource_8qe07")
+stats = SubResource("Resource_pi6bm")
 
 [node name="Enemy12" parent="Actors/Enemies" unique_id=2022054357 instance=ExtResource("4_1lmy2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61, 1.4999999, 58)
-stats = SubResource("Resource_pi6bm")
+stats = SubResource("Resource_ek2fl")
 
 [node name="Enemy15" parent="Actors/Enemies" unique_id=1708078224 instance=ExtResource("4_1lmy2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108, 2.5, 58)
-stats = SubResource("Resource_ek2fl")
+stats = SubResource("Resource_u35v7")
 
 [node name="Enemy17" parent="Actors/Enemies" unique_id=899528814 instance=ExtResource("4_1lmy2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98, 2.5, 58)
-stats = SubResource("Resource_u35v7")
+stats = SubResource("Resource_pophl")
 
 [node name="Enemy18" parent="Actors/Enemies" unique_id=708340367 instance=ExtResource("4_1lmy2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 148, 2.5, 42)
-stats = SubResource("Resource_pophl")
+stats = SubResource("Resource_0x46f")
 
 [node name="Enemy19" parent="Actors/Enemies" unique_id=975611458 instance=ExtResource("4_1lmy2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 156, 2.5, 37)
-stats = SubResource("Resource_0x46f")
+stats = SubResource("Resource_v85x1")
 
 [node name="Enemy16" parent="Actors/Enemies" unique_id=843062983 instance=ExtResource("4_1lmy2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129, 2.5, 43)
-stats = SubResource("Resource_v85x1")
+stats = SubResource("Resource_u2y6b")
 
 [node name="Enemy13" parent="Actors/Enemies" unique_id=934575359 instance=ExtResource("4_1lmy2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51, 1.4999998, 58)
-stats = SubResource("Resource_u2y6b")
+stats = SubResource("Resource_v0yx7")
 
 [node name="Enemy14" parent="Actors/Enemies" unique_id=677841415 instance=ExtResource("4_1lmy2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58, 1.5, 38)
-stats = SubResource("Resource_v0yx7")
+stats = SubResource("Resource_e12f8")
 
 [node name="FlyingEnemy" parent="Actors/Enemies" unique_id=207483250 instance=ExtResource("5_r37n6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 6.981617, 5)
-stats = SubResource("Resource_e12f8")
+stats = SubResource("Resource_dha85")
 
 [node name="FlyingEnemy2" parent="Actors/Enemies" unique_id=707442601 instance=ExtResource("5_r37n6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, 6.981617, 5)
-stats = SubResource("Resource_dha85")
+stats = SubResource("Resource_sv6t8")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1785781637]
 visible = false

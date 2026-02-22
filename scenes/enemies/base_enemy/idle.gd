@@ -3,7 +3,7 @@ class_name Idle
 
 
 @onready var parent: Enemy = get_parent().get_parent()
-@onready var player: PlayerBody = get_tree().get_first_node_in_group('player')
+@onready var player: CharacterBody3D = get_tree().get_first_node_in_group('player')
 var check_state_time: float
 var _check_state_time: float = 1.0
 

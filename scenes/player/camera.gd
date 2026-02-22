@@ -9,7 +9,7 @@ class_name PlayerCamera
 var look_up_deg: int = 50
 var look_down_deg: int = -70
 
-@onready var player: PlayerBody = get_parent()
+@onready var player: CharacterBody3D = get_parent()
 
 
 func _ready() -> void:

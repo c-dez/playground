@@ -9,7 +9,7 @@ var current_bullets: int
 @onready var bullet: PackedScene = preload('res://components/bullet/bullet.tscn')
 @onready var camera: Camera3D = get_parent().get_node('PlayerCamera')
 @onready var muzzle: Marker3D = camera.get_node('Muzzle')
-@onready var player: PlayerBody = get_parent()
+@onready var player: CharacterBody3D = get_parent()
 signal current_bullets_update(current_bullets: int)
 
 # reload

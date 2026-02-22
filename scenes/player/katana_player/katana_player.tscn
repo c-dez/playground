@@ -16,7 +16,7 @@ material = SubResource("StandardMaterial3D_wd0kt")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wd0kt"]
 
-[node name="KatanaPlayer" type="CharacterBody3D" unique_id=1538907837]
+[node name="KatanaPlayer" type="CharacterBody3D" unique_id=1538907837 groups=["player"]]
 script = ExtResource("1_ay1kh")
 stats = ExtResource("2_wd0kt")
 

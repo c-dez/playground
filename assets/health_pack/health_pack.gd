@@ -9,7 +9,7 @@ func _ready() -> void:
 
 
 func on_player_entered(body:Node3D)-> void:
-    if body is PlayerBody:
+    if body is CharacterBody3D:
         if body.has_method('take_health'):
             body.take_health(health)
             queue_free()

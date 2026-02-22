@@ -5,5 +5,5 @@ func _ready() -> void:
 
 
 func on_player_entered(body):
-	if body is PlayerBody:
+	if body is CharacterBody3D:
 		body.position = body.last_position

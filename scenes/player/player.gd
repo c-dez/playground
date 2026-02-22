@@ -1,6 +1,6 @@
 extends CharacterBody3D
-class_name PlayerBody
-
+# class_name PlayerBody
+# old
 
 ## Controla el movimiento de Player   
 

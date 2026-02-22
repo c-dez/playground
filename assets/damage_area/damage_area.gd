@@ -5,7 +5,7 @@ var damage: int = 5
 var explosion_damage: int = 20
 @onready var collision: CollisionShape3D = get_node('CollisionShape3D')
 @onready var decal: Decal = get_node('Decal')
-@onready var player: PlayerBody = get_tree().get_first_node_in_group('player')
+@onready var player: CharacterBody3D = get_tree().get_first_node_in_group('player')
 # damage_timer
 @onready var damage_timer: Timer = Timer.new()
 var damage_timer_time: float = 1
@@ -46,12 +46,12 @@ func _ready() -> void:
 
 
 func on_player_entered(body: Node3D) -> void:
-	if body is PlayerBody and is_area_damage_active:
+	if body is CharacterBody3D and is_area_damage_active:
 		damage_timer.start(damage_timer_time)
 
 
 func on_player_exited(body: Node3D) -> void:
-	if body is PlayerBody:
+	if body is CharacterBody3D:
 		damage_timer.stop()
 
 func on_damage_timer_timeout() -> void:
@@ -67,6 +67,6 @@ func on_activation_timer_timeout() -> void:
 	decal.modulate = Color.RED
 	if has_overlapping_bodies():
 		for body in get_overlapping_bodies():
-			if body is PlayerBody:
+			if body is CharacterBody3D:
 				damage_timer.start(damage_timer_time)
 				body.take_damage(explosion_damage)

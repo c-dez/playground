@@ -5,7 +5,7 @@ class_name Chase
 var check_state_time: float
 var _check_state_time: float = 1.0
 @onready var parent: Enemy = get_parent().get_parent()
-@onready var player: PlayerBody = get_tree().get_first_node_in_group('player')
+@onready var player: CharacterBody3D = get_tree().get_first_node_in_group('player')
 
 var navigation_check_time:float = 0.5
 var _navigation_check_time:float = 0.5
@@ -36,7 +36,7 @@ func _change_state_to() -> void:
 	elif parent.global_position.distance_to(player.global_position) < parent.stats.attack_range:
 		if parent.muzzle.ray.is_colliding():
 			var target = parent.muzzle.ray.get_collider()
-			if target is PlayerBody:
+			if target is CharacterBody3D:
 				emit_signal('change_state_to', self, 'attack')
 
 
