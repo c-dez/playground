@@ -51,7 +51,6 @@ func gravity(delta: float) -> void:
 		else:
 			velocity.y -= _jump_gravity * delta
 
-# var capture
 func jump() -> void:
 	# if Input.is_action_just_pressed('space') and is_on_floor():
 	if PlayerInput.jump_input_buffered() and is_on_floor():
