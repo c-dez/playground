@@ -23,7 +23,7 @@ func _ready() -> void:
 
 func enter() -> void:
 	print(name)
-	timer.start(0.2)
+	timer.start(0.5)
 	enter_velocity = sm.parent.velocity
 	sm.parent.last_direction = enter_velocity
 	_kick_count = kick_count
@@ -46,6 +46,7 @@ func physics_process(_delta: float) -> void:
 
 func exit() -> void:
 	sm.parent.kick_area.monitoring = false
+	sm.last_state = self
 
 
 func _change_state_to() -> void:

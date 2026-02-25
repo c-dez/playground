@@ -22,6 +22,9 @@ func physics_process(_delta: float) -> void:
 	_change_state_to()
 	move(_delta)
 
+func exit() -> void:
+	sm.last_state = self
+
 
 # func jump() -> void:
 # 	speed = sm.parent.stats.move_speed * jump_multiplier
@@ -46,9 +49,14 @@ func _change_state_to() -> void:
 	if sm.parent.is_on_floor():
 		emit_signal('change_state_to', self, 'move')
 	
-	elif sm.parent.global_position.y - initial_height > 2:
+	elif sm.last_state == sm.states['move']:
+		if sm.parent.global_position.y - initial_height > 2:
+			if Input.is_action_just_pressed('space'):
+				emit_signal('change_state_to', self, 'kick')
+	elif sm.last_state == sm.states['wallkick']:
 		if Input.is_action_just_pressed('space'):
-			emit_signal('change_state_to', self, 'kick')
+				emit_signal('change_state_to', self, 'kick')
+
 	# # ground_pound?
 
 

@@ -20,7 +20,10 @@ func physics_process(_delta: float) -> void:
     sm.parent.velocity.x = sm.parent.last_direction.x * -1.5
     sm.parent.velocity.z = sm.parent.last_direction.z * -1.5
 
+func exit() -> void:
+    sm.last_state = sm.states['wallkick']
 
+    
 func _change_state_to()-> void:
     if not timer.time_left as bool:
         emit_signal('change_state_to', self, 'air')

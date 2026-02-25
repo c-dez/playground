@@ -14,6 +14,9 @@ func process(_delta: float) -> void:
 func physics_process(_delta: float) -> void:
 	move(_delta)
 
+func exit() -> void:
+	sm.last_state = self
+
 
 func move(delta) -> void:
 	var input_dir := PlayerInput.get_direction()
