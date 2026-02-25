@@ -7,7 +7,7 @@ var speed = 10
 
 # var jump_multiplier := 1.2
 var initial_height: float
-var rotate_speed: float = 4
+var rotate_speed: float = 15
 
 func enter() -> void:
 	# jump()
@@ -56,6 +56,5 @@ func _change_state_to() -> void:
 	# # ground_pound?
 
 
-	# elif sm.parent.global_position.y - initial_height < 0.5:
-	# 	emit_signal('change_state_to', self, 'move')
+
 	pass
