@@ -19,16 +19,25 @@ var _jump_fall_gravity: float
 @onready var mesh: MeshInstance3D = get_node('MeshInstance3D')
 
 
+# wall_kick
+@onready var kick_area:Area3D = mesh.get_node('KickArea')
+
 func _ready() -> void:
 	_calculate_jump_gravity()
 	mesh.top_level = true
 
+	kick_area.monitoring = false
+	kick_area.connect('body_entered',on_kick_area_entered)
+
 
 func _process(_delta: float) -> void:
 	mesh.global_position = global_position
+	# print(kick_area.monitoring)
+
 
 
 func _physics_process(_delta: float) -> void:
+	wall_kick(_delta)
 	move(_delta)
 	jump()
 	gravity(_delta)
@@ -42,24 +51,27 @@ func gravity(delta: float) -> void:
 		else:
 			velocity.y -= _jump_gravity * delta
 
-
+var capture
 func jump() -> void:
-	if PlayerInput.jump_input_buffered() and is_on_floor():
+	if Input.is_action_just_pressed('space') and is_on_floor():
+	# if PlayerInput.jump_input_buffered() and is_on_floor():
 		velocity.y = _jump_velocity
 
 
 func move(delta) -> void:
-	var input_dir := PlayerInput.get_direction()
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	if PlayerInput.can_move == true:
+		var input_dir := PlayerInput.get_direction()
+		var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		
 
-	if direction:
-		velocity.x = direction.x * stats.move_speed
-		velocity.z = direction.z * stats.move_speed
+		if direction:
+			velocity.x = direction.x * stats.move_speed
+			velocity.z = direction.z * stats.move_speed
 
-		rotate_mesh(direction, delta)
-	else:
-		velocity.x = move_toward(velocity.x, 0, stats.move_speed)
-		velocity.z = move_toward(velocity.z, 0, stats.move_speed)
+			rotate_mesh(direction, delta)
+		else:
+			velocity.x = move_toward(velocity.x, 0, stats.move_speed)
+			velocity.z = move_toward(velocity.z, 0, stats.move_speed)
 
 
 func rotate_mesh(direction: Vector3, delta: float) -> void:
@@ -79,3 +91,28 @@ func take_damage(damage):
 
 func take_health(damage):
 	print(damage)
+
+func wall_kick(delta) -> void:
+
+	if PlayerInput.can_move == false:
+		var input_dir = capture
+		var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		velocity.x = direction.x * stats.move_speed*2
+		velocity.z = direction.z * stats.move_speed*2
+		velocity.y = 2
+		rotate_mesh(direction,delta)
+	if Input.is_action_just_pressed('space') and !is_on_floor():
+		capture = PlayerInput.get_direction()
+
+		kick_area.monitoring = true
+		PlayerInput.can_move = false
+		await get_tree().create_timer(0.3).timeout
+		kick_area.monitoring = false
+		PlayerInput.can_move = true
+
+
+	pass
+
+func on_kick_area_entered(area)->void:
+	print(area)
+	pass

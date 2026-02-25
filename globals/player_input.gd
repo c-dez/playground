@@ -44,7 +44,6 @@ func jump_input_buffered(buffer_time: float = 0.2) -> bool:
 	
 	return _jump_buffer_timer.time_left
 
-
 func get_direction() -> Vector2:
 	# var dir := Input.get_vector("left", "right", "forward", "backward")
 	# return dir
