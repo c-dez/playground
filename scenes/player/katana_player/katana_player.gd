@@ -20,14 +20,19 @@ var _jump_fall_gravity: float
 
 
 # wall_kick
-@onready var kick_area:Area3D = mesh.get_node('KickArea')
+@onready var kick_area: Area3D = mesh.get_node('KickArea')
+
+# jump signal
+signal jump_signal()
 
 func _ready() -> void:
 	_calculate_jump_gravity()
 	mesh.top_level = true
 
 	kick_area.monitoring = false
-	kick_area.connect('body_entered',on_kick_area_entered)
+	kick_area.connect('body_entered', on_kick_area_entered)
+
+	connect('jump_signal', on_jump)
 
 
 func _process(_delta: float) -> void:
@@ -35,10 +40,9 @@ func _process(_delta: float) -> void:
 	# print(kick_area.monitoring)
 
 
-
 func _physics_process(_delta: float) -> void:
 	# wall_kick(_delta)
-	# move(_delta)
+	coyote_time(_delta)
 	jump()
 	gravity(_delta)
 	move_and_slide()
@@ -51,30 +55,33 @@ func gravity(delta: float) -> void:
 		else:
 			velocity.y -= _jump_gravity * delta
 
+
 func jump() -> void:
-	# if Input.is_action_just_pressed('space') and is_on_floor():
-	if PlayerInput.jump_input_buffered() and is_on_floor():
+	if PlayerInput.jump_input_buffered() and (can_jump):
+		if is_on_floor():
+			emit_signal('jump_signal')
+		elif can_jump:
+			emit_signal('jump_signal')
+
+
+func on_jump() -> void:
 		velocity.y = _jump_velocity
+		_coyote = 0
 
 
-# func move(delta) -> void:
-# 	if PlayerInput.can_move == true:
-# 		var input_dir := PlayerInput.get_direction()
-# 		var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-		
-
-# 		if direction:
-# 			velocity.x = direction.x * stats.move_speed
-# 			velocity.z = direction.z * stats.move_speed
-
-# 			rotate_mesh(direction, delta)
-# 		else:
-# 			velocity.x = move_toward(velocity.x, 0, stats.move_speed)
-# 			velocity.z = move_toward(velocity.z, 0, stats.move_speed)
+const coyote: float = 0.3
+var _coyote: float = 0.0
+var can_jump: bool = false
+func coyote_time(delta) -> void:
+	if is_on_floor():
+		_coyote = coyote
+	elif not is_on_floor():
+		_coyote -= delta
+	
+	can_jump = _coyote > 0 as bool
 
 
-func rotate_mesh(direction: Vector3, delta: float, speed:float = 12.0) -> void:
-	# var rotation_speed := 12
+func rotate_mesh(direction: Vector3, delta: float, speed: float = 12.0) -> void:
 	var target_angle := Vector3.BACK.signed_angle_to(direction, Vector3.UP)
 	mesh.global_rotation.y = lerp_angle(mesh.global_rotation.y, target_angle, speed * delta)
 
@@ -112,6 +119,6 @@ func take_health(damage):
 
 	pass
 
-func on_kick_area_entered(area)->void:
+func on_kick_area_entered(area) -> void:
 	print(area)
 	pass
