@@ -32,6 +32,6 @@ func move(delta) -> void:
 func _change_state_to() -> void:
 	# if sm.parent.is_on_floor() and PlayerInput.jump_input_buffered(0.5):
 	if !sm.parent.is_on_floor() :
-		emit_signal('change_state_to', self, 'jump')
+		emit_signal('change_state_to', self, 'air')
 
 		pass

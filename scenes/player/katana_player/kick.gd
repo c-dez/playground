@@ -38,6 +38,6 @@ func _change_state_to() -> void:
 		emit_signal('change_state_to', self, 'move')
 	elif timer.time_left <= 0:
 		if not sm.parent.is_on_floor():
-			emit_signal('change_state_to', self, 'jump')
+			emit_signal('change_state_to', self, 'air')
 		
 		pass
