@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://dly3eva5negqt" path="res://scenes/player/katana_player/katana_player.gd" id="1_ay1kh"]
 [ext_resource type="Resource" uid="uid://dqxje8dl7krao" path="res://resources/player_stats.tres" id="2_wd0kt"]
 [ext_resource type="Script" uid="uid://cl3utaufswjjo" path="res://scenes/player/katana_player/camera.gd" id="3_wd0kt"]
+[ext_resource type="Script" uid="uid://qdikaf6s2kim" path="res://components/state_machine/state_machine.gd" id="4_54iqn"]
+[ext_resource type="Script" uid="uid://clrujvxrawnt6" path="res://scenes/player/katana_player/move.gd" id="5_njw58"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5tj81"]
 
@@ -56,3 +58,11 @@ script = ExtResource("3_wd0kt")
 
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D" unique_id=910673505]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5081673, 0)
+
+[node name="StateMachine" type="Node" parent="." unique_id=1935941954]
+script = ExtResource("4_54iqn")
+metadata/_custom_type_script = "uid://qdikaf6s2kim"
+
+[node name="Move" type="Node" parent="StateMachine" unique_id=536403611]
+script = ExtResource("5_njw58")
+metadata/_custom_type_script = "uid://ck42b566i6ftq"

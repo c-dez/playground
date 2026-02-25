@@ -38,7 +38,7 @@ func _process(_delta: float) -> void:
 
 func _physics_process(_delta: float) -> void:
 	wall_kick(_delta)
-	move(_delta)
+	# move(_delta)
 	jump()
 	gravity(_delta)
 	move_and_slide()
