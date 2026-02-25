@@ -5,11 +5,13 @@ extends State
 
 var speed
 var jump_multiplier := 1.2
-
+var initial_height:float
 
 func enter() -> void:
 	jump()
-	sm.parent.mesh.do_squash_and_stretch(1.2,0.15)
+	sm.parent.mesh.do_squash_and_stretch(1.2, 0.20)
+	initial_height = sm.parent.global_position.y
+	print(initial_height)
 	pass
 
 
@@ -37,14 +39,14 @@ func move(delta) -> void:
 		sm.parent.velocity.z = move_toward(sm.parent.velocity.z, 0, speed)
 
 
-# func do_squash_and_stretch(value: float, duration: float = 0.1):
-# 	var tween = create_tween()
-# 	tween.tween_property(self, "squash_and_stretch", value, duration)
-# 	tween.tween_property(self, "squash_and_stretch", 1.0, duration * 1.8).set_ease(Tween.EASE_IN_OUT)
-
-
 func _change_state_to() -> void:
 	if sm.parent.is_on_floor():
 		emit_signal('change_state_to', self, 'move')
 	# wall_kick
+		# capturar altura inicial
+		# si es mayor a x altura
+			# cambia a wall_kick
+	elif sm.parent.global_position.y - initial_height >2:
+		if Input.is_action_just_pressed('space'):
+			emit_signal('change_state_to', self, 'kick')
 	# pound?

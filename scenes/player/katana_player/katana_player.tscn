@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://qdikaf6s2kim" path="res://components/state_machine/state_machine.gd" id="4_54iqn"]
 [ext_resource type="Script" uid="uid://clrujvxrawnt6" path="res://scenes/player/katana_player/move.gd" id="5_njw58"]
 [ext_resource type="Script" uid="uid://cmjcmurnk2pwd" path="res://scenes/player/katana_player/jump.gd" id="6_njw58"]
+[ext_resource type="Script" uid="uid://b7t6cns0gs5vb" path="res://scenes/player/katana_player/kick.gd" id="8_swhwx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5tj81"]
 
@@ -50,6 +51,7 @@ shape = SubResource("BoxShape3D_wd0kt")
 
 [node name="KickMesh" type="MeshInstance3D" parent="MeshInstance3D/KickArea" unique_id=2074928358]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.37705815, 1.4059612)
+visible = false
 mesh = SubResource("BoxMesh_54iqn")
 skeleton = NodePath("../../..")
 
@@ -72,4 +74,8 @@ metadata/_custom_type_script = "uid://ck42b566i6ftq"
 
 [node name="Jump" type="Node" parent="StateMachine" unique_id=2104251775]
 script = ExtResource("6_njw58")
+metadata/_custom_type_script = "uid://ck42b566i6ftq"
+
+[node name="Kick" type="Node" parent="StateMachine" unique_id=1805970696]
+script = ExtResource("8_swhwx")
 metadata/_custom_type_script = "uid://ck42b566i6ftq"
