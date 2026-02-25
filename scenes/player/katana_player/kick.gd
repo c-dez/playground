@@ -19,8 +19,8 @@ func enter() -> void:
 
 func physics_process(_delta: float) -> void:
 	_change_state_to()
-	var input_dir := PlayerInput.get_direction()
-	var direction := (sm.parent.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	# var input_dir := PlayerInput.get_direction()
+	# var direction := (sm.parent.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	# timer de duracion de kick
 		# impulsar en y
 	if timer.time_left as bool:
