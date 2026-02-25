@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dly3eva5negqt" path="res://scenes/player/katana_player/katana_player.gd" id="1_ay1kh"]
 [ext_resource type="Resource" uid="uid://dqxje8dl7krao" path="res://resources/player_stats.tres" id="2_wd0kt"]
 [ext_resource type="Script" uid="uid://cl3utaufswjjo" path="res://scenes/player/katana_player/camera.gd" id="3_wd0kt"]
+[ext_resource type="Script" uid="uid://clpwxglgmo40h" path="res://scenes/player/katana_player/skin.gd" id="3_yqwh1"]
 [ext_resource type="Script" uid="uid://qdikaf6s2kim" path="res://components/state_machine/state_machine.gd" id="4_54iqn"]
 [ext_resource type="Script" uid="uid://clrujvxrawnt6" path="res://scenes/player/katana_player/move.gd" id="5_njw58"]
 [ext_resource type="Script" uid="uid://cmjcmurnk2pwd" path="res://scenes/player/katana_player/jump.gd" id="6_njw58"]
@@ -32,6 +33,7 @@ shape = SubResource("CapsuleShape3D_5tj81")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1497634338]
 mesh = SubResource("CapsuleMesh_ay1kh")
+script = ExtResource("3_yqwh1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=321634769]
 transform = Transform3D(0.5098209, 0, 0, 0, 0.2690699, 0, 0, 0, 0.4396379, 0, 0.38530886, 0.57709676)

@@ -9,6 +9,7 @@ var jump_multiplier := 1.2
 
 func enter() -> void:
 	jump()
+	sm.parent.mesh.do_squash_and_stretch(1.2,0.15)
 	pass
 
 
@@ -34,6 +35,12 @@ func move(delta) -> void:
 	else:
 		sm.parent.velocity.x = move_toward(sm.parent.velocity.x, 0, speed)
 		sm.parent.velocity.z = move_toward(sm.parent.velocity.z, 0, speed)
+
+
+# func do_squash_and_stretch(value: float, duration: float = 0.1):
+# 	var tween = create_tween()
+# 	tween.tween_property(self, "squash_and_stretch", value, duration)
+# 	tween.tween_property(self, "squash_and_stretch", 1.0, duration * 1.8).set_ease(Tween.EASE_IN_OUT)
 
 
 func _change_state_to() -> void:
