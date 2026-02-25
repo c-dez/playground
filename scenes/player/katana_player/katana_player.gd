@@ -39,7 +39,7 @@ func _process(_delta: float) -> void:
 func _physics_process(_delta: float) -> void:
 	# wall_kick(_delta)
 	# move(_delta)
-	# jump()
+	jump()
 	gravity(_delta)
 	move_and_slide()
 
@@ -52,10 +52,10 @@ func gravity(delta: float) -> void:
 			velocity.y -= _jump_gravity * delta
 
 # var capture
-# func jump() -> void:
-# 	if Input.is_action_just_pressed('space') and is_on_floor():
-# 	# if PlayerInput.jump_input_buffered() and is_on_floor():
-# 		velocity.y = _jump_velocity
+func jump() -> void:
+	# if Input.is_action_just_pressed('space') and is_on_floor():
+	if PlayerInput.jump_input_buffered() and is_on_floor():
+		velocity.y = _jump_velocity
 
 
 # func move(delta) -> void:

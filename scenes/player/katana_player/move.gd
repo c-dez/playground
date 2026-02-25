@@ -2,12 +2,17 @@ extends State
 
 @onready var sm: StateMachine = get_parent()
 
+func enter() -> void:
+	# print(name)
+	pass
+	
 
+func process(_delta: float) -> void:
+	_change_state_to()
 
 
 func physics_process(_delta: float) -> void:
 	move(_delta)
-	_change_state_to()
 
 
 func move(delta) -> void:
@@ -25,7 +30,8 @@ func move(delta) -> void:
 
 
 func _change_state_to() -> void:
-	if sm.parent.is_on_floor() and PlayerInput.jump_input_buffered():
+	# if sm.parent.is_on_floor() and PlayerInput.jump_input_buffered(0.5):
+	if !sm.parent.is_on_floor() :
 		emit_signal('change_state_to', self, 'jump')
 
 		pass
