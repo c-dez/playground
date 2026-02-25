@@ -29,8 +29,8 @@ func _ready() -> void:
 	_calculate_jump_gravity()
 	mesh.top_level = true
 
-	kick_area.monitoring = false
-	kick_area.connect('body_entered', on_kick_area_entered)
+	kick_area.monitoring = true
+	# kick_area.connect('body_entered', on_kick_area_entered)
 
 	connect('jump_signal', on_jump)
 
