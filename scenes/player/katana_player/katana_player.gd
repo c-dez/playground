@@ -37,9 +37,9 @@ func _process(_delta: float) -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	wall_kick(_delta)
+	# wall_kick(_delta)
 	# move(_delta)
-	jump()
+	# jump()
 	gravity(_delta)
 	move_and_slide()
 
@@ -51,33 +51,33 @@ func gravity(delta: float) -> void:
 		else:
 			velocity.y -= _jump_gravity * delta
 
-var capture
-func jump() -> void:
-	if Input.is_action_just_pressed('space') and is_on_floor():
-	# if PlayerInput.jump_input_buffered() and is_on_floor():
-		velocity.y = _jump_velocity
+# var capture
+# func jump() -> void:
+# 	if Input.is_action_just_pressed('space') and is_on_floor():
+# 	# if PlayerInput.jump_input_buffered() and is_on_floor():
+# 		velocity.y = _jump_velocity
 
 
-func move(delta) -> void:
-	if PlayerInput.can_move == true:
-		var input_dir := PlayerInput.get_direction()
-		var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+# func move(delta) -> void:
+# 	if PlayerInput.can_move == true:
+# 		var input_dir := PlayerInput.get_direction()
+# 		var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 		
 
-		if direction:
-			velocity.x = direction.x * stats.move_speed
-			velocity.z = direction.z * stats.move_speed
+# 		if direction:
+# 			velocity.x = direction.x * stats.move_speed
+# 			velocity.z = direction.z * stats.move_speed
 
-			rotate_mesh(direction, delta)
-		else:
-			velocity.x = move_toward(velocity.x, 0, stats.move_speed)
-			velocity.z = move_toward(velocity.z, 0, stats.move_speed)
+# 			rotate_mesh(direction, delta)
+# 		else:
+# 			velocity.x = move_toward(velocity.x, 0, stats.move_speed)
+# 			velocity.z = move_toward(velocity.z, 0, stats.move_speed)
 
 
-func rotate_mesh(direction: Vector3, delta: float) -> void:
-	var rotation_speed := 12
+func rotate_mesh(direction: Vector3, delta: float, speed:float = 12.0) -> void:
+	# var rotation_speed := 12
 	var target_angle := Vector3.BACK.signed_angle_to(direction, Vector3.UP)
-	mesh.global_rotation.y = lerp_angle(mesh.global_rotation.y, target_angle, rotation_speed * delta)
+	mesh.global_rotation.y = lerp_angle(mesh.global_rotation.y, target_angle, speed * delta)
 
 
 func _calculate_jump_gravity() -> void:
@@ -92,23 +92,23 @@ func take_damage(damage):
 func take_health(damage):
 	print(damage)
 
-func wall_kick(delta) -> void:
+# func wall_kick(delta) -> void:
 
-	if PlayerInput.can_move == false:
-		var input_dir = capture
-		var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-		velocity.x = direction.x * stats.move_speed*2
-		velocity.z = direction.z * stats.move_speed*2
-		velocity.y = 2
-		rotate_mesh(direction,delta)
-	if Input.is_action_just_pressed('space') and !is_on_floor():
-		capture = PlayerInput.get_direction()
+# 	if PlayerInput.can_move == false:
+# 		var input_dir = capture
+# 		var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+# 		velocity.x = direction.x * stats.move_speed*2
+# 		velocity.z = direction.z * stats.move_speed*2
+# 		velocity.y = 2
+# 		rotate_mesh(direction,delta)
+# 	if Input.is_action_just_pressed('space') and !is_on_floor():
+# 		capture = PlayerInput.get_direction()
 
-		kick_area.monitoring = true
-		PlayerInput.can_move = false
-		await get_tree().create_timer(0.3).timeout
-		kick_area.monitoring = false
-		PlayerInput.can_move = true
+# 		kick_area.monitoring = true
+# 		PlayerInput.can_move = false
+# 		await get_tree().create_timer(0.3).timeout
+# 		kick_area.monitoring = false
+# 		PlayerInput.can_move = true
 
 
 	pass
