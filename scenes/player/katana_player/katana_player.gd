@@ -21,6 +21,7 @@ var _jump_fall_gravity: float
 
 # wall_kick
 @onready var kick_area: Area3D = mesh.get_node('KickArea')
+var last_direction
 
 # jump signal
 signal jump_signal()

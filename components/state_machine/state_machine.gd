@@ -4,6 +4,7 @@ class_name StateMachine
 @onready var parent: Node3D = get_parent()
 @onready var current_state: State = get_child(0)
 var states: Dictionary = {}
+var last_state
 
 
 func _ready() -> void:

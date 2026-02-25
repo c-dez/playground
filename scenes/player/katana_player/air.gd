@@ -14,7 +14,7 @@ func enter() -> void:
 
 	sm.parent.mesh.do_squash_and_stretch(1.2, 0.20)
 	initial_height = sm.parent.global_position.y
-	# print('jump')
+	print('air')
 	pass
 
 
@@ -45,11 +45,7 @@ func move(delta) -> void:
 func _change_state_to() -> void:
 	if sm.parent.is_on_floor():
 		emit_signal('change_state_to', self, 'move')
-	# 	pass
-	# # wall_kick
-	# 	# capturar altura inicial
-	# 	# si es mayor a x altura
-	# 		# cambia a wall_kick
+	
 	elif sm.parent.global_position.y - initial_height > 2:
 		if Input.is_action_just_pressed('space'):
 			emit_signal('change_state_to', self, 'kick')

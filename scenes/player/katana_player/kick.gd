@@ -25,6 +25,7 @@ func enter() -> void:
 	print(name)
 	timer.start(0.2)
 	enter_velocity = sm.parent.velocity
+	sm.parent.last_direction = enter_velocity
 	_kick_count = kick_count
 	sm.parent.kick_area.monitoring = true
 
@@ -37,12 +38,11 @@ func physics_process(_delta: float) -> void:
 	# timer de duracion de kick
 		# impulsar en y
 	if timer.time_left as bool and _kick_count > 0:
-		_kick_count -= 1
-		sm.parent.velocity.y = 2
+		# _kick_count -= 1
+		sm.parent.velocity.y = 4
 		sm.parent.velocity.x = enter_velocity.x * 1.5
 		sm.parent.velocity.z = enter_velocity.z * 1.5
 		# sm.parent.rotate_mesh(direction,_delta, 12)
-		print()
 
 func exit() -> void:
 	sm.parent.kick_area.monitoring = false
