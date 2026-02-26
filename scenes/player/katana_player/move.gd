@@ -5,7 +5,7 @@ extends State
 func enter() -> void:
 	# print(name)
 	if sm.last_state == sm.states['air']:
-		sm.parent.mesh.do_squash_and_stretch(1.2, 0.20)
+		sm.parent.mesh.do_squash_and_stretch(0.7, 0.10)
 	pass
 	
 

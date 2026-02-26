@@ -14,7 +14,7 @@ func _ready() -> void:
 func enter() -> void:
     # print(name)
     timer.start(timer_start_time)
-    sm.parent.mesh.do_squash_and_stretch(.5, 0.10)
+    sm.parent.mesh.do_squash_and_stretch(0.5, 0.10)
 
 
 func process(_delta: float) -> void:
