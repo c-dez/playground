@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://cmjcmurnk2pwd" path="res://scenes/player/katana_player/air.gd" id="6_njw58"]
 [ext_resource type="Script" uid="uid://b7t6cns0gs5vb" path="res://scenes/player/katana_player/kick.gd" id="8_swhwx"]
 [ext_resource type="Script" uid="uid://3djhxvljlfix" path="res://scenes/player/katana_player/wall_kick.gd" id="9_v5v2p"]
+[ext_resource type="Script" uid="uid://bpvcw3ncn7rg2" path="res://scenes/player/katana_player/ground_pound.gd" id="10_6v5e5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5tj81"]
 
@@ -66,4 +67,8 @@ metadata/_custom_type_script = "uid://ck42b566i6ftq"
 
 [node name="WallKick" type="Node" parent="StateMachine" unique_id=2017000516]
 script = ExtResource("9_v5v2p")
+metadata/_custom_type_script = "uid://ck42b566i6ftq"
+
+[node name="GroundPound" type="Node" parent="StateMachine" unique_id=1124643719]
+script = ExtResource("10_6v5e5")
 metadata/_custom_type_script = "uid://ck42b566i6ftq"

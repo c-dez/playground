@@ -36,6 +36,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	mesh.global_position = global_position
+	
 
 
 func _physics_process(_delta: float) -> void:

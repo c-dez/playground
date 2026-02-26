@@ -14,10 +14,14 @@ func enter() -> void:
 	print('air')
 	pass
 
+func process(_delta: float) -> void:
+	_change_state_to()
+
 
 func physics_process(_delta: float) -> void:
-	_change_state_to()
 	move(_delta)
+	# if Input.is_action_just_pressed('ground_pound'):
+		# print('asdasd')
 
 
 func exit() -> void:
@@ -41,12 +45,18 @@ func move(delta) -> void:
 func _change_state_to() -> void:
 	if sm.parent.is_on_floor():
 		emit_signal('change_state_to', self, 'move')
-	elif sm.last_state == sm.states['move']:
+
+	if Input.is_action_just_pressed('ground_pound'):
+		emit_signal('change_state_to', self, 'groundpound')
+
+	if sm.last_state == sm.states['move']:
 			if Input.is_action_just_pressed('space'):
 				emit_signal('change_state_to', self, 'kick')
-	elif sm.last_state == sm.states['wallkick']:
+				
+	if sm.last_state == sm.states['wallkick']:
 		if Input.is_action_just_pressed('space'):
 				emit_signal('change_state_to', self, 'kick')
+
 
 	# # ground_pound?
 
