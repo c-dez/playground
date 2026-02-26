@@ -41,7 +41,6 @@ func move(delta) -> void:
 func _change_state_to() -> void:
 	if sm.parent.is_on_floor():
 		emit_signal('change_state_to', self, 'move')
-	
 	elif sm.last_state == sm.states['move']:
 			if Input.is_action_just_pressed('space'):
 				emit_signal('change_state_to', self, 'kick')
