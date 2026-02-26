@@ -11,7 +11,7 @@ var rotate_speed: float = 15
 func enter() -> void:
 	sm.parent.mesh.do_squash_and_stretch(1.2, 0.20)
 	# initial_height = sm.parent.global_position.y
-	print('air')
+	# print('air')
 	pass
 
 func process(_delta: float) -> void:
@@ -52,13 +52,16 @@ func _change_state_to() -> void:
 	if sm.last_state == sm.states['move']:
 			if Input.is_action_just_pressed('space'):
 				emit_signal('change_state_to', self, 'kick')
-				
-	if sm.last_state == sm.states['wallkick']:
+
+	if sm.last_state == sm.states['wallkick'] :
 		if Input.is_action_just_pressed('space'):
-				emit_signal('change_state_to', self, 'kick')
+			emit_signal('change_state_to', self, 'kick')
 
+	if sm.last_state == sm.states['groundpoundonfloor']:
+		if Input.is_action_just_pressed('space'):
+			emit_signal('change_state_to', self, 'kick')
+		
 
-	# # ground_pound?
 
 
 

@@ -5,6 +5,7 @@ class_name KatanaPlayer
 
 
 @export var stats: CharacterStats
+@onready var sm:StateMachine = get_node('StateMachine')
 
 # jump gravity
 @export var jump_height: float = 5.0
@@ -36,12 +37,12 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	mesh.global_position = global_position
+	jump()
 	
 
 
 func _physics_process(_delta: float) -> void:
 	coyote_time(_delta)
-	jump()
 	gravity(_delta)
 	move_and_slide()
 	if wall_ray.is_colliding():
@@ -67,6 +68,11 @@ func jump() -> void:
 
 
 func on_jump() -> void:
+	if sm.current_state == sm.states['groundpoundonfloor']:
+		# salto desde state ground pound floor
+		
+		pass
+	else:
 		velocity.y = _jump_velocity
 		_coyote = 0
 
