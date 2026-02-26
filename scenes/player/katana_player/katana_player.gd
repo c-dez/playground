@@ -20,8 +20,9 @@ var _jump_fall_gravity: float
 
 
 # wall_kick
-@onready var kick_area: Area3D = mesh.get_node('KickArea')
-var last_direction
+# @onready var kick_area: Area3D = mesh.get_node('KickArea')
+var last_velocity
+@onready var wall_ray:RayCast3D = mesh.get_node('WallRay')
 
 # jump signal
 signal jump_signal()
@@ -29,24 +30,37 @@ signal jump_signal()
 func _ready() -> void:
 	_calculate_jump_gravity()
 	mesh.top_level = true
+	# wall_ray.top_level = true
 
-	kick_area.monitoring = true
-	# kick_area.connect('body_entered', on_kick_area_entered)
+	# kick_area.monitoring = true
+	# kick_area.connect('body_entered', on_kick_body_entered)
+	# kick_area.connect('body_exited', on_kick_body_exited)
 
 	connect('jump_signal', on_jump)
 
 
 func _process(_delta: float) -> void:
 	mesh.global_position = global_position
-	# print(kick_area.monitoring)
 
 
+var wall_normal
 func _physics_process(_delta: float) -> void:
-	# wall_kick(_delta)
 	coyote_time(_delta)
 	jump()
 	gravity(_delta)
 	move_and_slide()
+	# print(wall_normal, ' wall normal') 
+	if wall_ray.is_colliding():
+		wall_normal = wall_ray.get_collision_normal()
+	else:
+		wall_normal = null
+
+#test
+	# var collision = move_and_collide(velocity * _delta, true)
+	# if collision:
+	# 	wall_normal = collision.get_normal()
+	# else:
+	# 	wall_normal = null
 
 
 func gravity(delta: float) -> void:
@@ -99,27 +113,15 @@ func take_damage(damage):
 func take_health(damage):
 	print(damage)
 
-# func wall_kick(delta) -> void:
-
-# 	if PlayerInput.can_move == false:
-# 		var input_dir = capture
-# 		var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-# 		velocity.x = direction.x * stats.move_speed*2
-# 		velocity.z = direction.z * stats.move_speed*2
-# 		velocity.y = 2
-# 		rotate_mesh(direction,delta)
-# 	if Input.is_action_just_pressed('space') and !is_on_floor():
-# 		capture = PlayerInput.get_direction()
-
-# 		kick_area.monitoring = true
-# 		PlayerInput.can_move = false
-# 		await get_tree().create_timer(0.3).timeout
-# 		kick_area.monitoring = false
-# 		PlayerInput.can_move = true
-
 
 	pass
+# var in_wall:bool = false
+# func on_kick_body_entered(_body) -> void:
 
-func on_kick_area_entered(area) -> void:
-	print(area)
-	pass
+# 	in_wall = true
+	
+# 	pass
+
+# func on_kick_body_exited(_body)-> void:
+# 	in_wall = false
+# 	pass

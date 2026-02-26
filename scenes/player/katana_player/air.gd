@@ -50,7 +50,7 @@ func _change_state_to() -> void:
 		emit_signal('change_state_to', self, 'move')
 	
 	elif sm.last_state == sm.states['move']:
-		if sm.parent.global_position.y - initial_height > 2:
+		# if sm.parent.global_position.y - initial_height > 2:
 			if Input.is_action_just_pressed('space'):
 				emit_signal('change_state_to', self, 'kick')
 	elif sm.last_state == sm.states['wallkick']:

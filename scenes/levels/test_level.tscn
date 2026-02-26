@@ -55,7 +55,10 @@ environment = SubResource("Environment_fr1um")
 navigation_mesh = SubResource("NavigationMesh_v45ci")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="NavigationRegion3D" unique_id=1485074615]
+layers = 2
 use_collision = true
+collision_layer = 3
+collision_mask = 3
 
 [node name="Floor" parent="NavigationRegion3D/CSGCombiner3D" unique_id=295663930 instance=ExtResource("2_fr1um")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -93,8 +96,44 @@ size = Vector3(3, 2, 23)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1949778, 4.3, -61.25)
 size = Vector3(3, 10.5, 2.5)
 
+[node name="Wall28" parent="NavigationRegion3D/CSGCombiner3D" unique_id=242734510 instance=ExtResource("3_v45ci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4571238, 4.3, -49.078156)
+size = Vector3(5.524292, 10.5, 2.5)
+
+[node name="Wall29" parent="NavigationRegion3D/CSGCombiner3D" unique_id=1865842060 instance=ExtResource("3_v45ci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.4733, 4.3, -49.078156)
+size = Vector3(5.524292, 10.5, 2.5)
+
+[node name="Wall30" parent="NavigationRegion3D/CSGCombiner3D" unique_id=1453843609 instance=ExtResource("3_v45ci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.887779, 4.3, -41.060673)
+size = Vector3(5.524292, 10.5, 2.5)
+
+[node name="Wall32" parent="NavigationRegion3D/CSGCombiner3D" unique_id=998502429 instance=ExtResource("3_v45ci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.665096, 4.3, -49.078156)
+size = Vector3(5.524292, 10.5, 2.5)
+
+[node name="Wall33" parent="NavigationRegion3D/CSGCombiner3D" unique_id=1458357792 instance=ExtResource("3_v45ci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.079575, 4.3, -41.060673)
+size = Vector3(5.524292, 10.5, 2.5)
+
+[node name="Wall34" parent="NavigationRegion3D/CSGCombiner3D" unique_id=1266162471 instance=ExtResource("3_v45ci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.954647, 4.3, -49.078156)
+size = Vector3(5.524292, 10.5, 2.5)
+
+[node name="Wall35" parent="NavigationRegion3D/CSGCombiner3D" unique_id=2043452961 instance=ExtResource("3_v45ci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.369125, 4.3, -41.060673)
+size = Vector3(5.524292, 10.5, 2.5)
+
+[node name="Wall31" parent="NavigationRegion3D/CSGCombiner3D" unique_id=1114438425 instance=ExtResource("3_v45ci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39561653, 4.3, -41.060673)
+size = Vector3(5.524292, 10.5, 2.5)
+
 [node name="Wall18" parent="NavigationRegion3D/CSGCombiner3D" unique_id=1742553633 instance=ExtResource("3_v45ci")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.194977, 4.3, -61.25)
+size = Vector3(3, 10.5, 2.5)
+
+[node name="Wall25" parent="NavigationRegion3D/CSGCombiner3D" unique_id=571757168 instance=ExtResource("3_v45ci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.090515, 4.3, -70.226425)
 size = Vector3(3, 10.5, 2.5)
 
 [node name="Wall20" parent="NavigationRegion3D/CSGCombiner3D" unique_id=181059413 instance=ExtResource("3_v45ci")]
@@ -116,6 +155,14 @@ size = Vector3(15, 1, 33)
 [node name="Wall11" parent="NavigationRegion3D/CSGCombiner3D" unique_id=1833459871 instance=ExtResource("3_v45ci")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.694977, 3.0500002, -29.5)
 size = Vector3(19, 8, 1)
+
+[node name="Wall26" parent="NavigationRegion3D/CSGCombiner3D" unique_id=1771241330 instance=ExtResource("3_v45ci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.694977, 6.561475, -90.914474)
+size = Vector3(19, 15.022949, 1)
+
+[node name="Wall27" parent="NavigationRegion3D/CSGCombiner3D" unique_id=1489148604 instance=ExtResource("3_v45ci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.48524, 5.431897, -103.816246)
+size = Vector3(19, 12.763794, 1)
 
 [node name="Wall7" parent="NavigationRegion3D/CSGCombiner3D" unique_id=993983113 instance=ExtResource("3_v45ci")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.055022, -0.4499998, -7)
