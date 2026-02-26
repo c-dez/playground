@@ -4,7 +4,9 @@ extends State
 @onready var timer: Timer = Timer.new()
 var wall_normal
 var input_dir: Vector2
-var direction:Vector3
+var direction: Vector3
+var speed: int = 10
+var jump_force: int = 12
 
 
 func _ready() -> void:
@@ -25,13 +27,13 @@ func physics_process(_delta: float) -> void:
 	_change_state_to()
 	if not sm.parent.wall_normal == null:
 		if direction:
-			sm.parent.velocity = direction.bounce(sm.parent.wall_normal) * 10
-			sm.parent.velocity.y = 10
+			sm.parent.velocity = direction.bounce(sm.parent.wall_normal) * speed
+			sm.parent.velocity.y = jump_force
 		else:
 			var forward = sm.parent.mesh.transform.basis.z.normalized()
 
-			sm.parent.velocity = forward.bounce(sm.parent.wall_normal) * 12
-			sm.parent.velocity.y = 10
+			sm.parent.velocity = forward.bounce(sm.parent.wall_normal) * speed
+			sm.parent.velocity.y = jump_force
 
 
 func exit() -> void:

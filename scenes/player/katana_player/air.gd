@@ -5,12 +5,12 @@ extends State
 
 var speed = 10
 
-var initial_height: float
+# var initial_height: float
 var rotate_speed: float = 15
 
 func enter() -> void:
 	sm.parent.mesh.do_squash_and_stretch(1.2, 0.20)
-	initial_height = sm.parent.global_position.y
+	# initial_height = sm.parent.global_position.y
 	print('air')
 	pass
 
