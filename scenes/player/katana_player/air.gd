@@ -5,13 +5,10 @@ extends State
 
 var speed = 10
 
-# var jump_multiplier := 1.2
 var initial_height: float
 var rotate_speed: float = 15
 
 func enter() -> void:
-	# jump()
-
 	sm.parent.mesh.do_squash_and_stretch(1.2, 0.20)
 	initial_height = sm.parent.global_position.y
 	print('air')
@@ -22,13 +19,9 @@ func physics_process(_delta: float) -> void:
 	_change_state_to()
 	move(_delta)
 
+
 func exit() -> void:
 	sm.last_state = self
-
-
-# func jump() -> void:
-# 	speed = sm.parent.stats.move_speed * jump_multiplier
-# 	sm.parent.velocity.y = sm.parent._jump_velocity
 
 
 func move(delta) -> void:
@@ -50,7 +43,6 @@ func _change_state_to() -> void:
 		emit_signal('change_state_to', self, 'move')
 	
 	elif sm.last_state == sm.states['move']:
-		# if sm.parent.global_position.y - initial_height > 2:
 			if Input.is_action_just_pressed('space'):
 				emit_signal('change_state_to', self, 'kick')
 	elif sm.last_state == sm.states['wallkick']:

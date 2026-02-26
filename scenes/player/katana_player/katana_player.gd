@@ -19,10 +19,10 @@ var _jump_fall_gravity: float
 @onready var mesh: MeshInstance3D = get_node('MeshInstance3D')
 
 
-# wall_kick
-# @onready var kick_area: Area3D = mesh.get_node('KickArea')
 var last_velocity
-@onready var wall_ray:RayCast3D = mesh.get_node('WallRay')
+@onready var wall_ray: RayCast3D = mesh.get_node('WallRay')
+var wall_normal
+
 
 # jump signal
 signal jump_signal()
@@ -30,11 +30,6 @@ signal jump_signal()
 func _ready() -> void:
 	_calculate_jump_gravity()
 	mesh.top_level = true
-	# wall_ray.top_level = true
-
-	# kick_area.monitoring = true
-	# kick_area.connect('body_entered', on_kick_body_entered)
-	# kick_area.connect('body_exited', on_kick_body_exited)
 
 	connect('jump_signal', on_jump)
 
@@ -43,24 +38,15 @@ func _process(_delta: float) -> void:
 	mesh.global_position = global_position
 
 
-var wall_normal
 func _physics_process(_delta: float) -> void:
 	coyote_time(_delta)
 	jump()
 	gravity(_delta)
 	move_and_slide()
-	# print(wall_normal, ' wall normal') 
 	if wall_ray.is_colliding():
 		wall_normal = wall_ray.get_collision_normal()
 	else:
 		wall_normal = null
-
-#test
-	# var collision = move_and_collide(velocity * _delta, true)
-	# if collision:
-	# 	wall_normal = collision.get_normal()
-	# else:
-	# 	wall_normal = null
 
 
 func gravity(delta: float) -> void:
@@ -110,18 +96,6 @@ func _calculate_jump_gravity() -> void:
 func take_damage(damage):
 	print(damage)
 
+
 func take_health(damage):
 	print(damage)
-
-
-	pass
-# var in_wall:bool = false
-# func on_kick_body_entered(_body) -> void:
-
-# 	in_wall = true
-	
-# 	pass
-
-# func on_kick_body_exited(_body)-> void:
-# 	in_wall = false
-# 	pass

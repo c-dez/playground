@@ -104,24 +104,28 @@ size = Vector3(5.524292, 10.5, 2.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.4733, 4.3, -49.078156)
 size = Vector3(5.524292, 10.5, 2.5)
 
+[node name="Wall38" parent="NavigationRegion3D/CSGCombiner3D" unique_id=1915434058 instance=ExtResource("3_v45ci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.4733, 4.3, -86.51719)
+size = Vector3(5.524292, 10.5, 7.0283203)
+
 [node name="Wall30" parent="NavigationRegion3D/CSGCombiner3D" unique_id=1453843609 instance=ExtResource("3_v45ci")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.887779, 4.3, -41.060673)
 size = Vector3(5.524292, 10.5, 2.5)
 
 [node name="Wall32" parent="NavigationRegion3D/CSGCombiner3D" unique_id=998502429 instance=ExtResource("3_v45ci")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.665096, 4.3, -49.078156)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.818653, 4.3, -49.078156)
 size = Vector3(5.524292, 10.5, 2.5)
 
 [node name="Wall33" parent="NavigationRegion3D/CSGCombiner3D" unique_id=1458357792 instance=ExtResource("3_v45ci")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.079575, 4.3, -41.060673)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.505672, 4.3, -41.060673)
 size = Vector3(5.524292, 10.5, 2.5)
 
 [node name="Wall34" parent="NavigationRegion3D/CSGCombiner3D" unique_id=1266162471 instance=ExtResource("3_v45ci")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.954647, 4.3, -49.078156)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.46388, 4.3, -49.078156)
 size = Vector3(5.524292, 10.5, 2.5)
 
 [node name="Wall35" parent="NavigationRegion3D/CSGCombiner3D" unique_id=2043452961 instance=ExtResource("3_v45ci")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.369125, 4.3, -41.060673)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.482838, 4.3, -41.060673)
 size = Vector3(5.524292, 10.5, 2.5)
 
 [node name="Wall31" parent="NavigationRegion3D/CSGCombiner3D" unique_id=1114438425 instance=ExtResource("3_v45ci")]
@@ -133,7 +137,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.194977, 4.3, -61.25)
 size = Vector3(3, 10.5, 2.5)
 
 [node name="Wall25" parent="NavigationRegion3D/CSGCombiner3D" unique_id=571757168 instance=ExtResource("3_v45ci")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.090515, 4.3, -70.226425)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.090515, 4.3, -70.56833)
+size = Vector3(3, 10.5, 2.5)
+
+[node name="Wall36" parent="NavigationRegion3D/CSGCombiner3D" unique_id=2117132327 instance=ExtResource("3_v45ci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.972281, 4.3, -70.56833)
 size = Vector3(3, 10.5, 2.5)
 
 [node name="Wall20" parent="NavigationRegion3D/CSGCombiner3D" unique_id=181059413 instance=ExtResource("3_v45ci")]
@@ -148,6 +156,10 @@ size = Vector3(3, 13, 2.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.194977, 10.05, -61.25)
 size = Vector3(15, 1, 2.5)
 
+[node name="Wall37" parent="NavigationRegion3D/CSGCombiner3D" unique_id=1472082977 instance=ExtResource("3_v45ci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.194977, 10.05, -70.51911)
+size = Vector3(15, 1, 2.5)
+
 [node name="Wall22" parent="NavigationRegion3D/CSGCombiner3D" unique_id=491829508 instance=ExtResource("3_v45ci")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.694977, 12.55, -74)
 size = Vector3(15, 1, 33)
@@ -157,8 +169,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.694977, 3.0500002, -29.5)
 size = Vector3(19, 8, 1)
 
 [node name="Wall26" parent="NavigationRegion3D/CSGCombiner3D" unique_id=1771241330 instance=ExtResource("3_v45ci")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.694977, 6.561475, -90.914474)
-size = Vector3(19, 15.022949, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.694977, 10.641187, -90.914474)
+size = Vector3(19, 23.182373, 1)
 
 [node name="Wall27" parent="NavigationRegion3D/CSGCombiner3D" unique_id=1489148604 instance=ExtResource("3_v45ci")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.48524, 5.431897, -103.816246)
