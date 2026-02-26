@@ -36,6 +36,7 @@ func physics_process(_delta: float) -> void:
 
 func exit() -> void:
 	sm.last_state = self
+	timer.stop()
 
 
 func _change_state_to() -> void:

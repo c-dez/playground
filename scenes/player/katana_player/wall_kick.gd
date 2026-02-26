@@ -6,7 +6,7 @@ var wall_normal
 var input_dir: Vector2
 var direction: Vector3
 var speed: int = 10
-var jump_force: int = 12
+var jump_force: int = 10
 
 
 func _ready() -> void:
@@ -38,6 +38,7 @@ func physics_process(_delta: float) -> void:
 
 func exit() -> void:
 	sm.last_state = sm.states['wallkick']
+	wall_normal = null
 
 
 func _change_state_to() -> void:
