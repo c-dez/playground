@@ -1,0 +1,36 @@
+extends State
+
+@onready var sm: StateMachine = get_parent()
+@onready var timer: Timer = Timer.new()
+var timer_time: float = 1.0
+
+func _ready() -> void:
+    add_child(timer)
+    timer.one_shot = true
+    timer.autostart = false
+    timer.connect('timeout', on_timer_timeout)
+
+
+func enter() -> void:
+    print(name)
+    timer.start(timer_time)
+    
+func process(_delta: float) -> void:
+    _change_state_to()
+
+    
+func physics_process(_delta: float) -> void:
+    sm.parent.mesh.scale.y = .5
+
+func exit() -> void:
+    timer.stop()
+    sm.parent.mesh.scale.y = 1
+
+
+func on_timer_timeout() -> void:
+        emit_signal('change_state_to', self , 'move')
+
+
+func _change_state_to() -> void:
+    if Input.is_action_just_pressed(PlayerInput.BUTTONS['space']):
+        emit_signal('change_state_to', self , 'slidejump')

@@ -11,6 +11,8 @@
 [ext_resource type="Script" uid="uid://3djhxvljlfix" path="res://scenes/player/katana_player/wall_kick.gd" id="9_v5v2p"]
 [ext_resource type="Script" uid="uid://bpvcw3ncn7rg2" path="res://scenes/player/katana_player/ground_pound.gd" id="10_6v5e5"]
 [ext_resource type="Script" uid="uid://dwyvy0ugcj2hw" path="res://scenes/player/katana_player/ground_pound_on_floor.gd" id="11_wjvgr"]
+[ext_resource type="Script" uid="uid://c18j7hjj44rh" path="res://scenes/player/katana_player/slide.gd" id="12_hy4vq"]
+[ext_resource type="Script" uid="uid://7kej5f6tqbp8" path="res://scenes/player/katana_player/slide_jump.gd" id="13_ojwm0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5tj81"]
 
@@ -21,6 +23,8 @@ albedo_color = Color(1, 0.04000002, 0.04000002, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_6d0gc"]
 material = SubResource("StandardMaterial3D_wd0kt")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wjvgr"]
 
 [node name="KatanaPlayer" type="CharacterBody3D" unique_id=1538907837 groups=["player"]]
 script = ExtResource("1_ay1kh")
@@ -43,6 +47,7 @@ target_position = Vector3(0, 0, 2)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="." unique_id=1889114395]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8291266, 0)
+shape = SubResource("BoxShape3D_wjvgr")
 spring_length = 7.0
 margin = 1.0
 script = ExtResource("3_wd0kt")
@@ -76,4 +81,12 @@ metadata/_custom_type_script = "uid://ck42b566i6ftq"
 
 [node name="GroundPoundOnFloor" type="Node" parent="StateMachine" unique_id=294676403]
 script = ExtResource("11_wjvgr")
+metadata/_custom_type_script = "uid://ck42b566i6ftq"
+
+[node name="Slide" type="Node" parent="StateMachine" unique_id=1275573836]
+script = ExtResource("12_hy4vq")
+metadata/_custom_type_script = "uid://ck42b566i6ftq"
+
+[node name="SlideJump" type="Node" parent="StateMachine" unique_id=1456201618]
+script = ExtResource("13_ojwm0")
 metadata/_custom_type_script = "uid://ck42b566i6ftq"

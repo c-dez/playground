@@ -6,6 +6,8 @@ const SAVE_PATH: String = 'user://gamesettings.json'
 var data: Dictionary = {
     'fov': 100,
     'mouse_sens': 0.05,
+    'kick': false,
+    'ground_pound':false,
 }
 
 func set_mouse_sens(value: float) -> void:
