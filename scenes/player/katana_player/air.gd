@@ -51,15 +51,18 @@ func _change_state_to() -> void:
 
 
 	if sm.last_state == sm.states['move']:
-			if Input.is_action_just_pressed('space'):
+			# if Input.is_action_just_pressed('space'):
+			if PlayerInput.jump_button():
 				emit_signal('change_state_to', self, 'kick')
 
 	elif sm.last_state == sm.states['wallkick'] :
-		if Input.is_action_just_pressed('space'):
+		# if Input.is_action_just_pressed('space'):
+		if PlayerInput.jump_button():
 			emit_signal('change_state_to', self, 'kick')
 
 	elif sm.last_state == sm.states['groundpoundonfloor']:
-		if Input.is_action_just_pressed('space'):
+		# if Input.is_action_just_pressed('space'):
+		if PlayerInput.jump_button():
 			emit_signal('change_state_to', self, 'kick')
 		
 

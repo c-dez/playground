@@ -18,7 +18,7 @@ func enter() -> void:
 func process(_delta: float) -> void:
     _change_state_to()
 
-    
+
 func physics_process(_delta: float) -> void:
     sm.parent.mesh.scale.y = .5
 
@@ -32,5 +32,6 @@ func on_timer_timeout() -> void:
 
 
 func _change_state_to() -> void:
-    if Input.is_action_just_pressed(PlayerInput.BUTTONS['space']):
+    # if Input.is_action_just_pressed(PlayerInput.BUTTONS['space']):
+    if PlayerInput.jump_button():
         emit_signal('change_state_to', self , 'slidejump')
