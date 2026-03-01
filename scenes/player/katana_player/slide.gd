@@ -2,7 +2,9 @@ extends State
 
 @onready var sm: StateMachine = get_parent()
 @onready var timer: Timer = Timer.new()
-var timer_time: float = 1.0
+var timer_time: float = 0.5
+var enter_velocity: Vector3
+var speed_multiplier: float = 2.5
 
 func _ready() -> void:
     add_child(timer)
@@ -14,17 +16,22 @@ func _ready() -> void:
 func enter() -> void:
     print(name)
     timer.start(timer_time)
-    
+    enter_velocity = sm.parent.velocity
+    sm.parent.velocity = enter_velocity * speed_multiplier
+
+
 func process(_delta: float) -> void:
     _change_state_to()
 
 
 func physics_process(_delta: float) -> void:
     sm.parent.mesh.scale.y = .5
+   
 
 func exit() -> void:
     timer.stop()
     sm.parent.mesh.scale.y = 1
+    sm.parent.velocity = enter_velocity
 
 
 func on_timer_timeout() -> void:

@@ -65,12 +65,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 size = Vector3(1000, 0.1, 1000)
 
 [node name="Wall" parent="NavigationRegion3D/CSGCombiner3D" unique_id=1865212442 instance=ExtResource("2_v45ci")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, -5.8043065)
-size = Vector3(10, 1, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1.5499988, -5.8043065)
+size = Vector3(10, 5, 5)
+
+[node name="Wall4" parent="NavigationRegion3D/CSGCombiner3D" unique_id=1261181284 instance=ExtResource("2_v45ci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.550217, 9.409635, -5.8043065)
+size = Vector3(2.9451904, 1, 5)
 
 [node name="Wall2" parent="NavigationRegion3D/CSGCombiner3D" unique_id=1580201565 instance=ExtResource("2_v45ci")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 0, -5.8043065)
-size = Vector3(10, 1, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 4.049999, -5.8043065)
+size = Vector3(10, 10, 5)
+
+[node name="Wall3" parent="NavigationRegion3D/CSGCombiner3D" unique_id=1688432194 instance=ExtResource("2_v45ci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.049114, 4.049999, -5.8043065)
+size = Vector3(10, 10, 5)
 
 [node name="Dump" type="Node3D" parent="." unique_id=1397750614 groups=["dump"]]
 

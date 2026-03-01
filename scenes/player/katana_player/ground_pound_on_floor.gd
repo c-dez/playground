@@ -3,7 +3,7 @@ extends State
 @onready var sm: StateMachine = get_parent()
 @onready var timer: Timer = Timer.new()
 var timer_start_time: float = 1.0
-var jump_multiplier: float = 1.5
+var jump_multiplier: float = 1.3
 
 func _ready() -> void:
     add_child(timer)
@@ -22,8 +22,7 @@ func process(_delta: float) -> void:
     pass
 
 func physics_process(_delta: float) -> void:
-    if Input.is_action_just_pressed('space'):
-        print('jump')
+    if PlayerInput.jump_button():
         sm.parent.velocity.y = sm.parent._jump_velocity * jump_multiplier
         await get_tree().create_timer(0.2).timeout
 

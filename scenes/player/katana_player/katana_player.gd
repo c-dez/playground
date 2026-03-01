@@ -72,6 +72,8 @@ func on_jump() -> void:
 		# salto desde state ground pound floor
 		
 		pass
+	elif sm.current_state == sm.states['slidejump']:
+		pass
 	else:
 		velocity.y = _jump_velocity
 		_coyote = 0

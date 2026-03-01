@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=2 format=3 uid="uid://dqxje8dl7krao"]
+[gd_resource type="Resource" script_class="CharacterStats" format=3 uid="uid://dqxje8dl7krao"]
 
 [ext_resource type="Script" uid="uid://b86pfxkk0k6e8" path="res://resources/character_stats.gd" id="1_wld0n"]
 
@@ -9,6 +9,6 @@ health = 200
 damage = 50
 attack_range = 100
 move_speed = 9.0
-dash_speed = 1.5
+dash_speed = 1.2
 jump_force = 5.0
 type = 1
