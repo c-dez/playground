@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://dwyvy0ugcj2hw" path="res://scenes/player/katana_player/ground_pound_on_floor.gd" id="11_wjvgr"]
 [ext_resource type="Script" uid="uid://c18j7hjj44rh" path="res://scenes/player/katana_player/slide.gd" id="12_hy4vq"]
 [ext_resource type="Script" uid="uid://7kej5f6tqbp8" path="res://scenes/player/katana_player/slide_jump.gd" id="13_ojwm0"]
+[ext_resource type="Script" uid="uid://c5tbrhyclvx5s" path="res://scenes/player/katana_player/attack.gd" id="14_0xnpu"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5tj81"]
 
@@ -89,4 +90,8 @@ metadata/_custom_type_script = "uid://ck42b566i6ftq"
 
 [node name="SlideJump" type="Node" parent="StateMachine" unique_id=1456201618]
 script = ExtResource("13_ojwm0")
+metadata/_custom_type_script = "uid://ck42b566i6ftq"
+
+[node name="Attack" type="Node" parent="StateMachine" unique_id=1950198817]
+script = ExtResource("14_0xnpu")
 metadata/_custom_type_script = "uid://ck42b566i6ftq"

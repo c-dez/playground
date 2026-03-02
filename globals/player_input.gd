@@ -68,6 +68,10 @@ func light_attack_button() -> bool:
 func heavy_attack_button() -> bool:
 	return Input.is_action_just_pressed(BUTTONS["heavy_attack"])
 
+## shift ground_pound/slide
+func shitf_button()-> bool:
+	return Input.is_action_just_pressed(BUTTONS['shift'])
+
 
 func exit_game() -> void:
 	if Input.is_action_just_pressed('exit'):

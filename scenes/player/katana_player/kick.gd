@@ -10,7 +10,7 @@ var last_velocity
 # wall_kick
 const kick_count: int = 3
 var _kick_count: int = kick_count
-var duration_time: float = 0.3
+var duration_time: float = 0.5
 
 func _ready() -> void:
 	add_child(timer)
@@ -31,7 +31,7 @@ func enter() -> void:
 func physics_process(_delta: float) -> void:
 	_change_state_to()
 	if timer.time_left as bool and _kick_count > 0:
-		sm.parent.velocity.y = 0
+		sm.parent.velocity.y = -1
 
 
 func exit() -> void:

@@ -38,7 +38,12 @@ func _change_state_to() -> void:
 	if !sm.parent.is_on_floor() and sm.parent.can_jump == false:
 		emit_signal('change_state_to', self, 'air')
 	
-	elif Input.is_action_just_pressed(PlayerInput.BUTTONS['shift']):
+	# elif Input.is_action_just_pressed(PlayerInput.BUTTONS['shift']):
+	elif PlayerInput.shitf_button():
 		emit_signal('change_state_to', self, 'slide')
+	
+	elif PlayerInput.light_attack_button():
+		emit_signal('change_state_to', self, 'attack')
 
 		pass
+ 
