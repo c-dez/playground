@@ -28,6 +28,9 @@ var wall_normal
 # jump signal
 signal jump_signal()
 
+# attack_area
+@onready var attack_area:Area3D = get_node('AttackArea')
+
 func _ready() -> void:
 	_calculate_jump_gravity()
 	mesh.top_level = true
