@@ -15,7 +15,7 @@
 [ext_resource type="Script" uid="uid://7kej5f6tqbp8" path="res://scenes/player/katana_player/slide_jump.gd" id="13_ojwm0"]
 [ext_resource type="Script" uid="uid://c5tbrhyclvx5s" path="res://scenes/player/katana_player/attack.gd" id="14_0xnpu"]
 [ext_resource type="Script" uid="uid://nnr230nu3u7x" path="res://scenes/player/katana_player/attack_area.gd" id="15_dt0e0"]
-[ext_resource type="Script" uid="uid://7linb8o0eoip" path="res://scenes/player/katana_player/ground_area.gd" id="15_r34ns"]
+[ext_resource type="Script" uid="uid://0lyvsuoygp0j" path="res://scenes/player/katana_player/ground_area.gd" id="15_r34ns"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5tj81"]
 
@@ -117,14 +117,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.626172)
 shape = SubResource("SphereShape3D_0xnpu")
 debug_color = Color(0.90464115, 0.21376505, 0.55424064, 0.41960785)
 
-[node name="GroundArea" type="Area3D" parent="." unique_id=1316498076 node_paths=PackedStringArray("ground_pound")]
-visible = false
+[node name="GroundArea" type="Area3D" parent="." unique_id=1316498076 node_paths=PackedStringArray("state", "parent")]
 collision_layer = 0
 collision_mask = 4
 monitoring = false
 monitorable = false
 script = ExtResource("15_r34ns")
-ground_pound = NodePath("../StateMachine/GroundPound")
+state = NodePath("../StateMachine/GroundPound")
+parent = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GroundArea" unique_id=1092892646]
 shape = SubResource("SphereShape3D_0xnpu")
