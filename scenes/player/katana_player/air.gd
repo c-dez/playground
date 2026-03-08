@@ -49,6 +49,9 @@ func _change_state_to() -> void:
 	elif Input.is_action_just_pressed(PlayerInput.BUTTONS['shift']):
 		emit_signal('change_state_to', self, 'groundpound')
 
+	elif PlayerInput.light_attack_button():
+		emit_signal('change_state_to',self,'attack')
+
 
 	if sm.last_state == sm.states['move']:
 			# if Input.is_action_just_pressed('space'):
