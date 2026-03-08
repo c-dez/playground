@@ -40,11 +40,11 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	mesh.global_position = global_position
-	jump()
 	
 
 
 func _physics_process(_delta: float) -> void:
+	jump()
 	coyote_time(_delta)
 	gravity(_delta)
 	move_and_slide()
