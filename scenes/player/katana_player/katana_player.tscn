@@ -113,7 +113,7 @@ state = NodePath("../StateMachine/Attack")
 parent = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea" unique_id=890392322]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.626172)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.1459751)
 shape = SubResource("SphereShape3D_0xnpu")
 debug_color = Color(0.90464115, 0.21376505, 0.55424064, 0.41960785)
 
