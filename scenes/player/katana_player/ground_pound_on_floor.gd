@@ -39,4 +39,7 @@ func exit() -> void:
 func _change_state_to() -> void:
     if not timer.time_left as bool:
         emit_signal('change_state_to', self, 'move')
+    
+    if PlayerInput.light_attack_button():
+        emit_signal('change_state_to', self,'attack')
         pass
