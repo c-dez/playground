@@ -1,27 +1,28 @@
 extends Area3D
 
+
+# area de dano al hacer ground pound
+
 var enemies_inside_attack_area_list
+var area_damage_time: float = 0.3
 @export var ground_pound: State
 @onready var parent: CharacterBody3D = get_parent()
 @onready var timer := Timer.new()
-var area_damage_time: float = 0.3
 
 
 func _ready() -> void:
-	ground_pound.connect('ground_pound_area_signal', on_ground_pound_signal)
 	timer.one_shot = true
 	timer.autostart = false
 	add_child(timer)
 	top_level = true
+	timer.connect('timeout', on_timer_timeout)
+	ground_pound.connect('ground_pound_area_signal', on_ground_pound_signal)
 
 
 func _physics_process(_delta: float) -> void:
 	if timer.time_left as bool:
 		attack()
 		do_damage()
-		
-	else:
-		set_monitoring(false)
 
 
 func attack() -> void:
@@ -46,3 +47,7 @@ func on_ground_pound_signal() -> void:
 	timer.start(area_damage_time)
 	set_monitoring(true)
 	pass
+
+
+func on_timer_timeout() -> void:
+	set_monitoring(false)

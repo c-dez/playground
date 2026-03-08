@@ -1,5 +1,7 @@
 extends State
 
+# estado intermedio entre ground pound y otros segun acciones de player
+
 @onready var sm: StateMachine = get_parent()
 @onready var timer: Timer = Timer.new()
 var timer_start_time: float = 1.0

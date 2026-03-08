@@ -28,7 +28,8 @@ func _physics_process(_delta: float) -> void:
 
 func on_state_change(_current_state: State, new_state_string: String) -> void:
 	if _current_state != current_state:
-		printerr('name: ','"',_current_state,'"', ' on_state_change(): current_state doesnt match')
+		# algo esta mal
+		printerr('current_state: ', current_state,' : ', _current_state )
 		return
 
 	var new_state = states[new_state_string.to_lower()]
