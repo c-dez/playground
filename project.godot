@@ -39,7 +39,7 @@ enabled=PackedStringArray("res://addons/road-generator/plugin.cfg")
 folder_colors={
 "res://components/": "orange",
 "res://scenes/": "red",
-"res://scripts/": "pink"
+"res://scripts_base/": "pink"
 }
 
 [global_group]
