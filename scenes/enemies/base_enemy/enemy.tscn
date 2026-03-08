@@ -66,3 +66,4 @@ script = ExtResource("7_rl3cs")
 [node name="RayCast3D" type="RayCast3D" parent="Muzzle" unique_id=1910889298]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -1)
 target_position = Vector3(0, 0, -30)
+collision_mask = 3
