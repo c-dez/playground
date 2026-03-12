@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d7ruu2n7l8b1"]
 
-[ext_resource type="PackedScene" uid="uid://dsh52cxqfn6oy" path="res://scenes/hurtbox/hurtbox.tscn" id="1_1yolg"]
+[ext_resource type="PackedScene" uid="uid://dsh52cxqfn6oy" path="res://components/hurtbox/hurtbox.tscn" id="1_1yolg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qv4mi"]
 

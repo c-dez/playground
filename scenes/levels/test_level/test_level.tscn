@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://unw31vd7gc8f"]
 
 [ext_resource type="PackedScene" uid="uid://dqp0q00oipopk" path="res://assets/blocks/wall.tscn" id="2_v45ci"]
-[ext_resource type="PackedScene" uid="uid://d7ruu2n7l8b1" path="res://scenes/test/test_body.tscn" id="3_mghyo"]
+[ext_resource type="PackedScene" uid="uid://d7ruu2n7l8b1" path="res://scenes/test/enemy/test_body.tscn" id="3_mghyo"]
 [ext_resource type="PackedScene" uid="uid://bp53d46vbf5s8" path="res://scenes/player/katana_player/katana_player.tscn" id="5_48ne7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_48ne7"]
