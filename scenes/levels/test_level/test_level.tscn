@@ -2,8 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dmhtqrdjcm80a" path="res://scenes/test/movement/floor.tscn" id="2_fr1um"]
 [ext_resource type="PackedScene" uid="uid://dqp0q00oipopk" path="res://assets/blocks/wall.tscn" id="2_v45ci"]
-[ext_resource type="PackedScene" uid="uid://dq8sxn20xvh84" path="res://scenes/enemies/base_enemy/enemy.tscn" id="4_48ne7"]
-[ext_resource type="Script" uid="uid://b86pfxkk0k6e8" path="res://resources/character_stats.gd" id="5_6xh4u"]
+[ext_resource type="PackedScene" uid="uid://d7ruu2n7l8b1" path="res://scenes/test/test_body.tscn" id="3_mghyo"]
 [ext_resource type="PackedScene" uid="uid://bp53d46vbf5s8" path="res://scenes/player/katana_player/katana_player.tscn" id="5_48ne7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_48ne7"]
@@ -23,18 +22,6 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_v45ci"]
-
-[sub_resource type="Resource" id="Resource_48ne7"]
-resource_local_to_scene = true
-script = ExtResource("5_6xh4u")
-attack_cooldown = 1.5
-jump_force = 5.0
-
-[sub_resource type="Resource" id="Resource_6xh4u"]
-resource_local_to_scene = true
-script = ExtResource("5_6xh4u")
-attack_cooldown = 1.5
-jump_force = 5.0
 
 [node name="TestLevel" type="Node3D" unique_id=443560844]
 
@@ -128,14 +115,8 @@ size = Vector3(10, 10, 5)
 
 [node name="Dump" type="Node3D" parent="." unique_id=1397750614 groups=["dump"]]
 
+[node name="TestBody" parent="." unique_id=1698571692 instance=ExtResource("3_mghyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5303345, 0, -14.114057)
+
 [node name="KatanaPlayer" parent="." unique_id=1538907837 instance=ExtResource("5_48ne7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.815187, 5.0499964, -6.4241247)
-collision_mask = 3
-
-[node name="Enemy" parent="." unique_id=1424493223 instance=ExtResource("4_48ne7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.639801, 0.04999876, 0)
-stats = SubResource("Resource_48ne7")
-
-[node name="Enemy2" parent="." unique_id=1725966971 instance=ExtResource("4_48ne7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.639801, 0.04999876, -4.549156)
-stats = SubResource("Resource_6xh4u")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.674308, 0, 0)
