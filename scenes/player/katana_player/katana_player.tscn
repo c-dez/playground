@@ -14,8 +14,6 @@
 [ext_resource type="Script" uid="uid://c18j7hjj44rh" path="res://scenes/player/katana_player/slide.gd" id="12_hy4vq"]
 [ext_resource type="Script" uid="uid://7kej5f6tqbp8" path="res://scenes/player/katana_player/slide_jump.gd" id="13_ojwm0"]
 [ext_resource type="Script" uid="uid://c5tbrhyclvx5s" path="res://scenes/player/katana_player/attack.gd" id="14_0xnpu"]
-[ext_resource type="Script" uid="uid://nnr230nu3u7x" path="res://scenes/player/katana_player/attack_area.gd" id="15_dt0e0"]
-[ext_resource type="Script" uid="uid://0lyvsuoygp0j" path="res://scenes/player/katana_player/ground_area.gd" id="15_r34ns"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5tj81"]
 
@@ -28,9 +26,6 @@ albedo_color = Color(1, 0.04000002, 0.04000002, 1)
 material = SubResource("StandardMaterial3D_wd0kt")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wjvgr"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_0xnpu"]
-radius = 2.302
 
 [node name="KatanaPlayer" type="CharacterBody3D" unique_id=1538907837 groups=["player"]]
 script = ExtResource("1_ay1kh")
@@ -87,8 +82,9 @@ metadata/_custom_type_script = "uid://ck42b566i6ftq"
 script = ExtResource("10_6v5e5")
 metadata/_custom_type_script = "uid://ck42b566i6ftq"
 
-[node name="GroundPoundOnFloor" type="Node" parent="StateMachine" unique_id=294676403]
+[node name="GroundPoundOnFloor" type="Node" parent="StateMachine" unique_id=294676403 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("11_wjvgr")
+hitbox = NodePath("")
 metadata/_custom_type_script = "uid://ck42b566i6ftq"
 
 [node name="Slide" type="Node" parent="StateMachine" unique_id=1275573836]
@@ -102,30 +98,3 @@ metadata/_custom_type_script = "uid://ck42b566i6ftq"
 [node name="Attack" type="Node" parent="StateMachine" unique_id=1950198817]
 script = ExtResource("14_0xnpu")
 metadata/_custom_type_script = "uid://ck42b566i6ftq"
-
-[node name="AttackArea" type="Area3D" parent="." unique_id=555535150 node_paths=PackedStringArray("state", "parent")]
-collision_layer = 0
-collision_mask = 4
-monitoring = false
-monitorable = false
-script = ExtResource("15_dt0e0")
-state = NodePath("../StateMachine/Attack")
-parent = NodePath("..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea" unique_id=890392322]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.1459751)
-shape = SubResource("SphereShape3D_0xnpu")
-debug_color = Color(0.90464115, 0.21376505, 0.55424064, 0.41960785)
-
-[node name="GroundArea" type="Area3D" parent="." unique_id=1316498076 node_paths=PackedStringArray("state", "parent")]
-collision_layer = 0
-collision_mask = 4
-monitoring = false
-monitorable = false
-script = ExtResource("15_r34ns")
-state = NodePath("../StateMachine/GroundPoundOnFloor")
-parent = NodePath("..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GroundArea" unique_id=1092892646]
-shape = SubResource("SphereShape3D_0xnpu")
-debug_color = Color(0.90464115, 0.21376505, 0.55424064, 0.41960785)
