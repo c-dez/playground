@@ -6,11 +6,12 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_hocnj"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_mghyo"]
-radius = 1.525
+[sub_resource type="SphereShape3D" id="SphereShape3D_1yolg"]
+radius = 1.409
 
 [node name="TestBody" type="CharacterBody3D" unique_id=1698571692]
-collision_layer = 4
+collision_layer = 5
+platform_floor_layers = 4294967042
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=298880987]
 shape = SubResource("CapsuleShape3D_qv4mi")
@@ -19,8 +20,9 @@ shape = SubResource("CapsuleShape3D_qv4mi")
 mesh = SubResource("CapsuleMesh_hocnj")
 
 [node name="Hurtbox" parent="." unique_id=450333765 instance=ExtResource("1_1yolg")]
+collision_mask = 16
 
-[node name="CollisionShape3D" parent="Hurtbox" index="0" unique_id=1727762751]
-shape = SubResource("SphereShape3D_mghyo")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" unique_id=1332587856]
+shape = SubResource("SphereShape3D_1yolg")
 
 [editable path="Hurtbox"]

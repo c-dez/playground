@@ -14,7 +14,8 @@
 [ext_resource type="Script" uid="uid://c18j7hjj44rh" path="res://scenes/player/katana_player/state_machine/slide.gd" id="12_hy4vq"]
 [ext_resource type="Script" uid="uid://7kej5f6tqbp8" path="res://scenes/player/katana_player/state_machine/slide_jump.gd" id="13_ojwm0"]
 [ext_resource type="Script" uid="uid://c5tbrhyclvx5s" path="res://scenes/player/katana_player/state_machine/attack.gd" id="14_0xnpu"]
-[ext_resource type="Script" uid="uid://cscauveqttw18" path="res://scenes/hitbox/hitbox.gd" id="15_r34ns"]
+[ext_resource type="PackedScene" uid="uid://bvokdqlojw7vb" path="res://scenes/hitbox/hitbox.tscn" id="15_r34ns"]
+[ext_resource type="PackedScene" uid="uid://dsh52cxqfn6oy" path="res://scenes/hurtbox/hurtbox.tscn" id="16_dt0e0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5tj81"]
 
@@ -29,7 +30,10 @@ material = SubResource("StandardMaterial3D_wd0kt")
 [sub_resource type="BoxShape3D" id="BoxShape3D_wjvgr"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dt0e0"]
-radius = 1.409
+radius = 1.365
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_stoeh"]
+radius = 0.4
 
 [node name="KatanaPlayer" type="CharacterBody3D" unique_id=1538907837 groups=["player"]]
 collision_mask = 3
@@ -103,11 +107,14 @@ metadata/_custom_type_script = "uid://ck42b566i6ftq"
 script = ExtResource("14_0xnpu")
 metadata/_custom_type_script = "uid://ck42b566i6ftq"
 
-[node name="Hitbox" type="Area3D" parent="." unique_id=1981365072]
-collision_layer = 8
-collision_mask = 0
-script = ExtResource("15_r34ns")
+[node name="Hitbox" parent="." unique_id=1981365072 instance=ExtResource("15_r34ns")]
+collision_layer = 16
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=1111860344]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=685564909]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.3741732)
 shape = SubResource("SphereShape3D_dt0e0")
+
+[node name="Hurtbox" parent="." unique_id=450333765 instance=ExtResource("16_dt0e0")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" unique_id=835831671]
+shape = SubResource("CapsuleShape3D_stoeh")

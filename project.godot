@@ -144,7 +144,8 @@ camera_right={
 3d_physics/layer_1="player"
 3d_physics/layer_2="terrain"
 3d_physics/layer_3="enemies"
-3d_physics/layer_4="hitbox"
+3d_physics/layer_4="hitboxEnemies"
+3d_physics/layer_5="hitboxPlayer"
 
 [physics]
 

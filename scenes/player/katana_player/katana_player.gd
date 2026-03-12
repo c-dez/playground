@@ -18,6 +18,7 @@ var _jump_fall_gravity: float
 
 ## top_level = true, su posicion  y rotacion se maneja independiente
 @onready var mesh: MeshInstance3D = get_node('MeshInstance3D')
+@onready var hitbox:Hitbox = get_node('Hitbox')
 
 
 var last_velocity
@@ -33,12 +34,14 @@ signal jump_signal()
 func _ready() -> void:
 	_calculate_jump_gravity()
 	mesh.top_level = true
-
+	hitbox.top_level = true
 	connect('jump_signal', on_jump)
 
 
 func _process(_delta: float) -> void:
 	mesh.global_position = global_position
+	hitbox.rotation = mesh.rotation
+	hitbox.global_position = global_position
 	
 
 

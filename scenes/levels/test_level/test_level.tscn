@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://unw31vd7gc8f"]
 
-[ext_resource type="PackedScene" uid="uid://dmhtqrdjcm80a" path="res://scenes/test/movement/floor.tscn" id="2_fr1um"]
 [ext_resource type="PackedScene" uid="uid://dqp0q00oipopk" path="res://assets/blocks/wall.tscn" id="2_v45ci"]
 [ext_resource type="PackedScene" uid="uid://d7ruu2n7l8b1" path="res://scenes/test/test_body.tscn" id="3_mghyo"]
 [ext_resource type="PackedScene" uid="uid://bp53d46vbf5s8" path="res://scenes/player/katana_player/katana_player.tscn" id="5_48ne7"]
@@ -22,6 +21,9 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_v45ci"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_62kbb"]
+albedo_color = Color(0.29954746, 0.29954746, 0.29954743, 1)
 
 [node name="TestLevel" type="Node3D" unique_id=443560844]
 
@@ -60,10 +62,6 @@ layers = 2
 use_collision = true
 collision_layer = 2
 collision_mask = 2
-
-[node name="Floor" parent="NavigationRegion3D/CSGCombiner3D" unique_id=295663930 instance=ExtResource("2_fr1um")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-size = Vector3(1000, 0.1, 1000)
 
 [node name="Wall" parent="NavigationRegion3D/CSGCombiner3D" unique_id=1865212442 instance=ExtResource("2_v45ci")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1.5499988, -5.8043065)
@@ -113,10 +111,15 @@ size = Vector3(10, 10, 2.4985352)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.049114, 4.049999, -5.8043065)
 size = Vector3(10, 10, 5)
 
+[node name="Floor" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D" unique_id=1946845711]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+size = Vector3(1000, 0.1, 1000)
+material = SubResource("StandardMaterial3D_62kbb")
+
 [node name="Dump" type="Node3D" parent="." unique_id=1397750614 groups=["dump"]]
 
 [node name="TestBody" parent="." unique_id=1698571692 instance=ExtResource("3_mghyo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5303345, 0, -14.114057)
 
 [node name="KatanaPlayer" parent="." unique_id=1538907837 instance=ExtResource("5_48ne7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.674308, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.674308, 0, -9.157445)
