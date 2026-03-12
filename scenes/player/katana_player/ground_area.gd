@@ -6,6 +6,6 @@ func _ready() -> void:
     top_level = true
 
 
-func on_state_signal() -> void:
-    super.on_state_signal()
+func on_enter_state_signal() -> void:
+    super.on_enter_state_signal()
     global_position = parent.global_position

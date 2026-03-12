@@ -7,6 +7,8 @@ extends State
 var timer_start_time: float = 1.0
 var jump_multiplier: float = 1.3
 
+signal enter_state_signal()
+
 func _ready() -> void:
     add_child(timer)
     timer.one_shot = true
@@ -17,6 +19,7 @@ func enter() -> void:
     # print(name)
     timer.start(timer_start_time)
     sm.parent.mesh.do_squash_and_stretch(0.5, 0.10)
+    emit_signal('enter_state_signal')
 
 
 func process(_delta: float) -> void:

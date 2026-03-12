@@ -1,6 +1,7 @@
 extends Area3D
 class_name Hitbox
 
+## state desde que se escucha enter_state_signal
 @export var state: State
 @export var parent: CharacterBody3D
 @export var hitbox_duration_time: float = 0.3
@@ -10,7 +11,7 @@ var enemies_inside = null
 
 func _ready() -> void:
 	_set_duration_timer_propeties()
-	state.connect('state_signal', on_state_signal)
+	state.connect('enter_state_signal', on_enter_state_signal)
 	
 
 func _physics_process(_delta: float) -> void:
@@ -40,8 +41,8 @@ func do_damage() -> void:
 func on_timer_timeout() -> void:
 	set_monitoring(false)
 
-
-func on_state_signal() -> void:
+## ejecuta este codigo al escuchar state_signal
+func on_enter_state_signal() -> void:
 	duration_timer.start(hitbox_duration_time)
 	set_monitoring(true)
 

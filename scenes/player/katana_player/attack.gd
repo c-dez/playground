@@ -6,7 +6,8 @@ var attack_duration: float = 0.5
 @onready var sm: StateMachine = get_parent()
 @onready var timer: Timer = Timer.new()
 
-signal state_signal()
+## senal emitida al entrar al state
+signal enter_state_signal()
 
 func _ready():
 	add_child(timer)
@@ -20,7 +21,7 @@ func enter() -> void:
 	timer.start(attack_duration)
 	print(self )
 	# attack_area.set_monitoring(true)
-	emit_signal('state_signal')
+	emit_signal('enter_state_signal')
 
 
 func physics_process(_delta: float) -> void:

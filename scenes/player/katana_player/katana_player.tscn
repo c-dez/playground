@@ -123,7 +123,7 @@ collision_mask = 4
 monitoring = false
 monitorable = false
 script = ExtResource("15_r34ns")
-state = NodePath("../StateMachine/GroundPound")
+state = NodePath("../StateMachine/GroundPoundOnFloor")
 parent = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GroundArea" unique_id=1092892646]

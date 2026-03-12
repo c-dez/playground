@@ -8,4 +8,3 @@ func _process(_delta):
 	rotation.y = parent.mesh.rotation.y
 	global_position = parent.global_position
 	pass
-

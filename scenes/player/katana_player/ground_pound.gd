@@ -6,7 +6,7 @@ extends State
 var drop_speed: int = 25
 @onready var sm: StateMachine = get_parent()
 
-signal state_signal()
+# signal enter_state_signal()
 
 
 func enter() -> void:
@@ -30,4 +30,4 @@ func _change_state_to() -> void:
     if sm.parent.is_on_floor():
         emit_signal('change_state_to', self , 'groundpoundonfloor')
         # signal de dano en area en el suelo
-        emit_signal('state_signal')
+        # emit_signal('enter_state_signal')
