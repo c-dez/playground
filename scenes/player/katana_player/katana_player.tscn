@@ -5,15 +5,15 @@
 [ext_resource type="Script" uid="uid://cl3utaufswjjo" path="res://scenes/player/katana_player/camera.gd" id="3_wd0kt"]
 [ext_resource type="Script" uid="uid://clpwxglgmo40h" path="res://scenes/player/katana_player/skin.gd" id="3_yqwh1"]
 [ext_resource type="Script" uid="uid://qdikaf6s2kim" path="res://components/state_machine/state_machine.gd" id="4_54iqn"]
-[ext_resource type="Script" uid="uid://clrujvxrawnt6" path="res://scenes/player/katana_player/move.gd" id="5_njw58"]
-[ext_resource type="Script" uid="uid://cmjcmurnk2pwd" path="res://scenes/player/katana_player/air.gd" id="6_njw58"]
-[ext_resource type="Script" uid="uid://b7t6cns0gs5vb" path="res://scenes/player/katana_player/kick.gd" id="8_swhwx"]
-[ext_resource type="Script" uid="uid://3djhxvljlfix" path="res://scenes/player/katana_player/wall_kick.gd" id="9_v5v2p"]
-[ext_resource type="Script" uid="uid://bpvcw3ncn7rg2" path="res://scenes/player/katana_player/ground_pound.gd" id="10_6v5e5"]
-[ext_resource type="Script" uid="uid://dwyvy0ugcj2hw" path="res://scenes/player/katana_player/ground_pound_on_floor.gd" id="11_wjvgr"]
-[ext_resource type="Script" uid="uid://c18j7hjj44rh" path="res://scenes/player/katana_player/slide.gd" id="12_hy4vq"]
-[ext_resource type="Script" uid="uid://7kej5f6tqbp8" path="res://scenes/player/katana_player/slide_jump.gd" id="13_ojwm0"]
-[ext_resource type="Script" uid="uid://c5tbrhyclvx5s" path="res://scenes/player/katana_player/attack.gd" id="14_0xnpu"]
+[ext_resource type="Script" uid="uid://clrujvxrawnt6" path="res://scenes/player/katana_player/state_machine/move.gd" id="5_njw58"]
+[ext_resource type="Script" uid="uid://cmjcmurnk2pwd" path="res://scenes/player/katana_player/state_machine/air.gd" id="6_njw58"]
+[ext_resource type="Script" uid="uid://b7t6cns0gs5vb" path="res://scenes/player/katana_player/state_machine/kick.gd" id="8_swhwx"]
+[ext_resource type="Script" uid="uid://3djhxvljlfix" path="res://scenes/player/katana_player/state_machine/wall_kick.gd" id="9_v5v2p"]
+[ext_resource type="Script" uid="uid://bpvcw3ncn7rg2" path="res://scenes/player/katana_player/state_machine/ground_pound.gd" id="10_6v5e5"]
+[ext_resource type="Script" uid="uid://dwyvy0ugcj2hw" path="res://scenes/player/katana_player/state_machine/ground_pound_on_floor.gd" id="11_wjvgr"]
+[ext_resource type="Script" uid="uid://c18j7hjj44rh" path="res://scenes/player/katana_player/state_machine/slide.gd" id="12_hy4vq"]
+[ext_resource type="Script" uid="uid://7kej5f6tqbp8" path="res://scenes/player/katana_player/state_machine/slide_jump.gd" id="13_ojwm0"]
+[ext_resource type="Script" uid="uid://c5tbrhyclvx5s" path="res://scenes/player/katana_player/state_machine/attack.gd" id="14_0xnpu"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5tj81"]
 
@@ -82,9 +82,8 @@ metadata/_custom_type_script = "uid://ck42b566i6ftq"
 script = ExtResource("10_6v5e5")
 metadata/_custom_type_script = "uid://ck42b566i6ftq"
 
-[node name="GroundPoundOnFloor" type="Node" parent="StateMachine" unique_id=294676403 node_paths=PackedStringArray("hitbox")]
+[node name="GroundPoundOnFloor" type="Node" parent="StateMachine" unique_id=294676403]
 script = ExtResource("11_wjvgr")
-hitbox = NodePath("")
 metadata/_custom_type_script = "uid://ck42b566i6ftq"
 
 [node name="Slide" type="Node" parent="StateMachine" unique_id=1275573836]
