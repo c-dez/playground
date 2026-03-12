@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://bvokdqlojw7vb"]
 
+[ext_resource type="Script" uid="uid://cscauveqttw18" path="res://scenes/hitbox/hitbox.gd" id="1_ed0fv"]
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_x48qo"]
 
 [node name="Hitbox" type="Area3D" unique_id=1981365072]
+script = ExtResource("1_ed0fv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1111860344]
 shape = SubResource("SphereShape3D_x48qo")
