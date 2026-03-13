@@ -13,6 +13,9 @@ func _init() -> void:
     current_health = max_health
 
 
+func move() -> void:
+    pass
+
 
 func gravity() -> void:
     if not is_on_floor():
