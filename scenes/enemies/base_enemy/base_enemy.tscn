@@ -1,13 +1,30 @@
 [gd_scene format=3 uid="uid://deaqjkvc1n0y"]
 
+[ext_resource type="Script" uid="uid://bkx3jh7puadba" path="res://components/hurtbox/hurtbox.gd" id="1_1qoam"]
+[ext_resource type="Script" uid="uid://bonq4sxrcwlf7" path="res://scenes/enemies/base_enemy/base_enemy.gd" id="1_3ttm4"]
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_5dpe4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1qoam"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3ttm4"]
+radius = 0.8
+
 [node name="BaseEnemy" type="CharacterBody3D" unique_id=1508650006]
+script = ExtResource("1_3ttm4")
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=236269146]
 mesh = SubResource("CapsuleMesh_5dpe4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1505718825]
 shape = SubResource("CapsuleShape3D_1qoam")
+
+[node name="Hurtbox" type="Area3D" parent="." unique_id=718880379]
+collision_layer = 32
+collision_mask = 16
+script = ExtResource("1_1qoam")
+metadata/_custom_type_script = "uid://bkx3jh7puadba"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" unique_id=1714945397]
+shape = SubResource("CapsuleShape3D_3ttm4")
+debug_color = Color(0.6597178, 0.51310545, 0.12526485, 0.41960785)

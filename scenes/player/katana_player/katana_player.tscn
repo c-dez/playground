@@ -109,6 +109,7 @@ metadata/_custom_type_script = "uid://ck42b566i6ftq"
 
 [node name="Hitbox" parent="." unique_id=1981365072 instance=ExtResource("15_r34ns")]
 collision_layer = 16
+collision_mask = 32
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=685564909]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.3741732)
