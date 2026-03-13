@@ -29,7 +29,7 @@ func physics_process(_delta: float) -> void:
    
 
 func exit() -> void:
-    sm.last_state = self
+    # sm.last_state = self
     timer.stop()
     sm.parent.mesh.scale.y = 1
     sm.parent.velocity = enter_velocity

@@ -4,7 +4,7 @@ class_name StateMachine
 @onready var parent: Node3D = get_parent()
 @onready var current_state: State = get_child(0)
 var states: Dictionary = {}
-var last_state
+var last_state: State 
 
 
 func _ready() -> void:
@@ -35,6 +35,7 @@ func on_state_change(_current_state: State, new_state_string: String) -> void:
 	var new_state = states[new_state_string.to_lower()]
 	if current_state:
 		current_state.exit()
+		last_state = current_state
 
 	new_state.enter()
 	current_state = new_state

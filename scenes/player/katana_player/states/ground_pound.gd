@@ -22,8 +22,8 @@ func physics_process(_delta: float) -> void:
     sm.parent.velocity.z = 0
     _change_state_to()
 
-func exit() -> void:
-    sm.last_state = self
+# func exit() -> void:
+#     sm.last_state = self
 
 
 func _change_state_to() -> void:

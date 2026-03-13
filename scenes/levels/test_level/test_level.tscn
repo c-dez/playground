@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://unw31vd7gc8f"]
 
 [ext_resource type="PackedScene" uid="uid://dqp0q00oipopk" path="res://assets/blocks/wall.tscn" id="2_v45ci"]
-[ext_resource type="PackedScene" uid="uid://deaqjkvc1n0y" path="res://scenes/enemies/base_enemy/base_enemy.tscn" id="3_62kbb"]
 [ext_resource type="PackedScene" uid="uid://bp53d46vbf5s8" path="res://scenes/player/katana_player/katana_player.tscn" id="5_48ne7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_48ne7"]
@@ -120,6 +119,3 @@ material = SubResource("StandardMaterial3D_62kbb")
 
 [node name="KatanaPlayer" parent="." unique_id=1538907837 instance=ExtResource("5_48ne7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.674308, 0, -9.157445)
-
-[node name="BaseEnemy2" parent="." unique_id=2116245060 instance=ExtResource("3_62kbb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -15)

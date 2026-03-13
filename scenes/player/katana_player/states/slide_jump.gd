@@ -19,8 +19,8 @@ func enter() -> void:
     sm.parent.velocity.y = sm.parent._jump_velocity * jump_multiplier
 
 
-func exit() -> void:
-    sm.last_state = self
+# func exit() -> void:
+#     sm.last_state = self
 
 
 func on_timer_timeout() -> void:

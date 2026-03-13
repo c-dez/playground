@@ -24,8 +24,8 @@ func physics_process(_delta: float) -> void:
 		# print('asdasd')
 
 
-func exit() -> void:
-	sm.last_state = self
+# func exit() -> void:
+# 	sm.last_state = self
 
 
 func move(delta) -> void:

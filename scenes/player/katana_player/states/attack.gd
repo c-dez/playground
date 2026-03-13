@@ -31,7 +31,7 @@ func physics_process(_delta: float) -> void:
 
 
 func exit() -> void:
-	sm.last_state = self
+	# sm.last_state = self
 	timer.stop()
 	# attack_area.set_monitoring(false)
 

@@ -37,7 +37,7 @@ func physics_process(_delta: float) -> void:
 
 
 func exit() -> void:
-	sm.last_state = sm.states['wallkick']
+	# sm.last_state = sm.states['wallkick']
 	wall_normal = null
 
 
