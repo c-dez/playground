@@ -23,7 +23,9 @@ func enter() -> void:
 	# attack_area.set_monitoring(true)
 	emit_signal('enter_state_signal')
 
-	
+	sm.parent.hitbox.set_monitorable(true)
+	await get_tree().create_timer(0.2).timeout
+	sm.parent.hitbox.set_monitorable(false)
 
 
 func physics_process(_delta: float) -> void:

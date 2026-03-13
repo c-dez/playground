@@ -40,4 +40,5 @@ func launch_to_air() -> void:
 
 ## Cuando es golpeado en el aire
 func juggle() -> void:
+    print('juggle()')
     pass
