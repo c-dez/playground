@@ -1,6 +1,6 @@
 extends Hurtbox
 
-
+# Base_enemy hurtbox
 
 func _on_area_entered(hitbox: Hitbox) -> void:
     if hitbox == null:
