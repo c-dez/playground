@@ -23,6 +23,8 @@ func enter() -> void:
 	# attack_area.set_monitoring(true)
 	emit_signal('enter_state_signal')
 
+	
+
 
 func physics_process(_delta: float) -> void:
 	move(_delta)
