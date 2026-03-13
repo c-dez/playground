@@ -121,8 +121,5 @@ material = SubResource("StandardMaterial3D_62kbb")
 [node name="KatanaPlayer" parent="." unique_id=1538907837 instance=ExtResource("5_48ne7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.674308, 0, -9.157445)
 
-[node name="BaseEnemy" parent="." unique_id=1508650006 instance=ExtResource("3_62kbb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -15)
-
 [node name="BaseEnemy2" parent="." unique_id=2116245060 instance=ExtResource("3_62kbb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -15)

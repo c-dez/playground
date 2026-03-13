@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bkx3jh7puadba" path="res://components/hurtbox/hurtbox.gd" id="1_1qoam"]
 [ext_resource type="Script" uid="uid://bonq4sxrcwlf7" path="res://scenes/enemies/base_enemy/base_enemy.gd" id="1_3ttm4"]
+[ext_resource type="Script" uid="uid://qdikaf6s2kim" path="res://components/state_machine/state_machine.gd" id="3_6n50v"]
+[ext_resource type="Script" uid="uid://ck42b566i6ftq" path="res://components/state_machine/state.gd" id="4_xalon"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_5dpe4"]
 
@@ -28,3 +30,11 @@ metadata/_custom_type_script = "uid://bkx3jh7puadba"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" unique_id=1714945397]
 shape = SubResource("CapsuleShape3D_3ttm4")
 debug_color = Color(0.6597178, 0.51310545, 0.12526485, 0.41960785)
+
+[node name="StateMachine" type="Node" parent="." unique_id=221209144]
+script = ExtResource("3_6n50v")
+metadata/_custom_type_script = "uid://qdikaf6s2kim"
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1998611606]
+script = ExtResource("4_xalon")
+metadata/_custom_type_script = "uid://ck42b566i6ftq"
