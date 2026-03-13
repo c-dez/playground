@@ -3,7 +3,7 @@ extends State
 # estado intermedio entre ground pound y otros segun acciones de player
 # @onready var sm: StateMachine = get_parent()
 @onready var timer: Timer = Timer.new()
-var timer_start_time: float = 1.0
+var state_duration_time: float = 0.3
 var jump_multiplier: float = 1.3
 
 signal enter_state_signal()
@@ -16,9 +16,16 @@ func _ready() -> void:
 
 func enter() -> void:
 	# print(name)
-	timer.start(timer_start_time)
+	timer.start(state_duration_time)
 	sm.parent.mesh.do_squash_and_stretch(0.5, 0.10)
 	emit_signal('enter_state_signal')
+
+	#ground_pound_hitbox
+	sm.parent.ground_pound_hitbox.global_position = sm.parent.global_position
+	sm.parent.ground_pound_hitbox.set_monitorable(true)
+
+	await get_tree().create_timer(0.2).timeout
+	sm.parent.ground_pound_hitbox.set_monitorable(false)
 
 
 func process(_delta: float) -> void:

@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://c5tbrhyclvx5s" path="res://scenes/player/katana_player/states/attack.gd" id="14_0xnpu"]
 [ext_resource type="PackedScene" uid="uid://bvokdqlojw7vb" path="res://components/hitbox/hitbox.tscn" id="15_r34ns"]
 [ext_resource type="PackedScene" uid="uid://dsh52cxqfn6oy" path="res://components/hurtbox/hurtbox.tscn" id="16_dt0e0"]
+[ext_resource type="Script" uid="uid://dlryaco801vat" path="res://scenes/player/katana_player/ground_pound_hitbox.gd" id="17_stoeh"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5tj81"]
 
@@ -34,6 +35,9 @@ radius = 1.365
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_stoeh"]
 radius = 0.4
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_uodxy"]
+radius = 2.0
 
 [node name="KatanaPlayer" type="CharacterBody3D" unique_id=1538907837 groups=["player"]]
 collision_mask = 3
@@ -119,3 +123,12 @@ shape = SubResource("SphereShape3D_dt0e0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" unique_id=835831671]
 shape = SubResource("CapsuleShape3D_stoeh")
+
+[node name="GroundPoundHitbox" parent="." unique_id=468258497 instance=ExtResource("15_r34ns")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.436275, 0)
+collision_layer = 16
+collision_mask = 32
+script = ExtResource("17_stoeh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GroundPoundHitbox" unique_id=1279795546]
+shape = SubResource("SphereShape3D_uodxy")

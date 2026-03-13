@@ -18,6 +18,7 @@ var _jump_fall_gravity: float
 
 @onready var mesh: MeshInstance3D = get_node('MeshInstance3D')
 @onready var hitbox:Hitbox = get_node('Hitbox')
+@onready var ground_pound_hitbox: Hitbox = get_node('GroundPoundHitbox')
 
 
 var last_velocity
@@ -107,8 +108,9 @@ func _calculate_jump_gravity() -> void:
 	_jump_fall_gravity = 2.0 * jump_height / (jump_time_to_descend * jump_time_to_descend)
 
 
-func take_damage(damage):
-	print(damage)
+func take_damage(_damage):
+	# print(damage)
+	pass
 
 
 func take_health(damage):

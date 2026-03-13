@@ -12,14 +12,17 @@ var current_health: int:
 func _init() -> void:
     current_health = max_health
 
+func _physics_process(_delta: float) -> void:
+    move_and_slide()
+
 
 func move() -> void:
     pass
 
 
-func gravity() -> void:
+func gravity(gravity_value:int) -> void:
     if not is_on_floor():
-        velocity.y = -10
+        velocity.y = gravity_value
 
 
 func take_damage(damage:int) -> void:
@@ -31,3 +34,6 @@ func take_damage(damage:int) -> void:
 
 func die()-> void:
     print('die')
+
+func launch_to_air() -> void:
+    sm.on_state_change(sm.current_state, 'launchtoair')

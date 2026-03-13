@@ -14,7 +14,8 @@ func enter() -> void:
     timer.start(1)
 
 func physics_process(_delta: float) -> void:
-    sm.parent.gravity()
+    sm.parent.gravity(-10)
+    pass
 
 
 func exit() -> void:
@@ -22,5 +23,5 @@ func exit() -> void:
 
 
 func _on_timer_timeout() -> void:
-    emit_signal('change_state_to', self, 'move')
+    # emit_signal('change_state_to', self, 'move')
     pass

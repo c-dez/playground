@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://deaqjkvc1n0y"]
 
-[ext_resource type="Script" uid="uid://bkx3jh7puadba" path="res://components/hurtbox/hurtbox.gd" id="1_1qoam"]
 [ext_resource type="Script" uid="uid://bonq4sxrcwlf7" path="res://scenes/enemies/base_enemy/base_enemy.gd" id="1_3ttm4"]
+[ext_resource type="Script" uid="uid://b44whhhth5wu0" path="res://scenes/enemies/base_enemy/hurtbox.gd" id="2_dksqn"]
 [ext_resource type="Script" uid="uid://qdikaf6s2kim" path="res://components/state_machine/state_machine.gd" id="3_6n50v"]
-[ext_resource type="Script" path="res://scenes/enemies/base_enemy/states/idle.gd" id="4_wx1fh"]
+[ext_resource type="Script" uid="uid://c7ahar1eiidbi" path="res://scenes/enemies/base_enemy/states/idle.gd" id="4_wx1fh"]
 [ext_resource type="Script" uid="uid://wr36fiud1khn" path="res://scenes/enemies/base_enemy/states/move.gd" id="5_wx1fh"]
+[ext_resource type="Script" uid="uid://dq3xkw1kwojf5" path="res://scenes/enemies/base_enemy/states/launch_to_air.gd" id="6_dksqn"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_5dpe4"]
 
@@ -14,6 +15,8 @@
 radius = 0.8
 
 [node name="BaseEnemy" type="CharacterBody3D" unique_id=1508650006]
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("1_3ttm4")
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=236269146]
@@ -25,7 +28,7 @@ shape = SubResource("CapsuleShape3D_1qoam")
 [node name="Hurtbox" type="Area3D" parent="." unique_id=718880379]
 collision_layer = 32
 collision_mask = 16
-script = ExtResource("1_1qoam")
+script = ExtResource("2_dksqn")
 metadata/_custom_type_script = "uid://bkx3jh7puadba"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" unique_id=1714945397]
@@ -42,4 +45,8 @@ metadata/_custom_type_script = "uid://ck42b566i6ftq"
 
 [node name="Move" type="Node" parent="StateMachine" unique_id=606838899]
 script = ExtResource("5_wx1fh")
+metadata/_custom_type_script = "uid://ck42b566i6ftq"
+
+[node name="LaunchToAir" type="Node" parent="StateMachine" unique_id=1768890948]
+script = ExtResource("6_dksqn")
 metadata/_custom_type_script = "uid://ck42b566i6ftq"
