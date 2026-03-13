@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bonq4sxrcwlf7" path="res://scenes/enemies/base_enemy/base_enemy.gd" id="1_3ttm4"]
 [ext_resource type="Script" uid="uid://qdikaf6s2kim" path="res://components/state_machine/state_machine.gd" id="3_6n50v"]
 [ext_resource type="Script" uid="uid://ck42b566i6ftq" path="res://components/state_machine/state.gd" id="4_xalon"]
+[ext_resource type="Script" uid="uid://wr36fiud1khn" path="res://scenes/enemies/base_enemy/states/move.gd" id="5_wx1fh"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_5dpe4"]
 
@@ -37,4 +38,8 @@ metadata/_custom_type_script = "uid://qdikaf6s2kim"
 
 [node name="Idle" type="Node" parent="StateMachine" unique_id=1998611606]
 script = ExtResource("4_xalon")
+metadata/_custom_type_script = "uid://ck42b566i6ftq"
+
+[node name="Move" type="Node" parent="StateMachine" unique_id=606838899]
+script = ExtResource("5_wx1fh")
 metadata/_custom_type_script = "uid://ck42b566i6ftq"
