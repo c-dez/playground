@@ -42,7 +42,6 @@ func _process(_delta: float) -> void:
 	hitbox.rotation = mesh.rotation
 	hitbox.global_position = global_position
 
-	print(sm.last_state)
 	
 
 

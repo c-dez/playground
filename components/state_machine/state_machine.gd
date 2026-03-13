@@ -35,8 +35,8 @@ func on_state_change(_current_state: State, new_state_string: String) -> void:
 	var new_state = states[new_state_string.to_lower()]
 	if current_state:
 		current_state.exit()
-		last_state = current_state
 
 	new_state.enter()
+	last_state = current_state
 	current_state = new_state
 	pass
