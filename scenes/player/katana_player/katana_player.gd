@@ -16,7 +16,6 @@ var _jump_gravity: float
 var _jump_fall_gravity: float
 ####
 
-## top_level = true, su posicion  y rotacion se maneja independiente
 @onready var mesh: MeshInstance3D = get_node('MeshInstance3D')
 @onready var hitbox:Hitbox = get_node('Hitbox')
 
