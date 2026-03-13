@@ -41,5 +41,6 @@ func launch_to_air() -> void:
 
 ## Cuando es golpeado en el aire
 func juggle() -> void:
-    print('juggle()')
+    sm.on_state_change(sm.current_state, 'hitonair')
+
     pass

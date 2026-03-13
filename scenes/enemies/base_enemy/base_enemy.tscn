@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://c7ahar1eiidbi" path="res://scenes/enemies/base_enemy/states/idle.gd" id="4_wx1fh"]
 [ext_resource type="Script" uid="uid://wr36fiud1khn" path="res://scenes/enemies/base_enemy/states/move.gd" id="5_wx1fh"]
 [ext_resource type="Script" uid="uid://dq3xkw1kwojf5" path="res://scenes/enemies/base_enemy/states/launch_to_air.gd" id="6_dksqn"]
+[ext_resource type="Script" uid="uid://cp3k1sfusq1g2" path="res://scenes/enemies/base_enemy/states/hit_on_air.gd" id="7_2ntu4"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_5dpe4"]
 
@@ -49,4 +50,8 @@ metadata/_custom_type_script = "uid://ck42b566i6ftq"
 
 [node name="LaunchToAir" type="Node" parent="StateMachine" unique_id=1768890948]
 script = ExtResource("6_dksqn")
+metadata/_custom_type_script = "uid://ck42b566i6ftq"
+
+[node name="HitOnAir" type="Node" parent="StateMachine" unique_id=275367590]
+script = ExtResource("7_2ntu4")
 metadata/_custom_type_script = "uid://ck42b566i6ftq"
