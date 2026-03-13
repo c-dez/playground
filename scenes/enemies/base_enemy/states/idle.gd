@@ -13,6 +13,9 @@ func _ready() -> void:
 func enter() -> void:
     timer.start(1)
 
+func physics_process(_delta: float) -> void:
+    sm.parent.gravity()
+
 
 func exit() -> void:
     timer.stop()
