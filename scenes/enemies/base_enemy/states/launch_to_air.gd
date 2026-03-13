@@ -20,6 +20,9 @@ func physics_process(_delta: float) -> void:
 func exit() -> void:
     timer.stop()
 
+func _change_state_to()-> void:
+    pass
+
 
 func _on_timer_timeout() -> void:
     emit_signal('change_state_to', self , 'idle')
