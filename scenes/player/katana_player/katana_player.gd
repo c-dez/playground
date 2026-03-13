@@ -19,7 +19,7 @@ var _jump_fall_gravity: float
 @onready var mesh: MeshInstance3D = get_node('MeshInstance3D')
 
 #Hitboxes
-@onready var hitbox:Hitbox = get_node('Hitbox')
+@onready var hitbox:Hitbox = get_node('AttackHitbox')
 @onready var ground_pound_hitbox: Hitbox = get_node('GroundPoundHitbox')
 
 

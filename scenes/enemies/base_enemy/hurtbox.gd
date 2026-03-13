@@ -8,5 +8,5 @@ func _on_area_entered(hitbox: Hitbox) -> void:
     if hitbox.name == "GroundPoundHitbox":
         if owner.has_method('launch_to_air'):
             owner.launch_to_air()
-    if hitbox.name == 'Hitbox':
+    if hitbox.name == 'AttackHitbox':
         owner.juggle()
