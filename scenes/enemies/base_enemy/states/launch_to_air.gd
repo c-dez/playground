@@ -1,7 +1,7 @@
 extends State
 
 @onready var timer := Timer.new()
-var duration_time: float = 1.0
+var duration_time: float = 0.8
 
 
 func _ready() -> void:
@@ -14,7 +14,7 @@ func enter() -> void:
 
 func physics_process(_delta: float) -> void:
     # sm.parent.gravity(10)
-    sm.parent.velocity.y += 10 * _delta
+    sm.parent.velocity.y = 10
     pass
 
 func exit() -> void:
