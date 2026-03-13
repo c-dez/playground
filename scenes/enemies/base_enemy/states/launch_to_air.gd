@@ -8,7 +8,7 @@ func _ready() -> void:
     _set_timer_propeties()
 
 func enter() -> void:
-    print(self , ' state')
+    # print(self , ' state')
     timer.start(duration_time)
 
 
