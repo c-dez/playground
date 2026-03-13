@@ -17,6 +17,9 @@ func physics_process(_delta: float) -> void:
     sm.parent.velocity.y += 10 * _delta
     pass
 
+func exit() -> void:
+    timer.stop()
+
 
 func _on_timer_timeout() -> void:
     emit_signal('change_state_to', self , 'idle')
