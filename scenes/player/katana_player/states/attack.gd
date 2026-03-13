@@ -3,7 +3,7 @@ extends State
 var enemies_inside_attack_area_list
 # var attack_area: Area3D = null
 var attack_duration: float = 0.5
-@onready var sm: StateMachine = get_parent()
+# @onready var sm: StateMachine = get_parent()
 @onready var timer: Timer = Timer.new()
 
 ## senal emitida al entrar al state

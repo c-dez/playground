@@ -4,7 +4,7 @@ extends State
 
 
 var drop_speed: int = 25
-@onready var sm: StateMachine = get_parent()
+# @onready var sm: StateMachine = get_parent()
 
 # signal enter_state_signal()
 

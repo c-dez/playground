@@ -1,6 +1,6 @@
 extends State
 
-@onready var sm: StateMachine = get_parent()
+# @onready var sm: StateMachine = get_parent()
 @onready var timer: Timer = Timer.new()
 var wall_normal
 var input_dir: Vector2

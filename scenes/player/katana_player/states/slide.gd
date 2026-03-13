@@ -1,6 +1,6 @@
 extends State
 
-@onready var sm: StateMachine = get_parent()
+# @onready var sm: StateMachine = get_parent()
 @onready var timer: Timer = Timer.new()
 var timer_time: float = 0.5
 var enter_velocity: Vector3

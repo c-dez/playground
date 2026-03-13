@@ -1,7 +1,7 @@
 extends State
 
 
-@onready var sm: StateMachine = get_parent()
+# @onready var sm: StateMachine = get_parent()
 
 var speed = 10
 
