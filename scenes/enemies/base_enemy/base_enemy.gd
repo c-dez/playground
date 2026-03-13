@@ -27,6 +27,7 @@ func gravity(gravity_value: int) -> void:
 
 func take_damage(damage: int) -> void:
     current_health -= damage
+    print(current_health)
     if current_health == 0:
         die()
     pass
