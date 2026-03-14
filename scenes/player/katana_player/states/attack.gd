@@ -24,19 +24,19 @@ func enter() -> void:
 
 func physics_process(_delta: float) -> void:
 	move(_delta)
-	do_damage()
+	# do_damage()
 
 
 func exit() -> void:
 	timer.stop()
 
 
-func do_damage() -> void:
-	if enemies_inside_attack_area_list != null:
-		for item in enemies_inside_attack_area_list:
-			if item.has_method('take_damage'):
-				item.take_damage(sm.parent.stats.damage)
-		enemies_inside_attack_area_list = null
+# func do_damage() -> void:
+# 	if enemies_inside_attack_area_list != null:
+# 		for item in enemies_inside_attack_area_list:
+# 			if item.has_method('take_damage'):
+# 				item.take_damage(sm.parent.stats.damage)
+# 		enemies_inside_attack_area_list = null
 
 
 func on_timeout() -> void:
