@@ -23,9 +23,10 @@ var _jump_fall_gravity: float
 @onready var ground_pound_hitbox: Hitbox = get_node('GroundPoundHitbox')
 
 
-# var last_velocity
-var wall_normal
+var last_velocity
 @onready var wall_ray: RayCast3D = mesh.get_node('WallRay')
+@onready var wall_ray2: RayCast3D = mesh.get_node('WallRay2')
+var wall_normal
 
 
 # jump signal
@@ -51,9 +52,11 @@ func _physics_process(_delta: float) -> void:
 	gravity(_delta)
 	if wall_ray.is_colliding():
 		wall_normal = wall_ray.get_collision_normal()
+	elif wall_ray2.is_colliding():
+		wall_normal = wall_ray2.get_collision_normal()
 	else:
 		wall_normal = null
-
+		
 	move_and_slide()
 
 
