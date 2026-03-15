@@ -47,16 +47,16 @@ func _process(_delta: float) -> void:
 	
 func move(delta: float, speed_multiplier: int) -> void:
 	var input_dir := PlayerInput.get_direction()
-	var direction := (sm.parent.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
 	if direction:
 		velocity.x = direction.x * stats.move_speed * speed_multiplier
 		velocity.z = direction.z * stats.move_speed * speed_multiplier
 
-		sm.parent.rotate_mesh(direction, delta)
+		rotate_mesh(direction, delta)
 	else:
-		sm.parent.velocity.x = move_toward(sm.parent.velocity.x, 0, sm.parent.stats.move_speed)
-		sm.parent.velocity.z = move_toward(sm.parent.velocity.z, 0, sm.parent.stats.move_speed)
+		velocity.x = move_toward(velocity.x, 0, stats.move_speed)
+		velocity.z = move_toward(velocity.z, 0, stats.move_speed)
 
 
 func _physics_process(_delta: float) -> void:
