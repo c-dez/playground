@@ -5,7 +5,7 @@ class_name KatanaPlayer
 
 
 @export var stats: CharacterStats
-@onready var sm:StateMachine = get_node('StateMachine')
+@onready var sm: StateMachine = get_node('StateMachine')
 
 # jump gravity
 @export var jump_height: float = 5.0
@@ -19,7 +19,7 @@ var _jump_fall_gravity: float
 @onready var mesh: MeshInstance3D = get_node('MeshInstance3D')
 
 #Hitboxes
-@onready var hitbox:Hitbox = get_node('AttackHitbox')
+@onready var hitbox: Hitbox = get_node('AttackHitbox')
 @onready var ground_pound_hitbox: Hitbox = get_node('GroundPoundHitbox')
 
 
@@ -30,7 +30,6 @@ var wall_normal
 
 # jump signal
 signal jump_signal()
-
 
 
 func _ready() -> void:
@@ -46,6 +45,18 @@ func _process(_delta: float) -> void:
 	hitbox.global_position = global_position
 
 	
+func move(delta: float, speed_multiplier: int) -> void:
+	var input_dir := PlayerInput.get_direction()
+	var direction := (sm.parent.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+
+	if direction:
+		velocity.x = direction.x * stats.move_speed * speed_multiplier
+		velocity.z = direction.z * stats.move_speed * speed_multiplier
+
+		sm.parent.rotate_mesh(direction, delta)
+	else:
+		sm.parent.velocity.x = move_toward(sm.parent.velocity.x, 0, sm.parent.stats.move_speed)
+		sm.parent.velocity.z = move_toward(sm.parent.velocity.z, 0, sm.parent.stats.move_speed)
 
 
 func _physics_process(_delta: float) -> void:
@@ -78,7 +89,6 @@ func jump() -> void:
 func on_jump() -> void:
 	if sm.current_state == sm.states['groundpoundonfloor']:
 		# salto desde state ground pound floor
-		
 		pass
 	elif sm.current_state == sm.states['slidejump']:
 		pass
