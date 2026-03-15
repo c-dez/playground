@@ -23,9 +23,9 @@ var _jump_fall_gravity: float
 @onready var ground_pound_hitbox: Hitbox = get_node('GroundPoundHitbox')
 
 
-var last_velocity
-@onready var wall_ray: RayCast3D = mesh.get_node('WallRay')
+# var last_velocity
 var wall_normal
+@onready var wall_ray: RayCast3D = mesh.get_node('WallRay')
 
 
 # jump signal
@@ -45,6 +45,18 @@ func _process(_delta: float) -> void:
 	hitbox.global_position = global_position
 
 	
+func _physics_process(_delta: float) -> void:
+	jump()
+	coyote_time(_delta)
+	gravity(_delta)
+	if wall_ray.is_colliding():
+		wall_normal = wall_ray.get_collision_normal()
+	else:
+		wall_normal = null
+
+	move_and_slide()
+
+
 func move(delta: float, speed_multiplier: int) -> void:
 	var input_dir := PlayerInput.get_direction()
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
@@ -57,17 +69,6 @@ func move(delta: float, speed_multiplier: int) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, stats.move_speed)
 		velocity.z = move_toward(velocity.z, 0, stats.move_speed)
-
-
-func _physics_process(_delta: float) -> void:
-	jump()
-	coyote_time(_delta)
-	gravity(_delta)
-	move_and_slide()
-	if wall_ray.is_colliding():
-		wall_normal = wall_ray.get_collision_normal()
-	else:
-		wall_normal = null
 
 
 func gravity(delta: float) -> void:
