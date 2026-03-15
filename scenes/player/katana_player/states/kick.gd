@@ -21,8 +21,6 @@ func _ready() -> void:
 func enter() -> void:
 	# print(name)
 	timer.start(duration_time)
-	last_velocity = sm.parent.velocity
-	sm.parent.last_velocity = last_velocity
 	_kick_count = kick_count
 	
 

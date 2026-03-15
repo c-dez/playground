@@ -1,6 +1,5 @@
 extends State
 
-var enemies_inside_attack_area_list
 var attack_duration: float = 0.5
 @onready var timer: Timer = Timer.new()
 @onready var attack_hitbox: Hitbox = owner.get_node('AttackHitbox')
