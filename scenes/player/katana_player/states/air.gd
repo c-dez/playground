@@ -19,7 +19,7 @@ func process(_delta: float) -> void:
 
 
 func physics_process(_delta: float) -> void:
-	move(_delta)
+	sm.parent.move(_delta, 1)
 	# if Input.is_action_just_pressed('ground_pound'):
 		# print('asdasd')
 
@@ -28,48 +28,31 @@ func physics_process(_delta: float) -> void:
 # 	sm.last_state = self
 
 
-func move(delta) -> void:
-	var input_dir := PlayerInput.get_direction()
-	var direction := (sm.parent.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	
-	if direction:
-		sm.parent.velocity.x = direction.x * speed
-		sm.parent.velocity.z = direction.z * speed
-
-		sm.parent.rotate_mesh(direction, delta, rotate_speed)
-	else:
-		sm.parent.velocity.x = move_toward(sm.parent.velocity.x, 0, speed)
-		sm.parent.velocity.z = move_toward(sm.parent.velocity.z, 0, speed)
-
-
 func _change_state_to() -> void:
 	if sm.parent.is_on_floor():
-		emit_signal('change_state_to', self, 'move')
+		emit_signal('change_state_to', self , 'move')
 
 	elif Input.is_action_just_pressed(PlayerInput.BUTTONS['shift']):
-		emit_signal('change_state_to', self, 'groundpound')
+		emit_signal('change_state_to', self , 'groundpound')
 
 	elif PlayerInput.light_attack_button():
-		emit_signal('change_state_to',self,'attack')
+		emit_signal('change_state_to', self , 'attack')
 
 
 	if sm.last_state == sm.states['move']:
 			# if Input.is_action_just_pressed('space'):
 			if PlayerInput.jump_button():
-				emit_signal('change_state_to', self, 'kick')
+				emit_signal('change_state_to', self , 'kick')
 
-	elif sm.last_state == sm.states['wallkick'] :
+	elif sm.last_state == sm.states['wallkick']:
 		# if Input.is_action_just_pressed('space'):
 		if PlayerInput.jump_button():
-			emit_signal('change_state_to', self, 'kick')
+			emit_signal('change_state_to', self , 'kick')
 
 	elif sm.last_state == sm.states['groundpoundonfloor']:
 		# if Input.is_action_just_pressed('space'):
 		if PlayerInput.jump_button():
-			emit_signal('change_state_to', self, 'kick')
+			emit_signal('change_state_to', self , 'kick')
 		
-
-
-
 
 	pass
