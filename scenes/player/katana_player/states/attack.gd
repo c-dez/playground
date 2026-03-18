@@ -1,5 +1,7 @@
 extends State
 
+#attack state katana_player
+
 var attack_duration: float = 0.5
 @onready var timer: Timer = Timer.new()
 @onready var attack_hitbox: Hitbox = owner.get_node('AttackHitbox')
@@ -20,8 +22,9 @@ func on_attack_hitbox_area_entered(hurtbox: Hurtbox):
 	# cuando lo golpea y el enemigo esta en el aire
 	# cambiar a state apropiado de golpeando en aire
 	if not hurtbox.owner.is_on_floor():
-		print(hurtbox.owner.sm.current_state)
-
+		# print(hurtbox.owner.sm.current_state)
+		if hurtbox.owner.has_method('juggle'):
+			print(hurtbox.owner)
 
 func enter() -> void:
 	timer.start(attack_duration)
