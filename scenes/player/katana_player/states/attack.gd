@@ -19,12 +19,11 @@ func _ready():
 
 
 func on_attack_hitbox_area_entered(hurtbox: Hurtbox):
-	# cuando lo golpea y el enemigo esta en el aire
-	# cambiar a state apropiado de golpeando en aire
-	if not hurtbox.owner.is_on_floor():
-		# print(hurtbox.owner.sm.current_state)
-		if hurtbox.owner.has_method('juggle'):
-			print(hurtbox.owner)
+	# me gusta que brinque al golpear enemigo cuando player esta en el aire, junto con ground_pound se siente interesante de jugar , pero no estoy seguro como encaja en el gameplay de combate
+	if hurtbox.owner.has_method('take_damage'):
+		if not sm.parent.is_on_floor():
+			sm.parent.velocity.y = 20
+
 
 func enter() -> void:
 	timer.start(attack_duration)
@@ -38,7 +37,11 @@ func enter() -> void:
 
 
 func physics_process(_delta: float) -> void:
+	
+	sm.parent.gravity(_delta)
+	
 	sm.parent.move(_delta, 1)
+	pass
 
 
 func exit() -> void:
