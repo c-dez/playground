@@ -15,6 +15,7 @@ func process(_delta: float) -> void:
 
 func physics_process(_delta: float) -> void:
 	sm.parent.move(_delta, 1)
+	sm.parent.gravity(_delta)
 
 # func exit() -> void:
 # 	sm.last_state = self

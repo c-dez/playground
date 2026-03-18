@@ -4,7 +4,7 @@ extends State
 # @onready var sm: StateMachine = get_parent()
 @onready var timer: Timer = Timer.new()
 var state_duration_time: float = 0.3
-var jump_multiplier: float = 1.3
+var jump_multiplier: float = 1
 
 signal enter_state_signal()
 

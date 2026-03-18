@@ -49,7 +49,7 @@ func _process(_delta: float) -> void:
 func _physics_process(_delta: float) -> void:
 	jump()
 	coyote_time(_delta)
-	gravity(_delta)
+	# gravity(_delta)
 	if wall_ray.is_colliding():
 		wall_normal = wall_ray.get_collision_normal()
 	elif wall_ray2.is_colliding():

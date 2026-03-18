@@ -4,7 +4,7 @@ extends State
 # @onready var sm: StateMachine = get_parent()
 @onready var timer: Timer = Timer.new()
 var timer_time: float = 0.5
-var jump_multiplier: float = 1.5
+var jump_multiplier: float = 0.7
 
 func _ready() -> void:
     add_child(timer)

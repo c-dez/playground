@@ -20,6 +20,8 @@ func process(_delta: float) -> void:
 
 func physics_process(_delta: float) -> void:
 	sm.parent.move(_delta, 1)
+	sm.parent.gravity(_delta)
+
 	# if Input.is_action_just_pressed('ground_pound'):
 		# print('asdasd')
 
