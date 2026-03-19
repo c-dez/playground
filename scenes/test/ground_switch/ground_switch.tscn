@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dion4k8gfmgw3"]
+
+[ext_resource type="Script" uid="uid://bkx3jh7puadba" path="res://components/hurtbox/hurtbox.gd" id="1_bvvlo"]
+[ext_resource type="Script" uid="uid://djpvaiv2q1j4w" path="res://scenes/test/ground_switch/ground_switch.gd" id="1_ihc2i"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ihc2i"]
+data = PackedVector3Array(-2.5, 0.25, 2.5, 2.5, 0.25, 2.5, -2.5, -0.25, 2.5, 2.5, 0.25, 2.5, 2.5, -0.25, 2.5, -2.5, -0.25, 2.5, 2.5, 0.25, -2.5, -2.5, 0.25, -2.5, 2.5, -0.25, -2.5, -2.5, 0.25, -2.5, -2.5, -0.25, -2.5, 2.5, -0.25, -2.5, 2.5, 0.25, 2.5, 2.5, 0.25, -2.5, 2.5, -0.25, 2.5, 2.5, 0.25, -2.5, 2.5, -0.25, -2.5, 2.5, -0.25, 2.5, -2.5, 0.25, -2.5, -2.5, 0.25, 2.5, -2.5, -0.25, -2.5, -2.5, 0.25, 2.5, -2.5, -0.25, 2.5, -2.5, -0.25, -2.5, 2.5, 0.25, 2.5, -2.5, 0.25, 2.5, 2.5, 0.25, -2.5, -2.5, 0.25, 2.5, -2.5, 0.25, -2.5, 2.5, 0.25, -2.5, -2.5, -0.25, 2.5, 2.5, -0.25, 2.5, -2.5, -0.25, -2.5, 2.5, -0.25, 2.5, 2.5, -0.25, -2.5, -2.5, -0.25, -2.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xqrms"]
+albedo_color = Color(1, 1, 0.6313726, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ff152"]
+material = SubResource("StandardMaterial3D_xqrms")
+size = Vector3(5, 0.5, 5)
+
+[node name="GroundSwitch" type="StaticBody3D" unique_id=1691430564]
+script = ExtResource("1_ihc2i")
+
+[node name="Hurtbox" type="Area3D" parent="." unique_id=1103913921]
+collision_layer = 2
+collision_mask = 16
+script = ExtResource("1_bvvlo")
+metadata/_custom_type_script = "uid://bkx3jh7puadba"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" unique_id=942878139]
+shape = SubResource("ConcavePolygonShape3D_ihc2i")
+
+[node name="SwitchMesh" type="MeshInstance3D" parent="." unique_id=1668517892]
+mesh = SubResource("BoxMesh_ff152")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1572486703]
+shape = SubResource("ConcavePolygonShape3D_ihc2i")
