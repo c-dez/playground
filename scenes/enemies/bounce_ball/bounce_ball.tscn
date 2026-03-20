@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bnq2dcc0o6s32"]
+
+[ext_resource type="Script" uid="uid://b8vaky7o8w21r" path="res://scenes/enemies/bounce_ball/bounce_ball.gd" id="1_tpupx"]
+[ext_resource type="Script" uid="uid://bkx3jh7puadba" path="res://components/hurtbox/hurtbox.gd" id="1_xilin"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tpupx"]
+albedo_color = Color(1, 0.11372549, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_58yp0"]
+material = SubResource("StandardMaterial3D_tpupx")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jtrnn"]
+radius = 0.7
+
+[node name="BounceBall" type="StaticBody3D" unique_id=1359089869]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_tpupx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1067387050]
+mesh = SubResource("SphereMesh_58yp0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1577267944]
+shape = SubResource("SphereShape3D_jtrnn")
+
+[node name="BounceBallHurtbox" type="Area3D" parent="." unique_id=1778685982]
+collision_layer = 32
+collision_mask = 16
+script = ExtResource("1_xilin")
+metadata/_custom_type_script = "uid://bkx3jh7puadba"
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="BounceBallHurtbox" unique_id=661800521]
+shape = SubResource("SphereShape3D_jtrnn")
