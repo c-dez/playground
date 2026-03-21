@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ebv3medb6skf"]
 
-[ext_resource type="Script" uid="uid://dhxha2qqbdb8n" path="res://scenes/enemies/box/box.gd" id="1_2pqkt"]
-[ext_resource type="Script" uid="uid://beiv7sdnhjw86" path="res://scenes/enemies/box/box_hurtbox.gd" id="2_dq01h"]
+[ext_resource type="Script" uid="uid://dhxha2qqbdb8n" path="res://scenes/enemies/bounce_box/box.gd" id="1_2pqkt"]
+[ext_resource type="Script" uid="uid://beiv7sdnhjw86" path="res://scenes/enemies/bounce_box/box_hurtbox.gd" id="2_dq01h"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oup16"]
 
@@ -9,7 +9,7 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k75bs"]
 
-[node name="Box" type="CharacterBody3D" unique_id=1280337061]
+[node name="BounceBox" type="CharacterBody3D" unique_id=1280337061]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_2pqkt")
