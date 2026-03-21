@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bnq2dcc0o6s32"]
 
 [ext_resource type="Script" uid="uid://b8vaky7o8w21r" path="res://scenes/enemies/bounce_ball/bounce_ball.gd" id="1_tpupx"]
-[ext_resource type="Script" uid="uid://bkx3jh7puadba" path="res://components/hurtbox/hurtbox.gd" id="1_xilin"]
+[ext_resource type="Script" uid="uid://bic78v4xhcguu" path="res://scenes/enemies/bounce_ball/bounce_ball_hurtbox.gd" id="2_tpupx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tpupx"]
 albedo_color = Color(1, 0.11372549, 1, 1)
@@ -26,7 +26,7 @@ shape = SubResource("SphereShape3D_jtrnn")
 [node name="BounceBallHurtbox" type="Area3D" parent="." unique_id=1778685982]
 collision_layer = 32
 collision_mask = 16
-script = ExtResource("1_xilin")
+script = ExtResource("2_tpupx")
 metadata/_custom_type_script = "uid://bkx3jh7puadba"
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="BounceBallHurtbox" unique_id=661800521]

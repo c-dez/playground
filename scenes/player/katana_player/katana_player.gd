@@ -40,6 +40,7 @@ func _ready() -> void:
 	connect('jump_signal', on_jump)
 
 
+
 func _process(_delta: float) -> void:
 	mesh.global_position = global_position
 	hitbox.rotation = mesh.rotation
@@ -131,3 +132,8 @@ func take_damage(_damage):
 
 func take_health(damage):
 	print(damage)
+
+
+func attack_jump() -> void:
+	if not is_on_floor():
+		velocity.y = 20

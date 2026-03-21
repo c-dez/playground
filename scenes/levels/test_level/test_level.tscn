@@ -146,11 +146,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 0)
 
 [node name="Envirroment" type="Node3D" parent="." unique_id=2004682986]
 
-[node name="BounceBall2" parent="Envirroment" unique_id=1362426661 instance=ExtResource("5_qv4mi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 8, -8.66324)
-
-[node name="BounceBall4" parent="Envirroment" unique_id=1359089869 instance=ExtResource("5_qv4mi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 13, -18.5)
-
-[node name="BounceBall3" parent="Envirroment" unique_id=2087057564 instance=ExtResource("5_qv4mi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 3, -18.544)
+[node name="BounceBall" parent="Envirroment" unique_id=1359089869 instance=ExtResource("5_qv4mi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 4, -17)
+on_hit_behavior = 0

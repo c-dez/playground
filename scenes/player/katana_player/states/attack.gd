@@ -18,8 +18,6 @@ func _ready():
 	attack_hitbox.connect('area_entered', on_attack_hitbox_area_entered)
 
 
-
-
 func enter() -> void:
 	timer.start(attack_duration)
 	emit_signal('enter_state_signal')
@@ -32,7 +30,6 @@ func enter() -> void:
 
 
 func physics_process(_delta: float) -> void:
-	
 	sm.parent.gravity(_delta)
 	
 	sm.parent.move(_delta, 1)
@@ -49,7 +46,6 @@ func on_timeout() -> void:
 
 func on_attack_hitbox_area_entered(hurtbox: Hurtbox):
 	# me gusta que brinque al golpear enemigo cuando player esta en el aire, junto con ground_pound se siente interesante de jugar , pero no estoy seguro como encaja en el gameplay de combate
-	# if hurtbox.owner.has_method('take_damage'):
-	if hurtbox.name == "BounceBallHurtbox":
-		if not sm.parent.is_on_floor():
-			sm.parent.velocity.y = 20
+	if hurtbox.owner.has_method('is_hit_behavior'):
+		hurtbox.owner.is_hit_behavior()
+		sm.parent.attack_jump()
