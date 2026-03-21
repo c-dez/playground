@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dion4k8gfmgw3" path="res://scenes/test/ground_switch/ground_switch.tscn" id="4_uxvkn"]
 [ext_resource type="PackedScene" uid="uid://bp53d46vbf5s8" path="res://scenes/player/katana_player/katana_player.tscn" id="5_48ne7"]
 [ext_resource type="PackedScene" uid="uid://bnq2dcc0o6s32" path="res://scenes/enemies/bounce_ball/bounce_ball.tscn" id="5_qv4mi"]
+[ext_resource type="PackedScene" uid="uid://ebv3medb6skf" path="res://scenes/enemies/box/box.tscn" id="6_hocnj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_48ne7"]
 size = Vector3(1660.5, 1000, 1)
@@ -94,11 +95,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 2.0499988, -25.594055)
 size = Vector3(10, 6, 5)
 
 [node name="Wall14" parent="NavigationRegion3D/CSGCombiner3D" unique_id=741303568 instance=ExtResource("2_v45ci")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.323, 4.0499988, -25.594)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.873117, 4.0499988, -25.594)
 size = Vector3(10, 10, 5)
 
 [node name="Wall15" parent="NavigationRegion3D/CSGCombiner3D" unique_id=694208960 instance=ExtResource("2_v45ci")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.41442, 16.153328, -25.594)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.40664, 16.153328, -25.594)
 size = Vector3(10, 0.6876221, 5)
 
 [node name="Wall13" parent="NavigationRegion3D/CSGCombiner3D" unique_id=1052265061 instance=ExtResource("2_v45ci")]
@@ -133,7 +134,7 @@ material = SubResource("StandardMaterial3D_62kbb")
 [node name="Dump" type="Node3D" parent="." unique_id=1397750614 groups=["dump"]]
 
 [node name="KatanaPlayer" parent="." unique_id=1538907837 instance=ExtResource("5_48ne7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.42056, 0, -9.157445)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.154413, 0, -12.930149)
 
 [node name="BaseEnemy" parent="." unique_id=1508650006 instance=ExtResource("3_62kbb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -14)
@@ -157,3 +158,6 @@ on_hit_behavior = 0
 [node name="BounceBall3" parent="Envirroment" unique_id=1602846921 instance=ExtResource("5_qv4mi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41, 16, -17)
 on_hit_behavior = 0
+
+[node name="Box" parent="Envirroment" unique_id=1280337061 instance=ExtResource("6_hocnj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.313688, -0.44999635, -16.877903)

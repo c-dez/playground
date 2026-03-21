@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://ebv3medb6skf"]
+
+[ext_resource type="Script" uid="uid://dhxha2qqbdb8n" path="res://scenes/enemies/box/box.gd" id="1_2pqkt"]
+[ext_resource type="Script" uid="uid://beiv7sdnhjw86" path="res://scenes/enemies/box/box_hurtbox.gd" id="2_dq01h"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oup16"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2pqkt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k75bs"]
+
+[node name="Box" type="CharacterBody3D" unique_id=1280337061]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_2pqkt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1518887348]
+shape = SubResource("BoxShape3D_oup16")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1800407108]
+mesh = SubResource("BoxMesh_2pqkt")
+
+[node name="BoxHurtbox" type="Area3D" parent="." unique_id=2128198294]
+collision_layer = 32
+collision_mask = 16
+script = ExtResource("2_dq01h")
+metadata/_custom_type_script = "uid://bkx3jh7puadba"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxHurtbox" unique_id=1996963074]
+shape = SubResource("BoxShape3D_k75bs")

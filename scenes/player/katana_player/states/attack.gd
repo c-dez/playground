@@ -11,41 +11,45 @@ signal enter_state_signal()
 
 
 func _ready():
-	add_child(timer)
-	timer.connect('timeout', on_timeout)
-	
-	# cuando lo golpea y el enemigo esta en el aire
-	attack_hitbox.connect('area_entered', on_attack_hitbox_area_entered)
+    add_child(timer)
+    timer.connect('timeout', on_timeout)
+    
+    # cuando lo golpea y el enemigo esta en el aire
+    attack_hitbox.connect('area_entered', on_attack_hitbox_area_entered)
 
 
 func enter() -> void:
-	timer.start(attack_duration)
-	emit_signal('enter_state_signal')
+    timer.start(attack_duration)
+    emit_signal('enter_state_signal')
 
-	attack_hitbox.set_monitorable(true)
-	attack_hitbox.set_monitoring(true)
-	await get_tree().create_timer(0.2).timeout
-	attack_hitbox.set_monitorable(false)
-	attack_hitbox.set_monitoring(false)
+    attack_hitbox.set_monitorable(true)
+    attack_hitbox.set_monitoring(true)
+    await get_tree().create_timer(0.2).timeout
+    attack_hitbox.set_monitorable(false)
+    attack_hitbox.set_monitoring(false)
 
 
 func physics_process(_delta: float) -> void:
-	sm.parent.gravity(_delta)
-	
-	sm.parent.move(_delta, 1)
-	pass
+    sm.parent.gravity(_delta)
+    
+    sm.parent.move(_delta, 1)
+    pass
 
 
 func exit() -> void:
-	timer.stop()
+    timer.stop()
 
 
 func on_timeout() -> void:
-	emit_signal('change_state_to', self , 'move')
+    emit_signal('change_state_to', self , 'move')
 
 
 func on_attack_hitbox_area_entered(hurtbox: Hurtbox):
-	# me gusta que brinque al golpear enemigo cuando player esta en el aire, junto con ground_pound se siente interesante de jugar , pero no estoy seguro como encaja en el gameplay de combate
-	if hurtbox.owner.has_method('is_hit_behavior'):
-		hurtbox.owner.is_hit_behavior()
-		sm.parent.attack_jump()
+    # me gusta que brinque al golpear enemigo cuando player esta en el aire, junto con ground_pound se siente interesante de jugar , pero no estoy seguro como encaja en el gameplay de combate
+    if hurtbox.name == 'BounceBallHurtbox':
+        if hurtbox.owner.has_method('is_hit_behavior'):
+            hurtbox.owner.is_hit_behavior()
+            sm.parent.attack_jump()
+
+    if hurtbox.name == 'BoxHurtbox':
+        sm.parent.attack_jump()
