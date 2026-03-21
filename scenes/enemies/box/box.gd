@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+# al ser golpeada por groundPound, box brinca
+# nombre no me gusta lo ambiguo que es
 
 # jump gravity
 @export var jump_height: float = 7.0
