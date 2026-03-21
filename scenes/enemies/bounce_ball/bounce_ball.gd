@@ -8,43 +8,43 @@ extends StaticBody3D
 @onready var timer := Timer.new()
 
 enum ON_HIT_BEHAVIOR {
-	despawn,
-	permanent
+    despawn,
+    permanent
 }
 @onready var hurtbox: Area3D = get_node('BounceBallHurtbox')
 
+
 func _ready() -> void:
-	_timer_set_up()
-	pass
+    _timer_set_up()
+    pass
 
 
 ## Cuando es atacada por Player
 func is_hit_behavior() -> void:
-	match on_hit_behavior:
-		ON_HIT_BEHAVIOR.despawn:
-			timer.start(despawn_time)
-			toggle_active()
-		_:
-			pass
-	pass
+    match on_hit_behavior:
+        ON_HIT_BEHAVIOR.despawn:
+            timer.start(despawn_time)
+            toggle_active()
+        _:
+            pass
+    pass
 
 
 func _timer_set_up() -> void:
-	add_child(timer)
-	timer.one_shot = true
-	timer.autostart = false
-	timer.connect('timeout', on_timer_timeout)
+    add_child(timer)
+    timer.one_shot = true
+    timer.autostart = false
+    timer.connect('timeout', on_timer_timeout)
 
 
 func on_timer_timeout() -> void:
-	toggle_active()
+    toggle_active()
 
 
 func toggle_active() -> void:
-	var test = !hurtbox.is_monitorable()
-	visible = test
-	hurtbox.toggle_monitoring()
-
-
+    # var toggle: = !hurtbox.is_monitorable()
+    # visible = toggle
+    visible = !visible
+    hurtbox.toggle_monitoring()
 
 
