@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bp53d46vbf5s8" path="res://scenes/player/katana_player/katana_player.tscn" id="5_48ne7"]
 [ext_resource type="PackedScene" uid="uid://bnq2dcc0o6s32" path="res://scenes/enemies/bounce_ball/bounce_ball.tscn" id="5_qv4mi"]
 [ext_resource type="PackedScene" uid="uid://ebv3medb6skf" path="res://scenes/enemies/box/box.tscn" id="6_hocnj"]
+[ext_resource type="PackedScene" uid="uid://d3gfhrueptys1" path="res://assets/platforms/moving_platform/moving_platform.tscn" id="7_lbjl6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_48ne7"]
 size = Vector3(1660.5, 1000, 1)
@@ -27,6 +28,14 @@ glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_62kbb"]
 albedo_color = Color(0.29954746, 0.29954746, 0.29954743, 1)
+
+[sub_resource type="Curve3D" id="Curve3D_lbjl6"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.020832062, 0, 0.23417379, 0, 0, 0, 0, 0, 0, -20.495447, 0, 0.030638834),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
 
 [node name="TestLevel" type="Node3D" unique_id=443560844]
 
@@ -161,3 +170,7 @@ on_hit_behavior = 0
 
 [node name="Box" parent="Envirroment" unique_id=1280337061 instance=ExtResource("6_hocnj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.313688, -0.44999635, -16.877903)
+
+[node name="MovingPlatform" parent="Envirroment" unique_id=62256537 instance=ExtResource("7_lbjl6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.490347, 0, 0)
+curve = SubResource("Curve3D_lbjl6")
