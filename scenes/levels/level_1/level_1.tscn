@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://c66xa7kkpqoh"]
+
+[ext_resource type="Texture2D" uid="uid://bhsi1n2auswhq" path="res://addons/GreyboxTextures/greybox_grey_grid.png" id="1_fngju"]
+[ext_resource type="PackedScene" uid="uid://bp53d46vbf5s8" path="res://scenes/player/katana_player/katana_player.tscn" id="2_5o1mp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_spwf2"]
+albedo_texture = ExtResource("1_fngju")
+uv1_triplanar = true
+
+[node name="Level1" type="Node3D" unique_id=754608760]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1860315366]
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=475054097]
+size = Vector3(100, 0.25, 100)
+material = SubResource("StandardMaterial3D_spwf2")
+
+[node name="KatanaPlayer" parent="." unique_id=1538907837 instance=ExtResource("2_5o1mp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5971193, 1.1860259, -7.003027)
