@@ -2,7 +2,7 @@ extends State
 
 #attack state katana_player
 
-var attack_duration: float = 0.3
+var attack_duration: float = 0.2
 @onready var timer: Timer = Timer.new()
 @onready var attack_hitbox: Hitbox = owner.get_node('AttackHitbox')
 

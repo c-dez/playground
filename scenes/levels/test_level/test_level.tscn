@@ -211,7 +211,7 @@ material = SubResource("StandardMaterial3D_62kbb")
 [node name="Dump" type="Node3D" parent="." unique_id=1397750614 groups=["dump"]]
 
 [node name="KatanaPlayer" parent="." unique_id=1538907837 instance=ExtResource("5_48ne7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.154413, 0, -12.930149)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.154413, 0, -10.908618)
 
 [node name="BaseEnemy" parent="." unique_id=1508650006 instance=ExtResource("3_62kbb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -14)
@@ -248,13 +248,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2878685, 0, -25.910854)
 curve = SubResource("Curve3D_6eemo")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Envirroment/MovingPlatform2" unique_id=1982777753]
-transform = Transform3D(0, 0.99999726, 0.0022214768, -0.010498522, 0.0022213573, -0.9999408, -0.9999434, -2.332031e-05, 0.010498495, -0.015142441, 0.023023605, -3.4332275e-05)
+transform = Transform3D(0, 0.99999726, 0.0022214768, -0.01049852, 0.0022213573, -0.9999408, -0.99994314, -2.332031e-05, 0.010498495, -0.015142441, 0.023023605, -3.4332275e-05)
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Envirroment/MovingPlatform2/PathFollow3D" unique_id=384231293]
 remote_path = NodePath("../../AnimatableBody3D")
 
 [node name="AnimatableBody3D" type="AnimatableBody3D" parent="Envirroment/MovingPlatform2" unique_id=2004785169]
-transform = Transform3D(0, 0.99999726, 0.0022214768, -0.010498522, 0.0022213573, -0.9999408, -0.9999434, -2.332031e-05, 0.010498495, -0.015142441, 0.023023605, -3.4332275e-05)
+transform = Transform3D(0, 0.99999726, 0.0022214768, -0.01049852, 0.0022213573, -0.9999408, -0.99994314, -2.332031e-05, 0.010498495, -0.015142441, 0.023023605, -3.4332275e-05)
 collision_layer = 2
 collision_mask = 0
 

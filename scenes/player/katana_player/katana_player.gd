@@ -10,7 +10,7 @@ class_name KatanaPlayer
 # jump gravity
 @export var jump_height: float = 5.0
 @export var jump_time_to_peak: float = 0.5
-@export var jump_time_to_descend: float = 0.6
+@export var jump_time_to_descend: float = 0.4
 var _jump_velocity: float
 var _jump_gravity: float
 var _jump_fall_gravity: float

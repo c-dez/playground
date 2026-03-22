@@ -35,10 +35,10 @@ material = SubResource("StandardMaterial3D_wd0kt")
 radius = 0.4
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_uodxy"]
-radius = 2.0
+radius = 3.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qp3kk"]
-radius = 2.53
+radius = 2.0
 
 [node name="KatanaPlayer" type="CharacterBody3D" unique_id=1538907837 groups=["player"]]
 collision_mask = 3
@@ -144,5 +144,5 @@ collision_mask = 32
 script = ExtResource("18_uodxy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AttackHitbox" unique_id=1778046277]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.7072253)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2819078, 1.7072253)
 shape = SubResource("SphereShape3D_qp3kk")
