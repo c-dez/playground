@@ -19,4 +19,5 @@ func on_player_entered(body: Node3D) -> void:
         GameSettings.data['check_point_position'] = check_point_position
 
         GameSettings.save_game()
+        print('check_point')
     pass
