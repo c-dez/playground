@@ -7,7 +7,7 @@ var data: Dictionary = {
     'fov': 100,
     'mouse_sens': 0.05,
     'kick': false,
-    'ground_pound': false,
+    # 'ground_pound': false,
     'check_point_position': Vector3.ZERO,
 }
 
