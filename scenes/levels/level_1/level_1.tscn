@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://d3gfhrueptys1" path="res://assets/platforms/moving_platform/moving_platform.tscn" id="3_5o1mp"]
 [ext_resource type="PackedScene" uid="uid://bnq2dcc0o6s32" path="res://scenes/enemies/bounce_ball/bounce_ball.tscn" id="4_spwf2"]
 [ext_resource type="PackedScene" uid="uid://ebv3medb6skf" path="res://scenes/enemies/bounce_box/bounce_box.tscn" id="5_7uxs1"]
+[ext_resource type="PackedScene" uid="uid://bx2wpw07dqbyu" path="res://components/check_point/check_point.tscn" id="6_3lh42"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x3ahk"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -22,13 +23,16 @@ glow_enabled = true
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fngju"]
 albedo_texture = ExtResource("1_fngju")
 
-[sub_resource type="Curve3D" id="Curve3D_7uxs1"]
+[sub_resource type="Curve3D" id="Curve3D_vmhy7"]
 resource_local_to_scene = true
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 5.722046e-05, 0.0008869171, -0.040676117, 0, 0, 0, 0, 0, 0, 5.722046e-05, 0.077754974, -17.464127),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_58uyj"]
+size = Vector3(8.412109, 5.8201904, 3.8867188)
 
 [node name="Level1" type="Node3D" unique_id=754608760]
 
@@ -231,7 +235,7 @@ material = SubResource("StandardMaterial3D_fngju")
 
 [node name="MovingPlatform" parent="Platforms" unique_id=62256537 instance=ExtResource("3_5o1mp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.28754, 19.343206, -16.641422)
-curve = SubResource("Curve3D_7uxs1")
+curve = SubResource("Curve3D_vmhy7")
 
 [node name="Bounce" type="Node3D" parent="." unique_id=1454874943]
 
@@ -258,3 +262,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.02755, 50.00002, -106.7002
 
 [node name="BounceBox2" parent="Bounce" unique_id=1332165312 instance=ExtResource("5_7uxs1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.03856, 49.75882, -89.14424)
+
+[node name="Node3D" type="Node3D" parent="." unique_id=966736804]
+
+[node name="CheckPoint" parent="Node3D" unique_id=786439774 instance=ExtResource("6_3lh42")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.0000105, 35.456924)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CheckPoint" unique_id=1606623057]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7060547, 2.4100952, 1.4433594)
+shape = SubResource("BoxShape3D_58uyj")

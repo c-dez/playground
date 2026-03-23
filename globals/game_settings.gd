@@ -8,7 +8,7 @@ var data: Dictionary = {
     'mouse_sens': 0.05,
     'kick': false,
     'ground_pound': false,
-    'check_point': Vector3.ZERO,
+    'check_point_position': Vector3.ZERO,
 }
 
 func set_mouse_sens(value: float) -> void:

@@ -1,0 +1,19 @@
+extends Area3D
+
+# Check_point -> al Player entrar a area, guarda su global_position(in_floor)
+var check_point_position := Vector3.ZERO
+
+func _ready() -> void:
+    connect('body_entered', on_player_entered)
+
+
+func on_player_entered(body: Node3D) -> void:
+    if body is KatanaPlayer:
+        # print('PLAYER pos: ', body.global_position.y)
+        # print('area pos: ', global_position.y)
+        # print(global_position.y + 0.5)
+        var player_pos: Vector3 = body.global_position
+
+        # se tiene que sumar 0.5 en y para que coincida con Player
+        check_point_position = Vector3(player_pos.x, global_position.y + 0.5, player_pos.z)
+    pass
