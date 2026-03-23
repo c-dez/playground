@@ -40,7 +40,7 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="KatanaPlayer" parent="." unique_id=1538907837 instance=ExtResource("2_5o1mp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.7714, 53.164127, -92.81352)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4335556, 7.2181015, 43.2464)
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1860315366]
 use_collision = true
@@ -163,8 +163,28 @@ size = Vector3(25.278442, 2.9022217, 24.995605)
 material = SubResource("StandardMaterial3D_fngju")
 
 [node name="CSGBox3D32" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1833693876]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -89.98204, 56.75882, -89.30227)
-size = Vector3(7.059143, 15, 24.995605)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92.45247, 56.75882, -89.30227)
+size = Vector3(12, 15, 24.995605)
+material = SubResource("StandardMaterial3D_fngju")
+
+[node name="CSGBox3D34" type="CSGBox3D" parent="CSGCombiner3D" unique_id=928408174]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -125.485565, 56.75882, -89.30227)
+size = Vector3(26.066193, 15, 24.995605)
+material = SubResource("StandardMaterial3D_fngju")
+
+[node name="CSGBox3D33" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1667293049]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99.4133, 71.75882, -101.30007)
+size = Vector3(25.921661, 15, 1)
+material = SubResource("StandardMaterial3D_fngju")
+
+[node name="CSGBox3D35" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1062105301]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -97.76407, 68.83151, -85.06439)
+size = Vector3(1, 9.145386, 15.416016)
+material = SubResource("StandardMaterial3D_fngju")
+
+[node name="CSGBox3D36" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1974967641]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -113.022446, 69.08914, -97.10965)
+size = Vector3(1, 9.660645, 7.9052734)
 material = SubResource("StandardMaterial3D_fngju")
 
 [node name="CSGBox3D24" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1203061846]
@@ -229,6 +249,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.583424, 49.02117, -87.647
 
 [node name="BounceBall5" parent="Bounce" unique_id=928267619 instance=ExtResource("4_spwf2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.56207, 62.95882, -89.18888)
+
+[node name="BounceBall6" parent="Bounce" unique_id=1975372722 instance=ExtResource("4_spwf2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104.53908, 70.58, -93.097755)
 
 [node name="BounceBox" parent="Bounce" unique_id=1280337061 instance=ExtResource("5_7uxs1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.02755, 50.00002, -106.70026)

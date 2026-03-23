@@ -7,7 +7,8 @@ var data: Dictionary = {
     'fov': 100,
     'mouse_sens': 0.05,
     'kick': false,
-    'ground_pound':false,
+    'ground_pound': false,
+    'check_point': Vector3.ZERO,
 }
 
 func set_mouse_sens(value: float) -> void:
@@ -15,6 +16,7 @@ func set_mouse_sens(value: float) -> void:
     data['mouse_sens'] = value
 
     save_game()
+
 
 func save_game() -> void:
     var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
