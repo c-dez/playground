@@ -9,4 +9,7 @@ func _ready() -> void:
 
 
 func _on_area_entered(_hitbox: Hitbox) -> void:
+	if _hitbox.owner is KatanaPlayer:
+		var damage = _hitbox.owner.stats.damage
+		owner.take_damage(damage)
 	pass

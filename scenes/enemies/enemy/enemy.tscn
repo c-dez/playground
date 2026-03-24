@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://dqgsorcopun4o"]
+
+[ext_resource type="Script" uid="uid://8yfcpb2peg58" path="res://scenes/enemies/enemy/enemy.gd" id="1_2jqkb"]
+[ext_resource type="PackedScene" uid="uid://dsh52cxqfn6oy" path="res://components/hurtbox/hurtbox.tscn" id="1_jlgdt"]
+[ext_resource type="Script" uid="uid://qdikaf6s2kim" path="res://components/state_machine/state_machine.gd" id="2_5v1eo"]
+[ext_resource type="Script" uid="uid://ck42b566i6ftq" path="res://components/state_machine/state.gd" id="3_2jqkb"]
+[ext_resource type="Script" uid="uid://duye6m0uxnlj0" path="res://scenes/enemies/enemy/idle.gd" id="4_5bb74"]
+[ext_resource type="Script" uid="uid://bgi8vbmjrlk5t" path="res://scenes/enemies/enemy/chase.gd" id="6_wbf86"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1unhx"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jlgdt"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7ytu1"]
+
+[node name="Enemy" type="CharacterBody3D" unique_id=1446167986]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_2jqkb")
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1619569881]
+mesh = SubResource("CapsuleMesh_1unhx")
+
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=862842582]
+shape = SubResource("CapsuleShape3D_jlgdt")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1825486971]
+
+[node name="Hurtbox" parent="." unique_id=450333765 instance=ExtResource("1_jlgdt")]
+collision_mask = 16
+
+[node name="HurtboxCollision" type="CollisionShape3D" parent="Hurtbox" unique_id=222175118]
+shape = SubResource("CapsuleShape3D_7ytu1")
+debug_color = Color(0.1295765, 0.62986183, 0.4288358, 0.41960785)
+
+[node name="StateMachine" type="Node" parent="." unique_id=1603387376]
+script = ExtResource("2_5v1eo")
+metadata/_custom_type_script = "uid://qdikaf6s2kim"
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=125771148]
+script = ExtResource("4_5bb74")
+metadata/_custom_type_script = "uid://ck42b566i6ftq"
+
+[node name="Move" type="Node" parent="StateMachine" unique_id=1531836692]
+script = ExtResource("3_2jqkb")
+metadata/_custom_type_script = "uid://ck42b566i6ftq"
+
+[node name="Chase" type="Node" parent="StateMachine" unique_id=984451103]
+script = ExtResource("6_wbf86")
+metadata/_custom_type_script = "uid://ck42b566i6ftq"
+
+[node name="Attack" type="Node" parent="StateMachine" unique_id=1761889627]
+script = ExtResource("3_2jqkb")
+metadata/_custom_type_script = "uid://ck42b566i6ftq"
+
+[node name="TakeDamage" type="Node" parent="StateMachine" unique_id=125858215]
+script = ExtResource("3_2jqkb")
+metadata/_custom_type_script = "uid://ck42b566i6ftq"
