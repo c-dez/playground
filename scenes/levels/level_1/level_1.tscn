@@ -32,11 +32,23 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_vmhy7"]
+size = Vector3(14.802856, 3.088379, 6)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_58uyj"]
-size = Vector3(7.1446533, 5.8201904, 4.1960144)
+size = Vector3(21.045319, 2.1107788, 8.308945)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ojo11"]
 size = Vector3(2000, 1, 2000)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_31rk5"]
+size = Vector3(10.535889, 6.190918, 7.8340454)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w3g2g"]
+size = Vector3(13.448853, 1.3640137, 9.638794)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_napug"]
+size = Vector3(8.986816, 1, 16.538086)
 
 [node name="Level1" type="Node3D" unique_id=754608760]
 
@@ -272,15 +284,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.03856, 49.75882, -89.1442
 [node name="CheckPoint" parent="Node3D" unique_id=786439774 instance=ExtResource("6_3lh42")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.410103, 50.09091)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CheckPoint" unique_id=1606623057]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3122559, 0, 0)
-shape = SubResource("BoxShape3D_58uyj")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CheckPoint" unique_id=2025254535]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5985718, -1.0441895, 0)
+shape = SubResource("BoxShape3D_vmhy7")
 
 [node name="CheckPoint2" parent="Node3D" unique_id=821850143 instance=ExtResource("6_3lh42")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.082428, 25.669075, -11.362545)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.082428, 21.555376, -37.63847)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CheckPoint2" unique_id=1559858212]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7182007, -2.2589931, -0.2294159)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.364456, 0, -2.0564651)
 shape = SubResource("BoxShape3D_58uyj")
 
 [node name="KillZone" parent="Node3D" unique_id=1767779777 instance=ExtResource("7_vmhy7")]
@@ -289,3 +301,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.238647, 5.378988, 41.1715
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/KillZone" unique_id=87354075]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3462524, -14.700697, 6.5634155)
 shape = SubResource("BoxShape3D_ojo11")
+
+[node name="CheckPoint3" parent="Node3D" unique_id=362780593 instance=ExtResource("6_3lh42")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.372173, 50.00002, -98.70998)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CheckPoint3" unique_id=948301493]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1212158, 2.595459, 3.4170227)
+shape = SubResource("BoxShape3D_31rk5")
+
+[node name="CheckPoint4" parent="Node3D" unique_id=211532729 instance=ExtResource("6_3lh42")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.372173, 50.00002, -98.70998)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CheckPoint4" unique_id=964901819]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1212158, 2.595459, 3.4170227)
+shape = SubResource("BoxShape3D_31rk5")
+
+[node name="CheckPoint5" parent="Node3D" unique_id=1556260114 instance=ExtResource("6_3lh42")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.907814, 60.00003, -108.04768)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CheckPoint5" unique_id=73061145]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2526245, 0, 1.2774048)
+shape = SubResource("BoxShape3D_w3g2g")
+
+[node name="CheckPoint6" parent="Node3D" unique_id=2055629861 instance=ExtResource("6_3lh42")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -91.377846, 68.41449, -94.45001)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CheckPoint6" unique_id=1471272660]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2834473, -3.6556473, 1.9985352)
+shape = SubResource("BoxShape3D_napug")
