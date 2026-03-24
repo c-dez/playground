@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://unw31vd7gc8f"]
 
 [ext_resource type="PackedScene" uid="uid://dqp0q00oipopk" path="res://assets/blocks/wall.tscn" id="2_v45ci"]
-[ext_resource type="PackedScene" uid="uid://deaqjkvc1n0y" path="res://scenes/enemies/base_enemy/base_enemy.tscn" id="3_62kbb"]
 [ext_resource type="PackedScene" uid="uid://dion4k8gfmgw3" path="res://scenes/test/ground_switch/ground_switch.tscn" id="4_uxvkn"]
 [ext_resource type="PackedScene" uid="uid://bp53d46vbf5s8" path="res://scenes/player/katana_player/katana_player.tscn" id="5_48ne7"]
 [ext_resource type="PackedScene" uid="uid://bnq2dcc0o6s32" path="res://scenes/enemies/bounce_ball/bounce_ball.tscn" id="5_qv4mi"]
@@ -29,7 +28,7 @@ glow_enabled = true
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_62kbb"]
 albedo_color = Color(0.29954746, 0.29954746, 0.29954743, 1)
 
-[sub_resource type="Curve3D" id="Curve3D_lbjl6"]
+[sub_resource type="Curve3D" id="Curve3D_hocnj"]
 resource_local_to_scene = true
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.020832062, 0, 0.23417379, 0, 0, 0, 0, 0, 0, -20.495447, 0, 0.030638834),
@@ -213,12 +212,6 @@ material = SubResource("StandardMaterial3D_62kbb")
 [node name="KatanaPlayer" parent="." unique_id=1538907837 instance=ExtResource("5_48ne7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.154413, 0, -10.908618)
 
-[node name="BaseEnemy" parent="." unique_id=1508650006 instance=ExtResource("3_62kbb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -14)
-
-[node name="BaseEnemy2" parent="." unique_id=1999564101 instance=ExtResource("3_62kbb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.648483, 0, -20.04564)
-
 [node name="GroundSwitch" parent="." unique_id=1691430564 instance=ExtResource("4_uxvkn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 0)
 
@@ -241,20 +234,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.313688, -0.44999635, -16.
 
 [node name="MovingPlatform" parent="Envirroment" unique_id=62256537 instance=ExtResource("7_lbjl6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.490347, 0, 0)
-curve = SubResource("Curve3D_lbjl6")
+curve = SubResource("Curve3D_hocnj")
 
 [node name="MovingPlatform2" type="Path3D" parent="Envirroment" unique_id=1299479374]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2878685, 0, -25.910854)
 curve = SubResource("Curve3D_6eemo")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Envirroment/MovingPlatform2" unique_id=1982777753]
-transform = Transform3D(0, 0.99999726, 0.0022214768, -0.01049852, 0.0022213573, -0.9999408, -0.99994314, -2.332031e-05, 0.010498495, -0.015142441, 0.023023605, -3.4332275e-05)
+transform = Transform3D(0, 0.99999726, 0.0022214768, -0.010498519, 0.0022213573, -0.9999408, -0.9999431, -2.332031e-05, 0.010498495, -0.015142441, 0.023023605, -3.4332275e-05)
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Envirroment/MovingPlatform2/PathFollow3D" unique_id=384231293]
 remote_path = NodePath("../../AnimatableBody3D")
 
 [node name="AnimatableBody3D" type="AnimatableBody3D" parent="Envirroment/MovingPlatform2" unique_id=2004785169]
-transform = Transform3D(0, 0.99999726, 0.0022214768, -0.01049852, 0.0022213573, -0.9999408, -0.99994314, -2.332031e-05, 0.010498495, -0.015142441, 0.023023605, -3.4332275e-05)
+transform = Transform3D(0, 0.99999726, 0.0022214768, -0.010498519, 0.0022213573, -0.9999408, -0.9999431, -2.332031e-05, 0.010498495, -0.015142441, 0.023023605, -3.4332275e-05)
 collision_layer = 2
 collision_mask = 0
 
