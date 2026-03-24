@@ -33,10 +33,10 @@ _data = {
 point_count = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_58uyj"]
-size = Vector3(8.412109, 5.8201904, 3.8867188)
+size = Vector3(7.1446533, 5.8201904, 4.1960144)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ojo11"]
-size = Vector3(13.775269, 1, 23.7323)
+size = Vector3(2000, 1, 2000)
 
 [node name="Level1" type="Node3D" unique_id=754608760]
 
@@ -48,7 +48,7 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="KatanaPlayer" parent="." unique_id=1538907837 instance=ExtResource("2_5o1mp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4335556, 7.2181015, 43.2464)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4335556, 4.2180996, 61.5474)
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1860315366]
 use_collision = true
@@ -270,15 +270,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.03856, 49.75882, -89.1442
 [node name="Node3D" type="Node3D" parent="." unique_id=966736804]
 
 [node name="CheckPoint" parent="Node3D" unique_id=786439774 instance=ExtResource("6_3lh42")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.0000105, 35.456924)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.410103, 50.09091)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CheckPoint" unique_id=1606623057]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7060547, 2.4100952, 1.4433594)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3122559, 0, 0)
+shape = SubResource("BoxShape3D_58uyj")
+
+[node name="CheckPoint2" parent="Node3D" unique_id=821850143 instance=ExtResource("6_3lh42")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.082428, 25.669075, -11.362545)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CheckPoint2" unique_id=1559858212]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7182007, -2.2589931, -0.2294159)
 shape = SubResource("BoxShape3D_58uyj")
 
 [node name="KillZone" parent="Node3D" unique_id=1767779777 instance=ExtResource("7_vmhy7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.238647, 5.378988, 41.171597)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/KillZone" unique_id=87354075]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3462524, -3.0422697, 6.5634155)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3462524, -14.700697, 6.5634155)
 shape = SubResource("BoxShape3D_ojo11")
