@@ -5,7 +5,7 @@ class_name Enemy
 
 @export var move_speed: float
 
-@export var chase_speed: float
+@export var chase_speed: float = 5
 @export var chase_range: float
 
 @export var attack_range: float
@@ -30,3 +30,6 @@ func take_damage(damage: int) -> void:
 func gravity() -> void:
     if not is_on_floor():
         velocity.y = -10
+
+func move(direction: Vector3, speed: float) -> void:
+    velocity = direction * speed
