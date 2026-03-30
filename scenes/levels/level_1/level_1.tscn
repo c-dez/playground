@@ -342,4 +342,4 @@ material = SubResource("StandardMaterial3D_fngju")
 [node name="Enemies" type="Node3D" parent="." unique_id=1496782889]
 
 [node name="Enemy" parent="Enemies" unique_id=1446167986 instance=ExtResource("8_58uyj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.843444, 38.041103)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.967274, 1.5000048, 58.122055)

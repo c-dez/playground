@@ -60,3 +60,4 @@ script = ExtResource("3_2jqkb")
 metadata/_custom_type_script = "uid://ck42b566i6ftq"
 
 [node name="BulletsPool" type="Node3D" parent="." unique_id=301544509]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.150348, 0)

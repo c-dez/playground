@@ -13,6 +13,8 @@ func _ready() -> void:
 
 func enter() -> void:
     print(self )
+    _check_time = CHECK_TIME
+
 
     pass
 
@@ -32,6 +34,8 @@ func physics_process(_delta: float) -> void:
         direction = (next_pos - owner.global_position).normalized()
 
         # print(nav.is_target_reachable())
+        if owner.global_position.distance_to(owner.player.global_position)< owner.attack_range:
+            emit_signal('change_state_to', self, 'attack')
         _check_time = CHECK_TIME
 
     owner.move(direction, owner.chase_speed)
