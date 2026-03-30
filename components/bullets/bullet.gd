@@ -10,7 +10,8 @@ func _ready() -> void:
     top_level = true
     hitbox.connect('area_entered', on_area_entered)
     set_active(false)
-    starting_pos = global_position
+    global_position = starting_pos
+    visible = true
 
 
 func on_area_entered(area: Hurtbox) -> void:
@@ -27,6 +28,8 @@ func set_active(value: bool = false) -> void:
     hitbox.call_deferred('set_monitorable', value)
     hitbox.call_deferred('set_monitoring', value)
 
-    # if value == false:
-    #     global_position = starting_pos
+    if value == false:
+        global_position = starting_pos
+        linear_velocity = Vector3.ZERO
+
 

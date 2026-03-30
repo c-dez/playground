@@ -22,19 +22,18 @@ func _ready() -> void:
         bullets_pool.append(b)
         b.damage = owner.attack_damage
         b.name = 'Bullet_%s' % (++1)
-    print(bullets_pool)
-
+        b.starting_pos = Vector3(owner.global_position.x, 10, owner.global_position.z)
 
 func enter() -> void:
-    # timer.start(1)
+    timer.start(1)
     print(self )
     # seleccionar ataque?
+    shoot()
 
 
 
 func physics_process(_delta: float) -> void:
     owner.velocity = Vector3.ZERO
-    shoot()
 
 
 
@@ -53,7 +52,15 @@ func _select_attack() -> int:
     return attack
 
 
+
 func shoot() -> void:
-    print('sds')
+    for i in bullets_pool:
+        i.global_position = owner.global_position
+        i.set_active(true)
+        var player_pos = owner.player.global_position
+        i.look_at(player_pos)
+        var direction = -i.transform.basis.z
+        var fuerza = 10
 
-
+        i.linear_velocity = direction.normalized() * fuerza
+    # emit_signal('change_state_to', self, 'idle')
