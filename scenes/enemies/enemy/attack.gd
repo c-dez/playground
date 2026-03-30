@@ -15,7 +15,7 @@ func _ready() -> void:
     timer.autostart = false
     timer.connect('timeout', on_timer_timeout)
 
-    var number_of_bullets := 1
+    var number_of_bullets := 3
     for i in range(number_of_bullets):
         var b: Bullet = bullet.instantiate()
         bullets_pool_node.add_child(b)
@@ -24,6 +24,7 @@ func _ready() -> void:
         b.name = 'Bullet_%s' % (++1)
         b.starting_pos = Vector3(owner.global_position.x, 10, owner.global_position.z)
 
+
 func enter() -> void:
     timer.start(1)
     print(self )
@@ -31,36 +32,28 @@ func enter() -> void:
     shoot()
 
 
-
 func physics_process(_delta: float) -> void:
     owner.velocity = Vector3.ZERO
-
-
-
-func exit() -> void:
-    # regresar a idle?
-    pass
-
 
 
 func on_timer_timeout() -> void:
     emit_signal('change_state_to', self , 'idle')
 
-func _select_attack() -> int:
-    var attack: int = 0
+# func _select_attack() -> int:
+#     var attack: int = 0
 
-    return attack
-
+#     return attack
 
 
 func shoot() -> void:
     for i in bullets_pool:
-        i.global_position = owner.global_position
-        i.set_active(true)
-        var player_pos = owner.player.global_position
-        i.look_at(player_pos)
-        var direction = -i.transform.basis.z
-        var fuerza = 10
+        if !i.is_active:
+            i.global_position = owner.global_position
+            i.set_active(true)
+            var player_pos = owner.player.global_position
+            i.look_at(player_pos)
+            var direction = -i.transform.basis.z
+            var fuerza = 10
 
-        i.linear_velocity = direction.normalized() * fuerza
-    # emit_signal('change_state_to', self, 'idle')
+            i.linear_velocity = direction.normalized() * fuerza
+            await get_tree().create_timer(0.5).timeout
