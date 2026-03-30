@@ -1,15 +1,17 @@
 extends CharacterBody3D
 class_name Enemy
 
-@export var max_health: int
+@export var max_health: int = 100
 
-@export var move_speed: float
+@export var move_speed: float = 5
 
 @export var chase_speed: float = 5
-@export var chase_range: float
+@export var chase_range: float = 20
 
-@export var attack_range: float
+@export var attack_range: float = 10 
 @export var attack_cooldown: float
+
+@onready var player:CharacterBody3D = get_tree().get_first_node_in_group('player')
 
 var health: int:
     set(value):
@@ -18,7 +20,7 @@ var health: int:
 @onready var navigation: NavigationAgent3D = get_node('NavigationAgent3D')
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
     gravity()
     move_and_slide()
 

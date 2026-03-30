@@ -1,38 +1,42 @@
 extends State
 class_name EnemyChaseState
 
-# var navigation = owner.navigation
 var nav: NavigationAgent3D
-var target
 
 
 func _ready() -> void:
-    target = get_tree().get_first_node_in_group('player')
+    await owner.ready
+    nav = owner.navigation
+    nav.connect('navigation_finished', on_navigation_finished)
     pass
 
 
 func enter() -> void:
-    nav = owner.navigation
-    print(nav)
+    print(self )
+
     pass
 
 
 var direction = Vector3.ZERO
-const check_time = 1
-var _check_time = check_time
+const CHECK_TIME = 0.5
+var _check_time = CHECK_TIME
 func physics_process(_delta: float) -> void:
     _check_time -= _delta
     if _check_time < 0:
         # if nav.is_navigation_finished():
         #     owner.velocity = Vector3.ZERO
         #     return
-        print(_check_time)
-        nav.target_position = target.global_position
+        nav.target_position = owner.player.global_position
 
         var next_pos = nav.get_next_path_position()
         direction = (next_pos - owner.global_position).normalized()
 
-        _check_time = check_time
+        # print(nav.is_target_reachable())
+        _check_time = CHECK_TIME
 
     owner.move(direction, owner.chase_speed)
     pass
+
+    
+func on_navigation_finished() -> void:
+    emit_signal('change_state_to', self , 'attack')

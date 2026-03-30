@@ -7,11 +7,16 @@ var duration_time: float = 1.0
 
 func _ready() -> void:
     _set_state_duration_timer_propeties()
+
     pass
 
 
 func enter() -> void:
     state_duration_timer.start(duration_time)
+    print(self)
+    owner.velocity = Vector3.ZERO
+
+
 
 
 func exit() -> void:
@@ -26,5 +31,12 @@ func _set_state_duration_timer_propeties() -> void:
 
 
 func on_state_duration_timer() -> void:
-    emit_signal('change_state_to', self, 'chase')
+    var current_pos: Vector3 = owner.global_position
+    var player_pos: Vector3 = owner.player.global_position
+    var chase_range: float = owner.chase_range
+
+    if current_pos.distance_to(player_pos) < chase_range:
+        emit_signal('change_state_to', self , 'chase')
+    else:
+        state_duration_timer.start(duration_time)
     pass

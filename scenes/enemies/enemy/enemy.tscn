@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://ck42b566i6ftq" path="res://components/state_machine/state.gd" id="3_2jqkb"]
 [ext_resource type="Script" uid="uid://duye6m0uxnlj0" path="res://scenes/enemies/enemy/idle.gd" id="4_5bb74"]
 [ext_resource type="Script" uid="uid://bgi8vbmjrlk5t" path="res://scenes/enemies/enemy/chase.gd" id="6_wbf86"]
+[ext_resource type="Script" uid="uid://c7h4117w2fswb" path="res://scenes/enemies/enemy/attack.gd" id="7_wbf86"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_1unhx"]
 
@@ -25,6 +26,7 @@ mesh = SubResource("CapsuleMesh_1unhx")
 shape = SubResource("CapsuleShape3D_jlgdt")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1825486971]
+debug_enabled = true
 
 [node name="Hurtbox" parent="." unique_id=450333765 instance=ExtResource("1_jlgdt")]
 collision_mask = 16
@@ -50,7 +52,7 @@ script = ExtResource("6_wbf86")
 metadata/_custom_type_script = "uid://ck42b566i6ftq"
 
 [node name="Attack" type="Node" parent="StateMachine" unique_id=1761889627]
-script = ExtResource("3_2jqkb")
+script = ExtResource("7_wbf86")
 metadata/_custom_type_script = "uid://ck42b566i6ftq"
 
 [node name="TakeDamage" type="Node" parent="StateMachine" unique_id=125858215]
