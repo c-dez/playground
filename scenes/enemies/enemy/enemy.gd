@@ -10,6 +10,7 @@ class_name Enemy
 
 @export var attack_range: float = 10 
 @export var attack_cooldown: float
+@export var attack_damage: int = 10
 
 @onready var player:CharacterBody3D = get_tree().get_first_node_in_group('player')
 

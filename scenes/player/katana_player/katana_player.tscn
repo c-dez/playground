@@ -125,6 +125,7 @@ script = ExtResource("14_0xnpu")
 metadata/_custom_type_script = "uid://ck42b566i6ftq"
 
 [node name="Hurtbox" parent="." unique_id=450333765 instance=ExtResource("16_dt0e0")]
+collision_layer = 64
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" unique_id=835831671]
 shape = SubResource("CapsuleShape3D_stoeh")

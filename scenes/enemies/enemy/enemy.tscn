@@ -58,3 +58,5 @@ metadata/_custom_type_script = "uid://ck42b566i6ftq"
 [node name="TakeDamage" type="Node" parent="StateMachine" unique_id=125858215]
 script = ExtResource("3_2jqkb")
 metadata/_custom_type_script = "uid://ck42b566i6ftq"
+
+[node name="BulletsPool" type="Node3D" parent="." unique_id=301544509]
