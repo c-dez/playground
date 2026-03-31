@@ -12,7 +12,7 @@ func _ready() -> void:
 
 
 func enter() -> void:
-    print(self )
+    # print(self )
     _check_time = CHECK_TIME
 
 

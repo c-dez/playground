@@ -136,13 +136,16 @@ func _calculate_jump_gravity() -> void:
     _jump_fall_gravity = 2.0 * jump_height / (jump_time_to_descend * jump_time_to_descend)
 
 
-func take_damage(damage:int):
-    print(damage, ' take damage katana player')
+func take_damage(_damage:int):
+    # print(damage, ' take damage katana player')
+
+    # todo: 
     pass
 
 
 func take_health(health:int):
     print(health, ' take_health katana player')
+    # todo:
 
 
 func attack_jump() -> void:
