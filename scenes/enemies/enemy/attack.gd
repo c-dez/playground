@@ -2,8 +2,8 @@ extends State
 class_name EnemyAttack
 
 
-var number_of_shoots: int = 0 ## cuantas veces seguidas dispara
-const NUMBER_OF_SHOOTS: int = 3
+var number_of_shoots: int = 0 
+const NUMBER_OF_SHOOTS: int = 3## cuantas veces seguidas dispara
 
 @onready var bullets_pool_node: Node3D = get_tree().get_first_node_in_group('bullets_pool')
 
