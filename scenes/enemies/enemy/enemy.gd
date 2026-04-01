@@ -20,6 +20,9 @@ var health: int:
     set(value):
         health = clamp(value, 0, max_health)
 
+func _init() -> void:
+    health = max_health
+
 
 func _physics_process(_delta: float) -> void:
     gravity()
@@ -42,4 +45,5 @@ func move(direction: Vector3, speed: float) -> void:
     velocity = direction * speed
 
 func die() -> void:
+    queue_free()
     pass
