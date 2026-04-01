@@ -28,7 +28,7 @@ GameSettings="*uid://bnw1whn2hco4l"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/initial_position=Vector2i(2000, 0)
+window/size/initial_screen=1
 
 [dotnet]
 
@@ -46,6 +46,7 @@ folder_colors={
 enemy=""
 dump=""
 camera="player camera"
+bullets_pool="almacena las balas"
 
 [input]
 

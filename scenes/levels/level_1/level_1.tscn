@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://bx2wpw07dqbyu" path="res://components/check_point/check_point.tscn" id="6_3lh42"]
 [ext_resource type="PackedScene" uid="uid://dw1datm2gdtbk" path="res://components/kill_zone/kill_zone.tscn" id="7_vmhy7"]
 [ext_resource type="PackedScene" uid="uid://dqgsorcopun4o" path="res://scenes/enemies/enemy/enemy.tscn" id="8_58uyj"]
+[ext_resource type="PackedScene" uid="uid://dd2rhujsnqk7" path="res://components/enemies_node/enemies_node.tscn" id="9_31rk5"]
+[ext_resource type="PackedScene" uid="uid://c66iqukrqcgv3" path="res://components/bullets/bullets_pool/bullets_pool.tscn" id="9_ojo11"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x3ahk"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -22,7 +24,7 @@ sky = SubResource("Sky_fngju")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="Curve3D" id="Curve3D_58uyj"]
+[sub_resource type="Curve3D" id="Curve3D_31rk5"]
 resource_local_to_scene = true
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 5.722046e-05, 0.0008869171, -0.040676117, 0, 0, 0, 0, 0, 0, 5.722046e-05, 0.077754974, -17.464127),
@@ -71,7 +73,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4335556, 4.2180996, 61.5474
 
 [node name="MovingPlatform" parent="Platforms" unique_id=62256537 instance=ExtResource("3_5o1mp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.28754, 19.343206, -16.641422)
-curve = SubResource("Curve3D_58uyj")
+curve = SubResource("Curve3D_31rk5")
 
 [node name="Bounce" type="Node3D" parent="." unique_id=1454874943]
 
@@ -339,7 +341,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.21266, 6.5000052, 25.65789
 size = Vector3(9.713379, 4, 10.187012)
 material = SubResource("StandardMaterial3D_fngju")
 
-[node name="Enemies" type="Node3D" parent="." unique_id=1496782889]
+[node name="BulletsPool" parent="." unique_id=1286254052 instance=ExtResource("9_ojo11")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 88, 0)
 
-[node name="Enemy" parent="Enemies" unique_id=1446167986 instance=ExtResource("8_58uyj")]
+[node name="EnemiesNode" parent="." unique_id=640088490 instance=ExtResource("9_31rk5")]
+
+[node name="Enemy" parent="EnemiesNode" unique_id=1446167986 instance=ExtResource("8_58uyj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.967274, 1.5000048, 58.122055)
+
+[node name="Enemy2" parent="EnemiesNode" unique_id=1172531101 instance=ExtResource("8_58uyj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.601411, 1.5000048, 58.122055)
