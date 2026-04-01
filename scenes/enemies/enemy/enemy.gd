@@ -29,8 +29,7 @@ func _physics_process(_delta: float) -> void:
 func take_damage(_damage: int) -> void:
     health -= _damage
     if health == 0:
-        print(self.name, ' Dies')
-        # todo: func Die()
+        die()
     pass
 
 
@@ -41,3 +40,6 @@ func gravity() -> void:
 
 func move(direction: Vector3, speed: float) -> void:
     velocity = direction * speed
+
+func die() -> void:
+    pass
