@@ -43,10 +43,6 @@ metadata/_custom_type_script = "uid://qdikaf6s2kim"
 script = ExtResource("4_5bb74")
 metadata/_custom_type_script = "uid://ck42b566i6ftq"
 
-[node name="Move" type="Node" parent="StateMachine" unique_id=1531836692]
-script = ExtResource("3_2jqkb")
-metadata/_custom_type_script = "uid://ck42b566i6ftq"
-
 [node name="Chase" type="Node" parent="StateMachine" unique_id=984451103]
 script = ExtResource("6_wbf86")
 metadata/_custom_type_script = "uid://ck42b566i6ftq"
