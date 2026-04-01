@@ -24,10 +24,10 @@ func _set_state_duration_timer_propeties() -> void:
     add_child(state_duration_timer)
     state_duration_timer.autostart = false
     state_duration_timer.one_shot = true
-    state_duration_timer.connect('timeout', on_state_duration_timer)
+    state_duration_timer.connect('timeout', _on_state_duration_timer)
 
 
-func on_state_duration_timer() -> void:
+func _on_state_duration_timer() -> void:
     var current_pos: Vector3 = owner.global_position
     var player_pos: Vector3 = owner.player.global_position
     var chase_range: float = owner.chase_range
