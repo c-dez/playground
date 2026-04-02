@@ -15,5 +15,4 @@ func on_player_entered(body: Node3D) -> void:
         check_point_position = Vector4(player_pos.x, global_position.y + 0.5, player_pos.z,body.rotation.y)
         GameSettings.data['check_point_position'] = check_point_position
         GameSettings.save_game()
-        print('check_point')
     pass
