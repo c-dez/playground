@@ -13,6 +13,7 @@ class_name Enemy
 @export var attack_damage: int = 10
 @export var bullet_speed: float = 20
 
+
 @onready var player: CharacterBody3D = get_tree().get_first_node_in_group('player')
 @onready var navigation: NavigationAgent3D = get_node('NavigationAgent3D')
 
@@ -45,6 +46,5 @@ func move(direction: Vector3, speed: float) -> void:
     velocity = direction * speed
 
 func die() -> void:
-    print(name,' dies')
     queue_free()
     pass
