@@ -45,5 +45,6 @@ func move(direction: Vector3, speed: float) -> void:
     velocity = direction * speed
 
 func die() -> void:
+    print(name,' dies')
     queue_free()
     pass

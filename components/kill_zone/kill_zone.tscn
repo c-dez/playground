@@ -3,4 +3,5 @@
 [ext_resource type="Script" uid="uid://dfvgf43e1bmyp" path="res://components/kill_zone/kill_zone.gd" id="1_0fu18"]
 
 [node name="KillZone" type="Area3D" unique_id=1767779777]
+collision_mask = 5
 script = ExtResource("1_0fu18")

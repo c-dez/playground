@@ -32,7 +32,6 @@ func _on_state_duration_timer() -> void:
     var player_pos: Vector3 = owner.player.global_position
     var chase_range: float = owner.chase_range
     var attack_range = owner.attack_range
-
     if current_pos.distance_to(player_pos) < attack_range:
         emit_signal('change_state_to', self , 'attack')
     elif current_pos.distance_to(player_pos) < chase_range:
