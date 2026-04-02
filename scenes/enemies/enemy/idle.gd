@@ -15,8 +15,12 @@ func enter() -> void:
     # print(self)
     owner.velocity = Vector3.ZERO
 
+func physics_process(_delta: float) -> void:
+    owner.move(Vector3.ZERO, 0)
+
 
 func exit() -> void:
+    owner.velocity = Vector3.ZERO
     state_duration_timer.stop()
 
 
@@ -32,7 +36,12 @@ func _on_state_duration_timer() -> void:
     var player_pos: Vector3 = owner.player.global_position
     var chase_range: float = owner.chase_range
     var attack_range = owner.attack_range
-    if current_pos.distance_to(player_pos) < attack_range:
+
+    if current_pos.distance_to(player_pos) > chase_range:
+        state_duration_timer.start(duration_time)
+        return
+
+    elif current_pos.distance_to(player_pos) < attack_range:
         emit_signal('change_state_to', self , 'attack')
     elif current_pos.distance_to(player_pos) < chase_range:
         emit_signal('change_state_to', self , 'chase')
