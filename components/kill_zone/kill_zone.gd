@@ -7,7 +7,6 @@ func _ready() -> void:
 
 
 func on_player_entered(body: Node3D) -> void:
-    print(body)
     if body is KatanaPlayer:
         # TODO:
         # black screen
